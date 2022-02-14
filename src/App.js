@@ -1,12 +1,17 @@
 
-import Routes from './router/routes'
+import { Routes, Route } from "react-router-dom";
+
+import routes from "@/router/routes";
 
 const App = () => {
-	console.log(Routes)
 
 	return (
 		<div className="App">
-
+			<Routes>
+				{routes.map((route, key) => (
+					<Route key={key} path={route.path} element={route.element} />
+				))}
+			</Routes>
 		</div>
 	);
 }

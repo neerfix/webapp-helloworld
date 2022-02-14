@@ -1,4 +1,4 @@
-import logo from '@Assets/images/logo.svg'
+import logo from '@/assets/images/logo.svg'
 
 const HomePage = () => {
 	return (
