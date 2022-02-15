@@ -1,13 +1,15 @@
 
 #header{
-	font-family: 'Playfair Display', serif;
+    position: relative;
+    z-index: 2;
+	font-family: 'DM Serif Display', serif;
 	text-transform: uppercase;
 	border-bottom: 1px solid;
 
 	@apply text-brown border-brown;
 
 	.logo{
-		fill: #867065;
+		fill: #51331c;
 	}
 
 	.separator{

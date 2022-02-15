@@ -1,12 +1,88 @@
 
 #homepage{
-	#main-img{
-		position: absolute;
-		top: 0;
-		z-index: -1;
-	}
+	font-family: 'DM Serif Display', serif;
+    background-image: url('/assets/images/topo-lines.svg');
 
-	.bloc{
-		min-height: 500px;
-	}
+    #hero-banner{
+        z-index: 1;
+
+        &::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100%;
+            background-image: url('/assets/images/homepage/hero-banner.jpg');
+            object-fit: cover;
+            background-position: center center;
+            z-index: 0;
+        }
+
+        #main-title{
+            font-weight: 800;
+            color: #291D11;
+            line-height: .9;
+            mix-blend-mode: hard-light;
+            margin-top: 10vh;
+        }
+    }
+
+    #bloc-map{
+        position: relative;
+        z-index: 2;
+
+        .earth-visual{
+            opacity: .9;
+            height: 350px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            img{
+                max-width: none;
+                width: 115%;
+                height: auto;
+                filter: drop-shadow( 0 0 15px rgba(4, 0, 65, 0.4));
+            }
+    
+            .earth-visual-coords{
+                display: flex;
+                justify-content: space-around;
+    
+                .coords{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    color: #7B6253;
+                    position: relative;
+    
+                    &:before{
+                        content: "";
+                        position: absolute;
+                        background: #7B6253;
+                        top: 65px;
+                        height: 160px;
+                        width: 1.5px;
+                    }
+    
+                    &:after{
+                        content: "◆";
+                        color: #7B6253;
+                        position: absolute;
+                        top: 50px;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+
+    #bloc-popular{
+        background-color: white;
+        background-image: url('/assets/images/grid-lines.png');
+        background-blend-mode: hard-light;
+    }
+
 }

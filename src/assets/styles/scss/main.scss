@@ -1,5 +1,155 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+// ANCHOR Imports
 
 @import url('_header.scss');
 @import url('_homepage.scss');
 @import url('_footer.scss');
+
+// ANCHOR Scrollbar
+
+* {
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: thin;
+	scrollbar-color: #867065 white;
+}
+
+::-webkit-scrollbar {
+	width: 9px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #867065;
+	border: transparent;
+}
+
+// ANCHOR Titres
+
+.title-container{
+	display: flex;
+	align-items: center;
+	color: #7B6253;
+	margin: 25px 0;
+	
+	&:before{
+		content: "";
+		position: absolute;
+		background: #7B6253;
+		left: 0;
+		width: 100px;
+		height: 1.5px;
+	}
+	
+	h2{
+		margin-left: 115px;
+		display: flex;
+		align-items: center;
+		font-size: 36px;
+		line-height: 32px;
+		text-transform: uppercase;
+	
+		&:before{
+			content: "◆";
+			color: #7B6253;
+			position: absolute;
+			left: 90px;
+			font-size: 15px;
+		}
+	}
+}
+
+.title-centered{
+	padding: 15px 0;
+	h2{
+		font-size: 36px;
+		text-align: center;
+		line-height: 32px;
+		text-transform: uppercase;
+	}
+}
+
+// ANCHOR Buttons
+
+.btn{
+	position: relative;
+	display: flex;
+	align-items: center;
+	color: #7B6253;
+	padding: 15px 25px 15px 0;
+	background: #F4E9DD;
+	
+	&:before{
+		content: "";
+		position: absolute;
+		background: #7B6253;
+		left: 0;
+		width: 60px;
+		height: 1.5px;
+	}
+
+	.btn-text{
+		margin-left: 85px;
+		text-transform: uppercase;
+		font-size: 16px;
+		letter-spacing: 1px;
+
+		&:before{
+			content: "◆";
+			color: #7B6253;
+			position: absolute;
+			left: 50px;
+			font-size: 14px;
+			line-height: 24px;
+		}
+	}
+
+	&.btn-dark{
+		color: #F4E9DD;
+		background: #7B6253;
+	
+		&:before{
+			background: #F4E9DD;
+		}
+
+		.btn-text{
+			&:before{
+				color: #F4E9DD;
+			}
+		}
+	}
+
+	&.btn-outline{
+		background: none;
+		border: 2px solid #7B6253;
+	}
+}
+
+.btn-round{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15px;
+	font-size: 30px;
+	border: 1px solid white;
+	border-radius: 50%;
+	color: white;
+}
+
+// ANCHOR DestinationCard
+
+.destination-card{
+	.card-img {
+		border-right: 1px solid;
+		@apply border-brown;
+
+		img{
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+		}
+	}
+}
