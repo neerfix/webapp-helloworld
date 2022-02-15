@@ -7,16 +7,22 @@ class Header extends React.Component {
             <div id="header">
                 <nav className="flex items-center justify-between flex-wrap bg-teal p-6">
                     <div className="flex items-center flex-no-shrink text-white mr-6">
-				        <img className="logo" width="54" src={logo} alt="Hello World" />
+				        <img fill="#867065" className="logo" width="54" src={logo} alt="Hello World" />
                     </div>
                     <div className="w-full flex flex-grow justify-end items-center w-auto">
-                        <a href="/carnet" className="uppercase mr-4">
+                        <a href="/carnet" className="nav-link">
                             Carte
                         </a>
-                        <a href="/carnet" className="uppercase mr-4">
+                        <span className="separator">
+                            ◆
+                        </span>
+                        <a href="/carnet" className="nav-link">
                             Carnet
                         </a>
-                        <a href="/passeport" className="uppercase mt-0">
+                        <span className="separator">
+                            ◆
+                        </span>
+                        <a href="/passeport" className="nav-link">
                             Passeport
                         </a>
                     </div>

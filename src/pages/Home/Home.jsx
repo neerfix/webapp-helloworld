@@ -2,15 +2,19 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import DestinationCard from '@/components/DestinationCard'
 
+// Images
+import HeroBannerImg from '@/assets/images/homepage/hero-banner.jpg';
+
 const HomePage = () => {
 	return (
 		<div>
 			<Header />
-			<main className="homepage">
-				<div>
-					HelloWorld
+			<main id="homepage">
+				<div className="bloc">
+					<h1 id="main-title">HelloWorld</h1>
+					<img height="1000" id="main-img" src={HeroBannerImg} alt="" />
 				</div>
-				<div>
+				<div className="bloc">
 					Découvrir le monde
 				</div>
 				<div>
