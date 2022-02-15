@@ -2,8 +2,9 @@
 #header{
 	font-family: 'Playfair Display', serif;
 	text-transform: uppercase;
-	color: #867065;
-	border-bottom: 1px solid #867065;
+	border-bottom: 1px solid;
+
+	@apply text-brown border-brown;
 
 	.logo{
 		fill: #867065;
@@ -22,15 +23,16 @@
 		align-items: center;
 		font-weight: bold;
 		letter-spacing: 3px;
-		
+
 		&:after{
 			content: "";
 			width: 0%;
 			height: 1.5px;
-			background: #867065;
 			position: absolute;
 			bottom: -5px;
 			transition: all .2s;
+
+			@apply bg-brown;
 		}
 
 		&:hover{
