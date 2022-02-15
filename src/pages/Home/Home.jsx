@@ -12,7 +12,7 @@ const HomePage = () => {
 	return (
 		<div className='bg-beige'>
 			<Header />
-			<main id="homepage" className="container mx-auto">
+			<main id="homepage" className="mx-auto">
 				<div className="grid grid-flow-col mb-20" id="hero-banner">
 					<div className="px-20">
 						<h1 id="main-title" className="text-7xl lg:text-9xl mt-20">
@@ -61,16 +61,18 @@ const HomePage = () => {
 						<span className="btn-text">Mon passeport</span>
 					</button>
 				</div>
-				<div>
+				<div id="bloc-popular" className="my-20 py-10">
 					<div className="title-container">
 						<h2>Destinations populaires</h2>
 					</div>
-					<DestinationCard 
-						title="Rome" country="Italie" link="/roma" img="https://picsum.photos/id/123/145/145" />
-					<DestinationCard 
-						title="New York" country="Etats-Unis" link="/new-york" img="https://picsum.photos/id/115/145/145" />
-					<DestinationCard 
-						title="Tahunanui" country="Nouvelle Zélande" link="/new-zealand" img="https://picsum.photos/id/175/145/145" />
+					<div className="container my-10">
+						<DestinationCard 
+							title="Rome" country="Italie" link="/roma" img="https://picsum.photos/id/123/145/145" />
+						<DestinationCard 
+							title="New York" country="Etats-Unis" link="/new-york" img="https://picsum.photos/id/115/145/145" />
+						<DestinationCard 
+							title="Tahunanui" country="Nouvelle Zélande" link="/new-zealand" img="https://picsum.photos/id/175/145/145" />
+					</div>
 				</div>
 			</main>
 			<Footer />
