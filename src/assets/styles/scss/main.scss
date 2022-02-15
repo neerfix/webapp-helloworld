@@ -28,7 +28,7 @@
 	border: transparent;
 }
 
-// ANCHOR Style global
+// ANCHOR Titres
 
 .title-container{
 	display: flex;
@@ -72,6 +72,8 @@
 		text-transform: uppercase;
 	}
 }
+
+// ANCHOR Buttons
 
 .btn{
 	position: relative;
@@ -118,6 +120,36 @@
 			&:before{
 				color: #F4E9DD;
 			}
+		}
+	}
+
+	&.btn-outline{
+		background: none;
+		border: 2px solid #7B6253;
+	}
+}
+
+.btn-round{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15px;
+	font-size: 30px;
+	border: 1px solid white;
+	border-radius: 50%;
+	color: white;
+}
+
+// ANCHOR DestinationCard
+
+.destination-card{
+	.card-img {
+		border-right: 1px solid;
+		@apply border-brown;
+
+		img{
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
 		}
 	}
 }

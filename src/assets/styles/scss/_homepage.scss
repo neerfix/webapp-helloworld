@@ -1,6 +1,7 @@
 
 #homepage{
 	font-family: 'DM Serif Display', serif;
+    background-image: url('/assets/images/topo-lines.svg');
 
     #hero-banner{
         z-index: 1;
@@ -80,6 +81,8 @@
 
     #bloc-popular{
         background-color: white;
+        background-image: url('/assets/images/grid-lines.png');
+        background-blend-mode: hard-light;
     }
 
 }

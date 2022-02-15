@@ -2,7 +2,7 @@
 import DestinationCard from '@/components/DestinationCard'
 
 // Icones
-import {BiChevronDown} from 'react-icons/bi';
+import {VscChevronDown} from 'react-icons/vsc';
 
 // Images
 import PlanetEarthImg from '@/assets/images/homepage/planet-earth.png';
@@ -10,9 +10,8 @@ import PlanetEarthImg from '@/assets/images/homepage/planet-earth.png';
 const HomePage = () => {
 	return (
 		<div className='bg-beige'>
-			<Header />
 			<main id="homepage" className="mx-auto">
-				<div className="grid grid-flow-col mb-20" id="hero-banner">
+				<div className="mb-20" id="hero-banner">
 					<div className="px-20">
 						<h1 id="main-title" className="text-7xl lg:text-9xl mt-20">
 							Hello
@@ -20,12 +19,12 @@ const HomePage = () => {
 							World
 						</h1>
 					</div>
-				</div>
-				<div>1 2 3</div>
-				<div>
-					<button>
-						<BiChevronDown />
-					</button>
+					<div>1 2 3</div>
+					<div>
+						<button class="btn-round">
+							<VscChevronDown />
+						</button>
+					</div>
 				</div>
 				<div id="bloc-map">
 					<div className="bg-white rounded-3xl overflow-hidden mb-10 w-3/4 md:w-2/3 lg:w-1/2 mx-auto">
@@ -64,17 +63,18 @@ const HomePage = () => {
 					<div className="title-container">
 						<h2>Destinations populaires</h2>
 					</div>
-					<div className="container my-10">
-						<DestinationCard 
-							title="Rome" country="Italie" link="/roma" img="https://picsum.photos/id/123/145/145" />
-						<DestinationCard 
-							title="New York" country="Etats-Unis" link="/new-york" img="https://picsum.photos/id/115/145/145" />
-						<DestinationCard 
-							title="Tahunanui" country="Nouvelle Zélande" link="/new-zealand" img="https://picsum.photos/id/175/145/145" />
+					<div className="container mx-auto my-10">
+						<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+							<DestinationCard 
+								title="Rome" country="Italie" link="/roma" img="https://picsum.photos/id/123/145/145" />
+							<DestinationCard 
+								title="New York" country="Etats-Unis" link="/new-york" img="https://picsum.photos/id/115/145/145" />
+							<DestinationCard 
+								title="Tahunanui" country="Nouvelle Zélande" link="/new-zealand" img="https://picsum.photos/id/175/145/145" />
+						</div>
 					</div>
 				</div>
 			</main>
-			<Footer />
 		</div>
 	)
 }
