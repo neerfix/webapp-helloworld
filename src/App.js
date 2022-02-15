@@ -5,15 +5,21 @@ import { Route } from "react-router-dom";
 // Routes list
 import routes from "@/router/routes";
 
+// Components
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
 const App = () => {
 	return (
-		<div className="App">
+		<main className="App">
+			<Header />
 			<Routes>
 				{routes.map((route, key) => (
 					<Route key={key} exact path={route.path} element={route.element} />
 				))}
 			</Routes>
-		</div>
+			<Footer />
+		</main>
 	);
 }
 
