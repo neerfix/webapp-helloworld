@@ -1,70 +1,67 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="./src/assets/images/logo.svg" width="250" height="250">
 
-## Available Scripts
+# Hello World
 
-In the project directory, you can run:
+Le carnet de voyage en ligne
+## Stack
 
-### `npm start`
+**Client:** React JS, Tailwind CSS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Server:** PHP avec le framework Symfony
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Dream Team
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [@Louise BAULAN](https://github.com/Fayaah)
+- [@Matisse LIVAIN](https://github.com/MLivain)
+- [@Nicolas NOTARARIGO](https://github.com/Neerfix)
+- [@Emeline PAL](https://github.com/emelinepal)
+- [@Aimée RITLENG](https://github.com/Aimee-RTLNG)
+- [@Gregg SANCHEZ](https://github.com/Arty3P)
+- [@Romain FRECHET](https://github.com/Hikari-rom)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Aperçu de l'application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+|                     Page d'accueil                     |                    Map intéractive                    |
+|:------------------------------------------------------:|:-----------------------------------------------------:|
+| ![App Screenshot](./src/assets/images/readme/home.png) | ![App Screenshot](./src/assets/images/readme/map.png) |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Cloner le projet en local
 
-### `npm run eject`
+Utiliser le lien GitHub
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  git clone https://github.com/helloworld-ynovlyon/webapp.git
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Aller dans le dossier du projet
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  cd webapp
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Installer les dépendances
 
-## Learn More
+```bash
+  npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Lancer le serveur
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  npm start
+```
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Suivi des Sprints
 
-### Analyzing the Bundle Size
+- [Sprint 1](https://github.com/helloworld-ynovlyon/webapp/milestone/1) (14/02/2022 - 18/02/2022)
+  - Maquettage, Initialisation du projet React JS, Début du développement (features, pages)
+  - Poids total du sprint : **40**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Sprint 2](https://github.com/helloworld-ynovlyon/webapp/milestone/2) (07/03/2022 - 11/03/2022)
+    - xx
+    - Poids total du sprint : **xx**
