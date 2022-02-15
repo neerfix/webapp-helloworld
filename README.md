@@ -1,6 +1,5 @@
 
-![Logo](./src/assets/images/logo.svg)
-
+<img src="./src/assets/images/logo.svg" width="250" height="250">
 
 # Hello World
 
