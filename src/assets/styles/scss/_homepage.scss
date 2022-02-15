@@ -1,5 +1,15 @@
 
 #homepage{
+	font-family: 'DM Serif Display', serif;
+
+    #main-title{
+        font-weight: 800;
+        color: #291D11;
+        line-height: .9;
+        mix-blend-mode: hard-light;
+        margin-top: 10vh;
+    }
+
 	#main-img{
 		position: absolute;
 		top: 0;

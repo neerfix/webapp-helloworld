@@ -1,4 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+// ANCHOR Imports
 
 @import url('_header.scss');
 @import url('_homepage.scss');
+
+// ANCHOR Scrollbar
+
+* {
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: thin;
+	scrollbar-color: #867065 white;
+}
+
+::-webkit-scrollbar {
+	width: 9px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #867065;
+	border: transparent;
+}
+
+// ANCHOR Style global
+
+.title-container{
+	display: flex;
+	align-items: center;
+	color: #7B6253;
+	margin: 25px 0;
+	
+	&:before{
+		content: "";
+		position: absolute;
+		background: #7B6253;
+		left: 0;
+		width: 100px;
+		height: 1.5px;
+	}
+	
+	h2{
+		margin-left: 115px;
+		display: flex;
+		align-items: center;
+		font-size: 36px;
+		line-height: 32px;
+		text-transform: uppercase;
+	
+		&:before{
+			content: "◆";
+			color: #7B6253;
+			position: absolute;
+			left: 90px;
+			font-size: 15px;
+		}
+	}
+}
+
+.title-centered{
+	h2{
+		font-size: 36px;
+		text-align: center;
+		line-height: 32px;
+		text-transform: uppercase;
+	}
+}
+
+.btn{
+	position: relative;
+	display: flex;
+	align-items: center;
+	color: #7B6253;
+	padding: 15px 25px 15px 0;
+	background: #F4E9DD;
+	
+	&:before{
+		content: "";
+		position: absolute;
+		background: #7B6253;
+		left: 0;
+		width: 60px;
+		height: 1.5px;
+	}
+
+	.btn-text{
+		margin-left: 75px;
+		text-transform: uppercase;
+		font-size: 16px;
+		letter-spacing: 1px;
+
+		&:before{
+			content: "◆";
+			color: #7B6253;
+			position: absolute;
+			left: 50px;
+			font-size: 16px;
+		}
+	}
+}

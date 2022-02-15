@@ -1,12 +1,12 @@
 
 #header{
-	font-family: 'Playfair Display', serif;
+	font-family: 'DM Serif Display', serif;
 	text-transform: uppercase;
-	color: #867065;
-	border-bottom: 1px solid #867065;
+	color: #51331c;;
+	border-bottom: 1px solid #51331c;
 
 	.logo{
-		fill: #867065;
+		fill: #51331c;
 	}
 
 	.separator{
@@ -27,7 +27,7 @@
 			content: "";
 			width: 0%;
 			height: 1.5px;
-			background: #867065;
+			background: #51331c;
 			position: absolute;
 			bottom: -5px;
 			transition: all .2s;
