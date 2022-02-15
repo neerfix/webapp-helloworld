@@ -4,8 +4,9 @@
     z-index: 2;
 	font-family: 'DM Serif Display', serif;
 	text-transform: uppercase;
-	color: #51331c;;
-	border-bottom: 1px solid #51331c;
+	border-bottom: 1px solid;
+
+	@apply text-brown border-brown;
 
 	.logo{
 		fill: #51331c;
@@ -24,15 +25,16 @@
 		align-items: center;
 		font-weight: bold;
 		letter-spacing: 3px;
-		
+
 		&:after{
 			content: "";
 			width: 0%;
 			height: 1.5px;
-			background: #51331c;
 			position: absolute;
 			bottom: -5px;
 			transition: all .2s;
+
+			@apply bg-brown;
 		}
 
 		&:hover{
