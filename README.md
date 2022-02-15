@@ -22,7 +22,7 @@ Le carnet de voyage en ligne
 - [@Romain FRECHET](https://github.com/Hikari-rom)
 
 
-## Screenshots
+## Aperçu de l'application
 
 |                     Page d'accueil                     |                    Map intéractive                    |
 |:------------------------------------------------------:|:-----------------------------------------------------:|
