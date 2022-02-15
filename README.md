@@ -58,7 +58,7 @@ Lancer le serveur
 ## Suivi des Sprints
 
 - [Sprint 1](https://github.com/helloworld-ynovlyon/webapp/milestone/1) (14/02/2022 - 18/02/2022)
-  - Maquettage, Initialisation du projet React JS, Début du développement de pages
+  - Maquettage, Initialisation du projet React JS, Début du développement (features, pages)
   - Poids total du sprint : **40**
 
 
