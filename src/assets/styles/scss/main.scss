@@ -63,6 +63,7 @@
 }
 
 .title-centered{
+	padding: 15px 0;
 	h2{
 		font-size: 36px;
 		text-align: center;
@@ -89,7 +90,7 @@
 	}
 
 	.btn-text{
-		margin-left: 75px;
+		margin-left: 85px;
 		text-transform: uppercase;
 		font-size: 16px;
 		letter-spacing: 1px;
@@ -99,7 +100,23 @@
 			color: #7B6253;
 			position: absolute;
 			left: 50px;
-			font-size: 16px;
+			font-size: 14px;
+			line-height: 24px;
+		}
+	}
+
+	&.btn-dark{
+		color: #F4E9DD;
+		background: #7B6253;
+	
+		&:before{
+			background: #F4E9DD;
+		}
+
+		.btn-text{
+			&:before{
+				color: #F4E9DD;
+			}
 		}
 	}
 }
