@@ -1,5 +1,5 @@
 
-![Logo](https://github.com/helloworld-ynovlyon/webapp/blob/master/src/assets/images/logo.svg?raw=true)
+![Logo](./src/assets/images/logo.svg)
 
 
 # Hello World
@@ -25,8 +25,9 @@ Le carnet de voyage en ligne
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
+|                     Page d'accueil                     |                    Map intéractive                    |
+|:------------------------------------------------------:|:-----------------------------------------------------:|
+| ![App Screenshot](./src/assets/images/readme/home.png) | ![App Screenshot](./src/assets/images/readme/map.png) |
 
 ## Cloner le projet en local
 
