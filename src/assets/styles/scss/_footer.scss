@@ -3,8 +3,12 @@
 
 	svg {
 		fill: theme('colors.brown');
+	}
 
-		&.logo {
+	.footer-content {
+		font-family: 'Playfair Display', serif;
+
+		.logo {
 			width: 65px;
 		}
 	}
@@ -40,7 +44,7 @@
 				margin-left: 55px;
 
 				&:before {
-					left: -12px;
+					left: -15px;
 				}
 			}
 
@@ -48,14 +52,14 @@
 				margin-right: 55px;
 
 				&:after {
-					right: -12px;
+					right: -15px;
 				}
 			}
 
 			&:first-child:before, &:last-child:after {
 				content: "◆";
 				position: absolute;
-				top: -2px;
+				font-size: 10px;
 			}
 		}
 	}
