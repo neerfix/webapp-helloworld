@@ -26,7 +26,7 @@ const HomePage = () => {
 						</button>
 					</div>
 				</div>
-				<div id="bloc-map" class="grid grid-cols-12 gap-5 container">
+				<div id="bloc-map" class="grid grid-cols-12 gap-9">
 					<div className="col-start-2 col-span-10 bg-white rounded-3xl overflow-hidden mb-10 mx-auto">
 						<div className="p-5 sm:p-9 md:p-7 xl:p-9 text-center">
 							<div className="title-centered">
