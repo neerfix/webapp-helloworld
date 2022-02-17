@@ -12,7 +12,7 @@ const HomePage = () => {
 		<div className='bg-beige'>
 			<main id="homepage" className="mx-auto">
 				<div className="mb-20" id="hero-banner">
-					<div className="px-20">
+					<div className="px-10 lg:px-20">
 						<h1 id="main-title" className="text-7xl lg:text-9xl mt-20">
 							Hello
 							<br/>
@@ -26,9 +26,9 @@ const HomePage = () => {
 						</button>
 					</div>
 				</div>
-				<div id="bloc-map">
-					<div className="bg-white rounded-3xl overflow-hidden mb-10 w-3/4 md:w-2/3 lg:w-1/2 mx-auto">
-						<div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+				<div id="bloc-map" class="grid grid-cols-12 gap-9">
+					<div className="col-start-2 col-span-10 bg-white rounded-3xl overflow-hidden mb-10 mx-auto">
+						<div className="p-5 sm:p-9 md:p-7 xl:p-9 text-center">
 							<div className="title-centered">
 								<h2>
 									Carte des voyages
@@ -55,22 +55,22 @@ const HomePage = () => {
 						</div>
 					</div>
 					
-					<button className="btn btn-dark mx-auto my-5">
+					<button className="col-start-2 col-span-10 btn btn-dark mx-auto my-5">
 						<span className="btn-text">Mon passeport</span>
 					</button>
 				</div>
-				<div id="bloc-popular" className="my-20 py-10">
+				<div id="bloc-popular" className="my-10 md:my-20 py-10">
 					<div className="title-container">
 						<h2>Destinations populaires</h2>
 					</div>
-					<div className="container mx-auto my-10">
-						<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+					<div className="mx-auto my-10 container">
+						<div class="grid grid-cols-12 gap-9 lg:mx-5">
 							<DestinationCard 
-								title="Rome" country="Italie" link="/roma" img="https://picsum.photos/id/123/145/145" />
+								title="Rome" country="Italie" link="/roma" img="rome.png" />
 							<DestinationCard 
-								title="New York" country="Etats-Unis" link="/new-york" img="https://picsum.photos/id/115/145/145" />
+								title="New York" country="Etats-Unis" link="/new-york" img="new-york.png" />
 							<DestinationCard 
-								title="Tahunanui" country="Nouvelle Zélande" link="/new-zealand" img="https://picsum.photos/id/175/145/145" />
+								title="Tahunanui" country="Nouvelle Zélande" link="/new-zealand" img="new-zealand.png" />
 						</div>
 					</div>
 				</div>

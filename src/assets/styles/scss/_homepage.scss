@@ -17,6 +17,7 @@
             object-fit: cover;
             background-position: center center;
             z-index: 0;
+            max-height: 120vh;
         }
 
         #main-title{
@@ -39,12 +40,21 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            @media (max-width: 600px) {
+                height: 290px;
+            }
     
             img{
                 max-width: none;
                 width: 115%;
                 height: auto;
                 filter: drop-shadow( 0 0 15px rgba(4, 0, 65, 0.4));
+
+                @media (max-width: 600px) {
+                    width: 135%;
+                    margin-top: 20px;
+                }
             }
     
             .earth-visual-coords{

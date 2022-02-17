@@ -24,41 +24,58 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #867065;
 	border: transparent;
+
+	@apply bg-brown;
 }
 
 // ANCHOR Titres
 
 .title-container{
 	display: flex;
-	align-items: center;
-	color: #7B6253;
 	margin: 25px 0;
+	position: relative;
+
+	@apply text-brown;
 	
 	&:before{
 		content: "";
 		position: absolute;
-		background: #7B6253;
 		left: 0;
 		width: 100px;
 		height: 1.5px;
+		top: 15px;
+			
+		@media (max-width: 600px) {
+			width: 40px;
+		}
+
+		@apply bg-brown;
 	}
 	
 	h2{
 		margin-left: 115px;
 		display: flex;
-		align-items: center;
 		font-size: 36px;
 		line-height: 32px;
 		text-transform: uppercase;
+			
+		@media (max-width: 600px) {
+			margin-left: 55px;
+		}
 	
 		&:before{
 			content: "◆";
-			color: #7B6253;
 			position: absolute;
 			left: 90px;
 			font-size: 15px;
+			top: 0px;
+
+			@apply text-brown;
+	
+			@media (max-width: 600px) {
+				left: 35px;
+			}
 		}
 	}
 }
@@ -79,17 +96,27 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	color: #7B6253;
 	padding: 15px 25px 15px 0;
-	background: #F4E9DD;
+	white-space: nowrap;
+
+	@media (max-width: 600px) {
+		padding: 10px 20px 10px 0;
+	}
+
+	@apply text-brown bg-beige;
 	
 	&:before{
 		content: "";
 		position: absolute;
-		background: #7B6253;
 		left: 0;
 		width: 60px;
 		height: 1.5px;
+			
+		@media (max-width: 600px) {
+			width: 20px;
+		}
+
+		@apply bg-brown;
 	}
 
 	.btn-text{
@@ -98,27 +125,35 @@
 		font-size: 16px;
 		letter-spacing: 1px;
 
+		@media (max-width: 600px) {
+			margin-left: 35px;
+		}
+
 		&:before{
 			content: "◆";
-			color: #7B6253;
 			position: absolute;
 			left: 50px;
 			font-size: 14px;
 			line-height: 24px;
+
+			@apply text-brown;
+
+			@media (max-width: 600px) {
+				left: 15px;
+			}
 		}
 	}
 
 	&.btn-dark{
-		color: #F4E9DD;
-		background: #7B6253;
+		@apply text-beige bg-brown;
 	
 		&:before{
-			background: #F4E9DD;
+			@apply bg-beige;
 		}
 
 		.btn-text{
 			&:before{
-				color: #F4E9DD;
+				@apply text-beige;
 			}
 		}
 	}
@@ -126,6 +161,8 @@
 	&.btn-outline{
 		background: none;
 		border: 2px solid #7B6253;
+
+		@apply border-brown;
 	}
 }
 
@@ -144,12 +181,26 @@
 
 .destination-card{
 	.card-img {
-		border-right: 1px solid;
+		border-right: 2px solid;
 		@apply border-brown;
 
 		img{
 			border-top-left-radius: 10px;
 			border-bottom-left-radius: 10px;
+			min-width: 100px;
+			min-height: 100px;
+		}
+	}
+
+	.card-text{
+		text-transform: uppercase;
+
+		h3{
+			letter-spacing: 1px;
+		}
+
+		p{
+			@apply text-brown;
 		}
 	}
 }
