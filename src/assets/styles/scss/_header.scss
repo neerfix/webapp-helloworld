@@ -8,10 +8,11 @@
 
 	@apply border-dark-brown;
 
-	.logo{
-		fill: #51331c;
+	svg {
+		fill: theme('colors.brown');
+		width: 60px;
 	}
-	
+
 	@media (max-width: 600px) {
 		.logo{
 			max-width: 33px;
