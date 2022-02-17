@@ -6,12 +6,14 @@
 	text-transform: uppercase;
 	border-bottom: 1px solid;
 
-	@apply border-dark-brown;
+	@apply border-dark-brown text-black;
 
-	.logo{
-		fill: #51331c;
+	.logo {
+		fill: theme('colors.black');
+		width: 100%;
+		max-width: 50px;
 	}
-	
+
 	@media (max-width: 600px) {
 		.logo{
 			max-width: 33px;
@@ -33,7 +35,7 @@
 		letter-spacing: 3px;
 		opacity: 1;
 
-		@apply text-dark-brown;
+		@apply text-black;
 
 		&:after{
 			content: "";
