@@ -15,6 +15,10 @@
 	scrollbar-color: #867065 white;
 }
 
+body{
+	overflow-x: hidden;
+}
+
 ::-webkit-scrollbar {
 	width: 9px;
 }
@@ -109,18 +113,22 @@
 		content: "";
 		position: absolute;
 		left: 0;
-		width: 60px;
+		width: 5vw;
 		height: 1.5px;
 			
 		@media (max-width: 600px) {
 			width: 20px;
 		}
 
+		@media (min-width: 950px) {
+			width: 50px;
+		}
+
 		@apply bg-brown;
 	}
 
 	.btn-text{
-		margin-left: 85px;
+		margin-left: 8vw;
 		text-transform: uppercase;
 		font-size: 16px;
 		letter-spacing: 1px;
@@ -129,10 +137,14 @@
 			margin-left: 35px;
 		}
 
+		@media (min-width: 950px) {
+			margin-left: 85px;
+		}
+
 		&:before{
 			content: "◆";
 			position: absolute;
-			left: 50px;
+			left: 4.8vw;
 			font-size: 14px;
 			line-height: 24px;
 
@@ -140,6 +152,10 @@
 
 			@media (max-width: 600px) {
 				left: 15px;
+			}
+
+			@media (min-width: 950px) {
+				left: 49px;
 			}
 		}
 	}
@@ -172,9 +188,15 @@
 	justify-content: center;
 	padding: 15px;
 	font-size: 30px;
-	border: 1px solid white;
+	border: 1px solid;
 	border-radius: 50%;
-	color: white;
+	transition: all .2s;
+
+	@apply text-beige border-beige;
+
+	&:hover{
+		@apply bg-beige text-dark-brown;
+	}
 }
 
 // ANCHOR DestinationCard

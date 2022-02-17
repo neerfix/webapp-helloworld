@@ -95,4 +95,48 @@
         background-blend-mode: hard-light;
     }
 
+    .diamond-decoration{
+        position: relative;
+        
+        .diamond{
+            font-size: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @apply border-beige text-beige;
+
+            &:after {
+                content: "";
+                height: 25px;
+                width: 25px;
+                position: absolute;
+                border: 1px solid;
+                transition: 0.3s background-color;
+                -webkit-transition: 0.3s background-color;
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                animation: pulse 10s infinite ease-in-out;
+                
+                @apply border-beige;
+            }
+        }
+    }
 }
+
+
+@keyframes pulse {
+    0% {
+        transform: rotate(45deg) scale(1);
+    }
+    
+    50% {
+        transform: rotate(45deg) scale(1.2);
+    }
+    
+    100% {
+        transform: rotate(45deg) scale(1);
+    }
+  }
+  
