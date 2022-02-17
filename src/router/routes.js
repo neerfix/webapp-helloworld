@@ -4,7 +4,7 @@ import authRoutes from "@/router/authRoutes";
 import userRoutes from "@/router/userRoutes";
 
 /** Pages **/
-import HomePage from "../pages/Home/Home";
+import HomePage from "../pages/public/Home";
 
 const globalRoutes = [
 	{ path: '/', element: <HomePage /> }
