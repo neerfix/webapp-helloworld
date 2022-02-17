@@ -64,7 +64,7 @@ const HomePage = () => {
 						<h2>Destinations populaires</h2>
 					</div>
 					<div className="mx-auto my-10 container">
-						<div class="grid grid-cols-9 gap-9 container">
+						<div class="grid grid-cols-12 gap-9 lg:mx-5">
 							<DestinationCard 
 								title="Rome" country="Italie" link="/roma" img="rome.png" />
 							<DestinationCard 

@@ -3,7 +3,7 @@ import React from 'react';
 class DestinationCard extends React.Component {
     render() {
         return (
-            <a href={this.props.link} className="destination-card col-start-2 col-span-7 lg:col-span-3">
+            <a href={this.props.link} className="destination-card col-start-2 col-span-10 lg:col-span-4">
                 <div className='flex'>
                     <div class="card-img mr-3 py-4 my-2">
                         <img src={"./images/cities/" + this.props.img} alt={this.props.country} width="200" height="200" />
