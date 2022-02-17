@@ -64,6 +64,7 @@ body{
 		font-size: 36px;
 		line-height: 32px;
 		text-transform: uppercase;
+		letter-spacing: 2.5px;
 			
 		@media (max-width: 600px) {
 			margin-left: 55px;
@@ -257,7 +258,7 @@ form {
 .divider {
 	width: 75%;
 	height: 1px;
-	margin: 25px auto;
+	margin: 30px auto 25px;
 
 	@apply bg-brown;
 }

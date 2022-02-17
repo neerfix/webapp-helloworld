@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import banner from "@/assets/images/homepage/hero-banner.jpg";
 
@@ -17,6 +17,14 @@ const PassportPage = () => {
 	const [visibility, setVisibility] = useState(0);
 	const [albumSpotlight, setAlbumSpotlight] = useState(0);
 	
+	/*** React hooks ***/
+	
+	useEffect(() => {
+		// TODO: Call Api to get profile information
+	});
+	
+	/*** Custom functions ***/
+	
 	const handleChange = (event) => {
 		setProfile({
 			...profile,
@@ -33,6 +41,7 @@ const PassportPage = () => {
 			albumSpotlight: albumSpotlight,
 		};
 		
+		// TODO: Call api to save profile modification
 		console.log(payload);
 	};
 	
@@ -59,14 +68,14 @@ const PassportPage = () => {
 								type={"text"}
 								name={"pseudo"}
 								value={profile.pseudo}
-								className={"focus:ring-dark-brown focus:border-dark-brown"}
+								className={"focus:border-dark-brown focus:ring-dark-brown"}
 								onChange={(e) => handleChange(e)}
 							/>
 						</div>
 					</div>
 					<div className={"mb-4 grid grid-cols-9 gap-4"}>
 						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Adresse email</label>
+							<label>Adresse mail</label>
 							<input
 								type={"text"}
 								name={"email"}
@@ -146,7 +155,7 @@ const PassportPage = () => {
 						</div>
 					</div>
 					<div className={"divider"}></div>
-					<div className={"grid grid-cols-9 gap-4"}>
+					<div className={"mb-8 grid grid-cols-9 gap-4"}>
 						<div className={"form-field col-span-7 col-start-2"}>
 							<label>Album mis en avant</label>
 							<select
