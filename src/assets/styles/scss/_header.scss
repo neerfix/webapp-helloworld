@@ -6,10 +6,10 @@
 	text-transform: uppercase;
 	border-bottom: 1px solid;
 
-	@apply border-dark-brown;
+	@apply border-dark-brown text-black;
 
 	svg {
-		fill: theme('colors.brown');
+		fill: theme('colors.black');
 		width: 60px;
 	}
 
@@ -34,7 +34,7 @@
 		letter-spacing: 3px;
 		opacity: 1;
 
-		@apply text-dark-brown;
+		@apply text-black;
 
 		&:after{
 			content: "";
