@@ -68,6 +68,7 @@ const PassportPage = () => {
 								type={"text"}
 								name={"pseudo"}
 								value={profile.pseudo}
+								required
 								className={"focus:border-dark-brown focus:ring-dark-brown"}
 								onChange={(e) => handleChange(e)}
 							/>
@@ -77,9 +78,10 @@ const PassportPage = () => {
 						<div className={"form-field col-span-7 col-start-2"}>
 							<label>Adresse mail</label>
 							<input
-								type={"text"}
+								type={"email"}
 								name={"email"}
 								value={profile.email}
+								required
 								onChange={(e) => handleChange(e)}
 							/>
 						</div>
@@ -88,9 +90,9 @@ const PassportPage = () => {
 						<div className={"form-field col-span-7 col-start-2"}>
 							<label>Numéro de téléphone</label>
 							<input
-								type={"text"}
+								type={"tel"}
 								name={"phone"}
-								value={profile.email}
+								value={profile.phone}
 								onChange={(e) => handleChange(e)}
 							/>
 						</div>
@@ -143,7 +145,7 @@ const PassportPage = () => {
 					<div className={"divider"}></div>
 					<div className={"grid grid-cols-9 gap-4"}>
 						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Visibilité</label>
+							<label>Visibilité du profil</label>
 							<select
 								value={visibility}
 								onChange={(e) => setVisibility(e.target.value)}

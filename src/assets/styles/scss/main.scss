@@ -238,6 +238,8 @@ form {
 
 		label {
 			@apply text-brown text-lg;
+			margin-bottom: 3px;
+			letter-spacing: 1px;
 		}
 
 		input, select {
@@ -258,7 +260,7 @@ form {
 .divider {
 	width: 75%;
 	height: 1px;
-	margin: 30px auto 25px;
+	margin: 35px auto 25px;
 
 	@apply bg-brown;
 }
