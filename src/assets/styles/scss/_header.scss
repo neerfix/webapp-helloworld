@@ -8,9 +8,10 @@
 
 	@apply border-dark-brown text-black;
 
-	svg {
+	.logo {
 		fill: theme('colors.black');
-		width: 60px;
+		width: 100%;
+		max-width: 50px;
 	}
 
 	@media (max-width: 600px) {

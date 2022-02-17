@@ -10,7 +10,7 @@ class Header extends React.Component {
 				<nav className="bg-teal flex flex-wrap items-center justify-between p-6">
 					<div className="flex-no-shrink mr-6 flex items-center text-white">
 						<NavLink to={"/"}>
-							<Logo />
+							<Logo className={"logo"} />
 						</NavLink>
 					</div>
 					<div className="flex w-full w-auto flex-grow items-center justify-end">
