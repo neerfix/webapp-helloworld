@@ -63,7 +63,7 @@ const HomePage = () => {
 						<span className="btn-text">Mon passeport</span>
 					</button>
 				</div>
-				<div id="bloc-popular" className="my-10 md:my-20 py-10">
+				<div id="bloc-popular" className="mt-10 md:mt-20 py-10">
 					<div className="title-container">
 						<h2>Destinations populaires</h2>
 					</div>

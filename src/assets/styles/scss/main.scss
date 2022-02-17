@@ -15,6 +15,10 @@
 	scrollbar-color: #867065 white;
 }
 
+body{
+	overflow-x: hidden;
+}
+
 ::-webkit-scrollbar {
 	width: 9px;
 }
