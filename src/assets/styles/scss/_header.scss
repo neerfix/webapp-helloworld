@@ -6,10 +6,16 @@
 	text-transform: uppercase;
 	border-bottom: 1px solid;
 
-	@apply text-brown border-brown;
+	@apply border-dark-brown;
 
 	.logo{
 		fill: #51331c;
+	}
+	
+	@media (max-width: 600px) {
+		.logo{
+			max-width: 33px;
+		}
 	}
 
 	.separator{
@@ -25,6 +31,9 @@
 		align-items: center;
 		font-weight: bold;
 		letter-spacing: 3px;
+		opacity: 1;
+
+		@apply text-dark-brown;
 
 		&:after{
 			content: "";
@@ -34,7 +43,7 @@
 			bottom: -5px;
 			transition: all .2s;
 
-			@apply bg-brown;
+			@apply bg-dark-brown;
 		}
 
 		&:hover{

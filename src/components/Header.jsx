@@ -16,8 +16,8 @@ class Header extends React.Component {
                         <span className="separator">
                             ◆
                         </span>
-                        <a href="/carnet" className="nav-link">
-                            Carnet
+                        <a href="/feed" className="nav-link">
+                            Fil d'actu
                         </a>
                         <span className="separator">
                             ◆
