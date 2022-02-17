@@ -3,8 +3,9 @@
 // ANCHOR Imports
 
 @import url('_header.scss');
-@import url('_homepage.scss');
 @import url('_footer.scss');
+@import url('_homepage.scss');
+@import url('_passport.scss');
 
 // ANCHOR Scrollbar
 
@@ -63,6 +64,7 @@ body{
 		font-size: 36px;
 		line-height: 32px;
 		text-transform: uppercase;
+		letter-spacing: 2.5px;
 			
 		@media (max-width: 600px) {
 			margin-left: 55px;
@@ -225,4 +227,40 @@ body{
 			@apply text-brown;
 		}
 	}
+}
+
+// ANCHOR Form
+
+form {
+	.form-field {
+		display: flex;
+		flex-direction: column;
+
+		label {
+			@apply text-brown text-lg;
+			margin-bottom: 3px;
+			letter-spacing: 1px;
+		}
+
+		input, select {
+			background-color: theme('colors.white');
+			padding: 10px 20px;
+			font-size: 14px;
+
+			&:focus {
+				outline: none;
+			}
+
+		}
+	}
+}
+
+// ANCHOR Divider
+
+.divider {
+	width: 75%;
+	height: 1px;
+	margin: 35px auto 25px;
+
+	@apply bg-brown;
 }
