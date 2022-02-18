@@ -1,4 +1,48 @@
 
 #passport {
 	font-family: 'DM Serif Display', serif;
+	background-image: url('/assets/images/grid-lines.png');
+
+	.compass {
+		width: 90vw;
+		height: 90vw;
+		max-width: 800px;
+		max-height: 800px;
+		position: absolute;
+		right: -20%;
+		top: -20%;
+		background-image: url('/assets/images/compass.png');
+		background-size: cover;
+		transform: rotate(30deg);
+		mix-blend-mode: hard-light;
+		opacity: .08;
+	}
+
+	.album-photo-more {
+		position: relative;
+
+		.album-photo-overlay , img {
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			width: 100%;
+			height: 100%;
+		}
+
+		.album-photo-overlay {
+			opacity: .75;
+			z-index: 5;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			@apply bg-salmon rounded-xl;
+
+			span {
+				font-family: 'Raleway', sans-serif;
+			}
+		}
+	}
 }
