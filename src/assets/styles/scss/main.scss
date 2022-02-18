@@ -58,13 +58,21 @@ body{
 		@apply bg-brown;
 	}
 	
-	h2{
+	h2, h1{
 		margin-left: 115px;
 		display: flex;
-		font-size: 36px;
-		line-height: 32px;
 		text-transform: uppercase;
 		letter-spacing: 2.5px;
+
+		&.h2{
+			font-size: 36px;
+			line-height: 32px;
+		}
+
+		&.h1{
+			font-size: 42px;
+			line-height: 32px;
+		}
 			
 		@media (max-width: 600px) {
 			margin-left: 55px;
@@ -203,22 +211,23 @@ body{
 
 // ANCHOR DestinationCard
 
-.destination-card{
+.destination-card, .feed-card{
 	.card-img {
 		border-right: 2px solid;
+		overflow: hidden;
+
 		@apply border-brown;
 
 		img{
 			border-top-left-radius: 10px;
 			border-bottom-left-radius: 10px;
-			min-width: 100px;
-			min-height: 100px;
+			width: 175px;
+			height: 175px;
+			object-fit: cover;
 		}
 	}
 
 	.card-text{
-		text-transform: uppercase;
-
 		h3{
 			letter-spacing: 1px;
 		}

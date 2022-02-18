@@ -5,9 +5,11 @@ import passportRoutes from "@/router/passportRoutes";
 
 /** Pages **/
 import HomePage from "../pages/public/Home";
+import FeedPage from "../pages/auth/Feed";
 
 const globalRoutes = [
-	{ path: '/', element: <HomePage /> }
+	{ path: '/', element: <HomePage /> },
+	{ path: '/feed', element: <FeedPage /> }
 ]
 
 const routes = globalRoutes.concat(
