@@ -15,7 +15,8 @@
 		"react-router-dom": "^6.2.1",
 		"react-scripts": "5.0.0",
 		"sass": "^1.49.7",
-		"web-vitals": "^2.1.4"
+		"web-vitals": "^2.1.4",
+		"mapbox-gl": "^2.6.1"
 	},
 	"scripts": {
 		"start": "craco start",
