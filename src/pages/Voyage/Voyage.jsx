@@ -32,6 +32,7 @@ class VoyagePage extends React.Component {
                 location: "Afrique du Sud",
                 date_start: "18/07/2022",
                 date_end: "20/08/2022",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum tristique erat et laoreet. Vivamus posuere feugiat rhoncus. ",
             }
         };
     }
@@ -86,7 +87,11 @@ class VoyagePage extends React.Component {
                                         </button>
 
                                         <button className="btn btn-outline mx-3 my-5">
-                                            <span className="btn-text">Ajouter à la liste de souhait</span>
+                                            <span className="btn-text">
+                                                <span class="hidden sm:inline-block">Ajouter à la&nbsp;</span>
+                                                <span class="inline-block sm:hidden">+&nbsp;</span>
+                                                liste de souhait
+                                            </span>
                                         </button>
                                     </div>
 
@@ -101,32 +106,36 @@ class VoyagePage extends React.Component {
                                             </a>
                                         </div>  
 
-                                        <div className="voyage-info flex items-center justify-center my-2 mx-4 text-brown col-span-11 lg:col-span-3">
+                                        <div className="voyage-info flex items-center justify-center my-4 mx-4 text-brown col-span-11 lg:col-span-3">
                                             <span class="info-icon mr-5">
                                                 <HiOutlineLocationMarker size="25" />
                                             </span>
-                                            <span>
+                                            <span class="info-text">
                                                 {this.state.voyage.location}
                                             </span>
                                         </div>  
 
-                                        <div className="voyage-info flex items-center justify-center my-2 mx-4 text-brown col-span-11 lg:col-span-3">
+                                        <div className="voyage-info flex items-center justify-center my-4 mx-4 text-brown col-span-11 lg:col-span-3">
                                             <span class="info-icon mr-5">
                                                 <BsCurrencyDollar size="25" />
                                             </span>
-                                            <span>
+                                            <span class="info-text">
                                                 {this.state.voyage.budget}
                                             </span>
                                         </div>
 
-                                        <div className="voyage-info flex items-center justify-center  my-2 mx-4 text-brown col-span-11 lg:col-span-3">
+                                        <div className="voyage-info flex items-center justify-center my-4 mx-4 text-brown col-span-11 lg:col-span-3">
                                             <span class="info-icon mr-5">
                                                 <BiTimeFive size="25" />
                                             </span>
-                                            <span>
+                                            <span class="info-text">
                                                 du {this.state.voyage.date_start} au {this.state.voyage.date_end}
                                             </span>
                                         </div>
+
+                                        <p class="col-span-12 px-2 my-3 text-dark">
+                                            {this.state.voyage.description} 
+                                        </p>
 
                                     </div>
                                 </div>
