@@ -8,9 +8,9 @@ const FeedPage = () => {
 		<div className='bg-white'>
 			<div id="feedpage" className="mx-auto">
 				<div className="compass"></div>
-				<div id="bloc-feed" className="md:mt-20 py-10">
+				<div id="bloc-feed" className="py-5">
 					<div className="title-container">
-						<h2>Fil d'actu</h2>
+						<h1 className='h1'>Fil d'actu</h1>
 					</div>
 					<div className="mx-auto my-10 container">
 						<div className="mx-5" id="feed-list">

@@ -3,10 +3,10 @@ import React from 'react';
 class FeedCard extends React.Component {
     render() {
         return (
-            <div class="px-5 py-5 feed-card rounded-md">
+            <div className="px-5 py-5 feed-card rounded-md">
                 <p className="text-4xl mb-2 text-black">{this.props.voyage}</p>
                 <p className="text-uppercae text-brown">◆ Nouvelle étape le {this.props.date}</p>
-                <div class="flex mt-2">
+                <div className="flex mt-2">
                     <div className="card-img mr-5 py-4 my-2">
                         <img className='rounded-right-md' src={this.props.voyage_img} alt=""/>
                     </div>

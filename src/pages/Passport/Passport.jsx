@@ -49,7 +49,7 @@ const PassportPage = () => {
 		<div id={"passport"} className={"mx-auto"}>
 			<div className={"w-full"}>
 				<div className="title-container">
-					<h2>Passeport</h2>
+					<h2 className='h2'>Passeport</h2>
 				</div>
 				<div className={"relative min-h-[400px]"}>
 					<img
