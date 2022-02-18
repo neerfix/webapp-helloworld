@@ -76,8 +76,9 @@ Lancer le serveur
 
 
 - Fin de sprint - 18/02/2022 :
-  - Nombre de tâches pour ce sprint : **23**
+  - Nombre de tâches pour ce sprint : **22**
   - Poids total du sprint : **61**
+  - Total des tâches réalisées lors de ce sprint : **20**
 
 
 ### [Sprint 2](https://github.com/helloworld-ynovlyon/webapp/milestone/2) (07/03/2022 - 11/03/2022)
