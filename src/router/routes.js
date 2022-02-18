@@ -5,7 +5,7 @@ import passportRoutes from "@/router/passportRoutes";
 
 /** Pages **/
 import HomePage from "../pages/public/Home";
-import FeedPage from "../pages/auth/Feed";
+import FeedPage from "../pages/Feed/Feed";
 
 const globalRoutes = [
 	{ path: '/', element: <HomePage /> },
