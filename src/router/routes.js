@@ -5,9 +5,11 @@ import passportRoutes from "@/router/passportRoutes";
 
 /** Pages **/
 import HomePage from "../pages/public/Home";
+import InteractiveMap from "../pages/public/InteractiveMap";
 
 const globalRoutes = [
-	{ path: '/', element: <HomePage /> }
+	{ path: '/', element: <HomePage /> },
+	{ path: '/map', element: <InteractiveMap /> }
 ]
 
 const routes = globalRoutes.concat(
