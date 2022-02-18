@@ -1,0 +1,55 @@
+.App{
+    @apply bg-white;
+}
+
+#voyagepage{
+
+    .voyage-img img{
+        min-height: 500px;
+        object-fit: cover;
+    }
+
+    .travel-card{
+        margin-top: 50vw;
+        background-image: url('/assets/images/topo-lines.svg');
+    }
+
+    #feed-list{
+        .feed-card:nth-child(odd){
+            background-color: rgba(66, 27, 8, 0.05);
+        }
+    }
+
+    .card-user{
+        transition: all .25s;
+
+        @media (min-width: 1024px) {
+            border-right: 1px solid;
+            @apply border-brown;
+        }
+
+        &:hover{
+
+            @apply bg-beige border-beige;
+        }
+    }
+
+    .info-icon{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:after {
+            content: "";
+            height: 30px;
+            width: 30px;
+            position: absolute;
+            border: 2px solid;
+            transition: 0.3s background-color;
+            -webkit-transition: 0.3s background-color;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+    }
+}

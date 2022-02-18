@@ -18,6 +18,7 @@
 
 body{
 	overflow-x: hidden;
+	font-family: 'DM Serif Display', serif;
 }
 
 ::-webkit-scrollbar {
@@ -71,7 +72,11 @@ body{
 
 		&.h1{
 			font-size: 42px;
-			line-height: 32px;
+			line-height: 35px;
+
+			&:before{
+				top: -1.5px;
+			}
 		}
 			
 		@media (max-width: 600px) {
