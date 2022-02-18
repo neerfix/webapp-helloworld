@@ -58,7 +58,7 @@ p {
 		left: 0;
 		width: 100px;
 		height: 1.5px;
-		top: 50%;
+		top: 16px;
 			
 		@media (max-width: 600px) {
 			width: 40px;
@@ -81,9 +81,10 @@ p {
 		&.h1{
 			font-size: 42px;
 			line-height: 35px;
-
-			&:before{
-				top: -1.5px;
+			
+			@media (max-width: 600px) {
+				font-size: 36px;
+				line-height: 32px;
 			}
 		}
 			
@@ -185,7 +186,7 @@ p {
 			}
 
 			@media (min-width: 950px) {
-				left: 49px;
+				left: 47px;
 			}
 		}
 	}

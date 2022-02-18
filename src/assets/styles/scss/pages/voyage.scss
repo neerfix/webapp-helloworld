@@ -11,7 +11,8 @@
 
     .travel-card{
         margin-top: 50vw;
-        background-image: url('/assets/images/topo-lines.svg');
+        background-image: linear-gradient(to bottom, rgba(255,255,255,0) 20%,
+        #fcfaf7), url('/assets/images/topo-lines.svg');
     }
 
     #feed-list{
