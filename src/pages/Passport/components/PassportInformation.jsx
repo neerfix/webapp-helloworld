@@ -10,21 +10,21 @@ const PassportInformation = ({ description, album, statistics }) => {
 			<AlbumPreview album={[]} />
 			<div className={"divider"}></div>
 			<h2 className={"subtitle"}>Statistiques</h2>
-			<div className={"grid grid-cols-8 gap-4"}>
+			<div className={"grid grid-cols-8 items-center"}>
 				<PassportStatCard
 					number={statistics.countries}
 					title={"pays"}
 					subtitle={"explorés"}
 					className={"col-span-2"}
 				/>
-				<div>◆</div>
+				<div className={"text-center text-brown"}>◆</div>
 				<PassportStatCard
 					number={statistics.cities}
 					title={"villes"}
 					subtitle={"visitées"}
 					className={"col-span-2"}
 				/>
-				<div>◆</div>
+				<div className={"text-center text-brown"}>◆</div>
 				<PassportStatCard
 					number={statistics.days}
 					title={"jours"}

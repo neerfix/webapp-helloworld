@@ -34,8 +34,8 @@ const PassportPage = () => {
 					/>
 				</div>
 			</div>
-			<div className={"bg-beige py-10 px-20"}>
-				<div className={"md:mx-auto md:max-w-[400px]"}>
+			<div className={"bg-beige py-10 px-6"}>
+				<div className={"md:mx-auto md:max-w-[500px]"}>
 					<div>
 						<button className={"btn btn-dark my-5 w-full"}>
 							<span className={"btn-text"}>Mes voyages</span>
