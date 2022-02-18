@@ -30,7 +30,7 @@ Le carnet de voyage en ligne
 
 ## Cloner le projet en local
 
-Utiliser le lien GitHub
+Utiliser le lien Github
 
 ```bash
   git clone https://github.com/helloworld-ynovlyon/webapp.git
@@ -48,6 +48,12 @@ Installer les dépendances
   npm install
 ```
 
+Copier le fichier d'environnement et compléter les différentes variables
+
+```bash
+  cp .env.example .env
+```
+
 Lancer le serveur
 
 ```bash
@@ -57,11 +63,21 @@ Lancer le serveur
 
 ## Suivi des Sprints
 
-- [Sprint 1](https://github.com/helloworld-ynovlyon/webapp/milestone/1) (14/02/2022 - 18/02/2022)
-  - Maquettage, Initialisation du projet React JS, Début du développement (features, pages)
-  - Poids total du sprint : **40**
+### [Sprint 1](https://github.com/helloworld-ynovlyon/webapp/milestone/1) (14/02/2022 - 18/02/2022)
+
+- Réalisations :
+  - Maquettage - Initialisation du projet React JS - Mise en place de l'intégration continue
+  - Développement : Page d'accueil, Fil d'actualité, Profil, Carte intéractive, Détails d'un voyage
 
 
-- [Sprint 2](https://github.com/helloworld-ynovlyon/webapp/milestone/2) (07/03/2022 - 11/03/2022)
-    - xx
-    - Poids total du sprint : **xx**
+- Début de sprint - 14/02/2022 :
+  - Nombre de tâches pour ce sprint : **17**
+  - Poids total du sprint : **45**
+
+
+- Fin de sprint - 18/02/2022 :
+  - Nombre de tâches pour ce sprint : **23**
+  - Poids total du sprint : **61**
+
+
+### [Sprint 2](https://github.com/helloworld-ynovlyon/webapp/milestone/2) (07/03/2022 - 11/03/2022)

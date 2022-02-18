@@ -2,17 +2,21 @@
 /** Routes **/
 import authRoutes from "@/router/authRoutes";
 import passportRoutes from "@/router/passportRoutes";
+import voyageRoutes from "@/router/voyageRoutes";
 
 /** Pages **/
 import HomePage from "../pages/public/Home";
+import FeedPage from "../pages/Feed/Feed";
 
 const globalRoutes = [
-	{ path: '/', element: <HomePage /> }
+	{ path: '/', element: <HomePage /> },
+	{ path: '/feed', element: <FeedPage /> }
 ]
 
 const routes = globalRoutes.concat(
 	authRoutes,
-	passportRoutes
+	passportRoutes,
+	voyageRoutes
 );
 
 export default routes;
