@@ -10,7 +10,7 @@ import PlanetEarthImg from '@/assets/images/homepage/planet-earth.png';
 const HomePage = () => {
 	return (
 		<div className='bg-beige'>
-			<main id="homepage" className="mx-auto">
+			<div id="homepage" className="mx-auto">
 				<div className="mb-20" id="hero-banner">
 					<div className="px-10 lg:px-20">
 						<h1 id="main-title" className="text-7xl lg:text-9xl mt-20">
@@ -78,7 +78,7 @@ const HomePage = () => {
 						</div>
 					</div>
 				</div>
-			</main>
+			</div>
 		</div>
 	)
 }

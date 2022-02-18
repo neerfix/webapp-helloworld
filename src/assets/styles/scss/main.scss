@@ -203,22 +203,23 @@ body{
 
 // ANCHOR DestinationCard
 
-.destination-card{
+.destination-card, .feed-card{
 	.card-img {
 		border-right: 2px solid;
+		overflow: hidden;
+
 		@apply border-brown;
 
 		img{
 			border-top-left-radius: 10px;
 			border-bottom-left-radius: 10px;
-			min-width: 100px;
-			min-height: 100px;
+			width: 175px;
+			height: 175px;
+			object-fit: cover;
 		}
 	}
 
 	.card-text{
-		text-transform: uppercase;
-
 		h3{
 			letter-spacing: 1px;
 		}
