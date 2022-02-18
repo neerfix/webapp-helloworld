@@ -1,43 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+// ANCHOR Imports
+
+@import url('_header.scss');
+@import url('_footer.scss');
+@import url('_homepage.scss');
+@import url('_passport.scss');
+
+// ANCHOR Scrollbar
 
 * {
-	@apply text-white;
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: thin;
+	scrollbar-color: #867065 white;
 }
 
-.App {
-	text-align: center;
+body{
+	overflow-x: hidden;
 }
 
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
+::-webkit-scrollbar {
+	width: 9px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	border: transparent;
+
+	@apply bg-brown;
+}
+
+// ANCHOR Titres
+
+.title-container{
+	display: flex;
+	margin: 25px 0;
+	position: relative;
+
+	@apply text-brown;
+	
+	&:before{
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 100px;
+		height: 1.5px;
+		top: 15px;
+			
+		@media (max-width: 600px) {
+			width: 40px;
+		}
+
+		@apply bg-brown;
+	}
+	
+	h2{
+		margin-left: 115px;
+		display: flex;
+		font-size: 36px;
+		line-height: 32px;
+		text-transform: uppercase;
+		letter-spacing: 2.5px;
+			
+		@media (max-width: 600px) {
+			margin-left: 55px;
+		}
+	
+		&:before{
+			content: "◆";
+			position: absolute;
+			left: 90px;
+			font-size: 15px;
+			top: 0px;
+
+			@apply text-brown;
+	
+			@media (max-width: 600px) {
+				left: 35px;
+			}
+		}
 	}
 }
 
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
+.title-centered{
+	padding: 15px 0;
+	h2{
+		font-size: 36px;
+		text-align: center;
+		line-height: 32px;
+		text-transform: uppercase;
+	}
+}
+
+// ANCHOR Buttons
+
+.btn{
+	position: relative;
 	display: flex;
-	flex-direction: column;
+	align-items: center;
+	padding: 15px 25px 15px 0;
+	white-space: nowrap;
+
+	@media (max-width: 600px) {
+		padding: 10px 20px 10px 0;
+	}
+
+	@apply text-brown bg-beige;
+	
+	&:before{
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 5vw;
+		height: 1.5px;
+			
+		@media (max-width: 600px) {
+			width: 20px;
+		}
+
+		@media (min-width: 950px) {
+			width: 50px;
+		}
+
+		@apply bg-brown;
+	}
+
+	.btn-text{
+		margin-left: 8vw;
+		text-transform: uppercase;
+		font-size: 16px;
+		letter-spacing: 1px;
+
+		@media (max-width: 600px) {
+			margin-left: 35px;
+		}
+
+		@media (min-width: 950px) {
+			margin-left: 85px;
+		}
+
+		&:before{
+			content: "◆";
+			position: absolute;
+			left: 4.8vw;
+			font-size: 14px;
+			line-height: 24px;
+
+			@apply text-brown;
+
+			@media (max-width: 600px) {
+				left: 15px;
+			}
+
+			@media (min-width: 950px) {
+				left: 49px;
+			}
+		}
+	}
+
+	&.btn-dark{
+		@apply text-beige bg-brown;
+	
+		&:before{
+			@apply bg-beige;
+		}
+
+		.btn-text{
+			&:before{
+				@apply text-beige;
+			}
+		}
+	}
+
+	&.btn-outline{
+		background: none;
+		border: 2px solid #7B6253;
+
+		@apply border-brown;
+	}
+}
+
+.btn-round{
+	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
+	padding: 15px;
+	font-size: 30px;
+	border: 1px solid;
+	border-radius: 50%;
+	transition: all .2s;
+
+	@apply text-beige border-beige;
+
+	&:hover{
+		@apply bg-beige text-dark-brown;
+	}
 }
 
-.App-link {
-	color: #61dafb;
+// ANCHOR DestinationCard
+
+.destination-card{
+	.card-img {
+		border-right: 2px solid;
+		@apply border-brown;
+
+		img{
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+			min-width: 100px;
+			min-height: 100px;
+		}
+	}
+
+	.card-text{
+		text-transform: uppercase;
+
+		h3{
+			letter-spacing: 1px;
+		}
+
+		p{
+			@apply text-brown;
+		}
+	}
 }
 
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
+// ANCHOR Form
+
+form {
+	.form-field {
+		display: flex;
+		flex-direction: column;
+
+		label {
+			@apply text-brown text-lg;
+			margin-bottom: 3px;
+			letter-spacing: 1px;
+		}
+
+		input, select {
+			background-color: theme('colors.white');
+			padding: 10px 20px;
+			font-size: 14px;
+
+			&:focus {
+				outline: none;
+			}
+
+		}
 	}
-	to {
-		transform: rotate(360deg);
-	}
+}
+
+// ANCHOR Divider
+
+.divider {
+	width: 75%;
+	height: 1px;
+	margin: 35px auto 25px;
+
+	@apply bg-brown;
 }

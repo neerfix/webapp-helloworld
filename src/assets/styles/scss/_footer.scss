@@ -1,0 +1,66 @@
+.footer {
+	@apply text-brown;
+
+	svg {
+		fill: theme('colors.brown');
+	}
+
+	.footer-content {
+		font-family: 'Playfair Display', serif;
+
+		.logo {
+			width: 65px;
+		}
+	}
+
+	.footer-bottom {
+		position: relative;
+		width: 100%;
+
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			background-color: theme('colors.brown');
+			width: 45px;
+			height: 1.5px;
+		}
+
+		&:before {
+			left: 0;
+		}
+
+		&:after {
+			right: 0;
+		}
+
+		h4 {
+			position: relative;
+			display: flex;
+			align-items: center;
+			text-transform: uppercase;
+			font-weight: 500;
+
+			&:first-child {
+				margin-left: 55px;
+
+				&:before {
+					left: -15px;
+				}
+			}
+
+			&:last-child {
+				margin-right: 55px;
+
+				&:after {
+					right: -15px;
+				}
+			}
+
+			&:first-child:before, &:last-child:after {
+				content: "◆";
+				position: absolute;
+				font-size: 10px;
+			}
+		}
+	}
+}

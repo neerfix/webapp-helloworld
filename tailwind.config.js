@@ -18,6 +18,9 @@ module.exports = {
 				'dark-brown': '#7B6253',
 				'beige': '#F4E9DD',
 				'salmon': '#FF9B70'
+			},
+			fontSize: {
+				'2xs': '.5rem'
 			}
 		},
 	},
