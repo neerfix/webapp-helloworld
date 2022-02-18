@@ -60,7 +60,7 @@ class VoyagePage extends React.Component {
     }
 
     render() {
-        const { voyage, error, isLoaded, items } = this.state;
+        const { voyage, error, isLoaded } = this.state;
         if (!voyage && error) {
             return <div>Erreur : {error.message}</div>;
         } else if (!voyage && !isLoaded) {
