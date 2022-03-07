@@ -15,7 +15,7 @@ class VoyageStepCard extends React.Component {
                     
                     <AlbumPreview album={this.props.album} />
                 </div>
-                <hr class="mx-20 my-10 opacity-30"/>
+                <hr className="mx-20 my-10 opacity-30"/>
             </div>
         );
     }
