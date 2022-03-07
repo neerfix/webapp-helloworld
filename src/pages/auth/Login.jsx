@@ -1,18 +1,12 @@
-import {useState} from "react";
-
-// Images
-import Compass from '@/assets/images/compass.png';
-import banner from "@/assets/images/homepage/hero-banner.jpg";
-import {Link} from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     // fixme : get real users and check real emails in database
-    const usersToCheck = [{pseudo: "", email: "john.doe@example.xyz", phoneNumber: "", password: "12345678"}, {
-        pseudo: "",
-        email: "jane.doe@example.xyz",
-        phoneNumber: "06 31 25 65 28",
-        password: "12345678"
-    }];
+    const usersToCheck = [
+        { pseudo: "", email: "john.doe@example.xyz", phoneNumber: "", password: "12345678" },
+        { pseudo: "", email: "jane.doe@example.xyz", phoneNumber: "06 31 25 65 28", password: "12345678" }
+    ];
 
     const [email, setEmail] = useState('');
     const [emailIsKnown, setEmailIsKnown] = useState(null);
