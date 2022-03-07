@@ -1,20 +1,25 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { NavLink } from "react-router-dom";
 
 const VoyageAlbumPage = () => {
-	const [voyage, setVoyage] = useState({
-		id: 2345,
-        title: "Roadtrip en Afrique",
-        budget: "2000 €",
-        location: "Afrique du Sud",
-        date_start: "2022-03-15",
-        date_end: "2022-08-20",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum tristique erat et laoreet. Vivamus posuere feugiat rhoncus. ",
+	const [album, setAlbum] = useState({
+        gallery: [
+            "https://jesuispartievoyager.com/wp-content/uploads/2018/03/animaux-traversant-route-afrique-sud-4.jpg",
+            "https://www.andbeyond.com/wp-content/uploads/sites/5/gorah-elephant-camp-south-africa-view-elephantss-waterholes.jpg",
+            "https://www.nationsonline.org/gallery/South-Africa/Twelve-Apostles-Oudekraal.jpg",
+            "https://lp-cms-production.imgix.net/2021-10/Beautiful%20flowering%20aloes%20in%20the%20Kirstenbosch%20Gardens%2C%20Cape%20Town%2C%20South%20Africa%20Julian%20Parsons%20GettyImages-1162549479%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800",
+            "https://lp-cms-production.imgix.net/2021-10/Beautiful%20flowering%20aloes%20in%20the%20Kirstenbosch%20Gardens%2C%20Cape%20Town%2C%20South%20Africa%20Julian%20Parsons%20GettyImages-1162549479%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800",
+            "https://lp-cms-production.imgix.net/2021-10/Beautiful%20flowering%20aloes%20in%20the%20Kirstenbosch%20Gardens%2C%20Cape%20Town%2C%20South%20Africa%20Julian%20Parsons%20GettyImages-1162549479%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800"
+        ],
 	});
-	
-	const [visibility, setVisibility] = useState(0);
+
+    let { voyageId, stepId } = useParams();
+    if( voyageId ) album.voyageId = parseInt(voyageId);
+    if( stepId ) album.stepId = parseInt(stepId);
 	
 	/*** React hooks ***/
 	
@@ -25,18 +30,16 @@ const VoyageAlbumPage = () => {
 	/*** Custom functions ***/
 	
 	const handleChange = (event) => {
-		setVoyage({
-			...voyage,
-			[event.target.name]: event.target.value,
+		setAlbum({
+			...album,
 		});
 	};
 	
-	const saveVoyage = (event) => {
+	const saveAlbum = (event) => {
 		event.preventDefault();
 		
 		const payload = {
-			...voyage,
-			visibility: visibility,
+			...album,
 		};
 		
 		// TODO: Call api to save voyage modification
@@ -44,114 +47,46 @@ const VoyageAlbumPage = () => {
 	};
 	
 	return (
-		<div id={"passport"} className={"mx-auto bg-white"}>
+		<div id={"album"} className={"mx-auto bg-white"}>
 			<div className="compass"></div>
 			<div className={"w-full"}>
 				<div className="title-container">
-					<h2 className='h2'>Editer mon voyage</h2>
+					<h2 className='h2'>
+                        Editer mon album&nbsp;
+                        {!album.stepId && <span>de voyage</span>}
+                        {album.stepId && <span>d'étape</span>}
+                    </h2>
 					<button className={"btn btn-beige btn-icon ml-auto mr-5"} type={"submit"}>
                         <RiDeleteBin6Line />
 					</button>
 				</div>
 			</div>
 			<div className={"bg-beige py-10"}>
-				<form onSubmit={saveVoyage}>
-					<div className={"mb-4 grid grid-cols-9 gap-4"}>
-						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Titre du voyage</label>
-							<input
-								type={"text"}
-								name={"title"}
-								value={voyage.title}
-								required
-								className={"focus:border-dark-brown focus:ring-dark-brown"}
-								onChange={(e) => handleChange(e)}
-							/>
-						</div>
-					</div>
-					<div className={"mb-4 grid grid-cols-9 gap-4"}>
-						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Description</label>
-							<input
-								type={"text"}
-								name={"description"}
-								value={voyage.description}
-								required
-								onChange={(e) => handleChange(e)}
-							/>
-						</div>
-					</div>
-					<div className={"divider"}></div>
-					<div className={"mb-4 grid grid-cols-9 gap-4"}>
-						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Budget</label>
-							<input
-								type={"text"}
-								name={"budget"}
-								value={voyage.budget}
-								onChange={(e) => handleChange(e)}
-							/>
-						</div>
-					</div>
-					<div className={"mb-4 grid grid-cols-9 gap-4"}>
-						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Lieu</label>
-							<input
-								type={"text"}
-								name={"location"}
-								value={voyage.location}
-								onChange={(e) => handleChange(e)}
-							/>
-						</div>
-					</div>
-					<div className={"divider"}></div>
-					<div className={"mb-4 grid grid-cols-9 gap-4"}>
-						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Date de début</label>
-							<input
-								type={"date"}
-								name={"date_start"}
-								value={voyage.date_start}
-								onChange={(e) => handleChange(e)}
-							/>
-						</div>
-					</div>
-					<div className={"mb-4 grid grid-cols-9 gap-4"}>
-						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Date de fin</label>
-							<input
-								type={"date"}
-								name={"date_end"}
-								value={voyage.date_end}
-								onChange={(e) => handleChange(e)}
-							/>
-						</div>
-					</div>
+				<form onSubmit={saveAlbum}>
+                    {album.stepId > 0 && 
+                        <div className={"mb-4 grid grid-cols-9 gap-4"}>
+                            Album d'étape
+                        </div>
+                    }
+
+                    {!album.stepId && 
+                        <div className={"mb-4 grid grid-cols-9 gap-4"}>
+                            Album global de voyage
+                        </div>
+                    }
 
 					<div className={"divider"}></div>
-					<div className={"grid grid-cols-9 gap-4"}>
-						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Visibilité du voyage</label>
-							<select
-								value={visibility}
-								onChange={(e) => setVisibility(e.target.value)}
-							>
-								<option value={0}>Privé</option>
-								<option value={1}>Amis seulement</option>
-								<option value={2}>Public</option>
-							</select>
-						</div>
-					</div>
-					<div className={"divider"}></div>
+
 					<button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
-						<span className={"btn-text"}>Sauvegarder</span>
+						<span className={"btn-text"}>Sauvegarder l'album</span>
 					</button>
-					<button className={"btn btn-outline mx-auto my-5"} type={"button"}>
-						<span className={"btn-text"}>Gérer les étapes</span>
-					</button>
-					<button className={"btn btn-outline mx-auto my-5"} type={"button"}>
-						<span className={"btn-text"}>Gérer l'album global</span>
-					</button>
+                                    
+					<NavLink to={"/voyage/edit/" + album.voyageId }>
+						<button className={"btn btn-outline mx-auto my-5"} type={"button"}>
+							<span className={"btn-text"}>Gérer le voyage</span>
+						</button>
+					</NavLink>
+
 				</form>
 			</div>
 		</div>

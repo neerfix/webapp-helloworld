@@ -7,32 +7,32 @@ import { NavLink } from "react-router-dom";
 
 const VoyageEditPage = () => {
 	const [voyage, setVoyage] = useState({
-		id: 2345,
+		idVoyage: 2345,
         title: "Roadtrip en Afrique",
         budget: "2000 €",
         location: "Afrique du Sud",
-        date_start: "2022-03-15",
-        date_end: "2022-08-20",
+        dateStart: "2022-03-15",
+        dateEnd: "2022-08-20",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum tristique erat et laoreet. Vivamus posuere feugiat rhoncus. ",
         steps: [
             {
-                id: 1,
-                step_count: 1,
+                idStep: 1,
+                stepCount: 1,
                 place: "Twelve Apostles Oudekraal",
             },
             {
-                id: 2,
-                step_count: 2,
+                idStep: 2,
+                stepCount: 2,
                 place: "Table Mountain National Park",
             },
             {
-                id: 3,
-                step_count: 3,
+                idStep: 3,
+                stepCount: 3,
                 place: "Kirstenbosch garden",
             },
             {
-                id: 4,
-                step_count: 4,
+                idStep: 4,
+                stepCount: 4,
                 place: "Cape Town",
             }
         ]
@@ -134,8 +134,8 @@ const VoyageEditPage = () => {
 							<label>Date de début</label>
 							<input
 								type={"date"}
-								name={"date_start"}
-								value={voyage.date_start}
+								name={"dateStart"}
+								value={voyage.dateStart}
 								onChange={(e) => handleChange(e)}
 							/>
 						</div>
@@ -145,8 +145,8 @@ const VoyageEditPage = () => {
 							<label>Date de fin</label>
 							<input
 								type={"date"}
-								name={"date_end"}
-								value={voyage.date_end}
+								name={"dateEnd"}
+								value={voyage.dateEnd}
 								onChange={(e) => handleChange(e)}
 							/>
 						</div>
@@ -174,10 +174,10 @@ const VoyageEditPage = () => {
                             return (
                                 <div className="col-span-7 col-start-2 flex justify-between align-center my-2">
                                     <div className="voyage-step-card rounded-md">
-                                        <p className="text-xl mb-2 text-black capitalize">étape {element.step_count} : {element.place}</p>
+                                        <p className="text-xl mb-2 text-black capitalize">étape {element.stepCount} : {element.place}</p>
                                     </div>
                                     
-                                    <NavLink to={"/voyage/step/" + voyage.id + "/" + element.id }>
+                                    <NavLink to={"/voyage/step/" + voyage.idVoyage + "/" + element.idStep }>
                                         <button className={"btn btn-icon btn-outline"}>
                                             <FiEdit3 />
                                         </button>
@@ -186,18 +186,24 @@ const VoyageEditPage = () => {
                             )
                         })}
                     </div>
-                        
-                    <button className={"btn btn-outline mx-auto my-5"} type={"button"}>
-                        <span className={"btn-text"}>Ajouter une étape</span>
-                    </button>
+
+                    <NavLink to={"/voyage/step/" + voyage.idVoyage }>
+                        <button className={"btn btn-outline mx-auto my-5"} type={"button"}>
+                            <span className={"btn-text"}>Ajouter une étape</span>
+                        </button>
+                    </NavLink>
 
 					<div className={"divider"}></div>
 					<button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
 						<span className={"btn-text"}>Sauvegarder</span>
 					</button>
-					<button className={"btn btn-outline mx-auto my-5"} type={"button"}>
-						<span className={"btn-text"}>Gérer l'album global</span>
-					</button>
+                    
+					<NavLink to={"/voyage/album/" + voyage.idVoyage }>
+                        <button className={"btn btn-outline mx-auto my-5"} type={"button"}>
+                            <span className={"btn-text"}>Gérer l'album global</span>
+                        </button>
+					</NavLink>
+
 				</form>
 			</div>
 		</div>

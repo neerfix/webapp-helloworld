@@ -40,16 +40,16 @@ class VoyagePage extends React.Component {
                 thumbnail: "https://media.timeout.com/images/105274435/image.jpg",
                 budget: "2000 €",
                 location: "Afrique du Sud",
-                date_start: "18/07/2022",
-                date_end: "20/08/2022",
+                dateStart: "18/07/2022",
+                dateEnd: "20/08/2022",
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum tristique erat et laoreet. Vivamus posuere feugiat rhoncus. ",
                 steps: [
                     {
                         id: 1,
-                        step_count: 1,
+                        stepCount: 1,
                         place: "Twelve Apostles Oudekraal",
-                        date_start: "18/07/2022",
-                        date_end: "20/08/2022",
+                        dateStart: "18/07/2022",
+                        dateEnd: "20/08/2022",
                         description: "Ceci est la description de mon étape numéro uno",
                         latitude: -33.9813889,
                         longitude: 18.3813889,
@@ -62,10 +62,10 @@ class VoyagePage extends React.Component {
                     },
                     {
                         id: 2,
-                        step_count: 2,
+                        stepCount: 2,
                         place: "Table Mountain National Park",
-                        date_start: "18/07/2022",
-                        date_end: "20/08/2022",
+                        dateStart: "18/07/2022",
+                        dateEnd: "20/08/2022",
                         description: "Ceci est la description de mon étape numéro uno",
                         latitude: -33.9875117,
                         longitude: 18.3658512,
@@ -76,10 +76,10 @@ class VoyagePage extends React.Component {
                     },
                     {
                         id: 3,
-                        step_count: 3,
+                        stepCount: 3,
                         place: "Kirstenbosch garden",
-                        date_start: "18/07/2022",
-                        date_end: "20/08/2022",
+                        dateStart: "18/07/2022",
+                        dateEnd: "20/08/2022",
                         description: "Ceci est la description de mon étape numéro uno",
                         latitude: -33.9874966,
                         longitude: 18.4305333,
@@ -89,10 +89,10 @@ class VoyagePage extends React.Component {
                     },
                     {
                         id: 4,
-                        step_count: 4,
+                        stepCount: 4,
                         place: "Cape Town",
-                        date_start: "18/07/2022",
-                        date_end: "20/08/2022",
+                        dateStart: "18/07/2022",
+                        dateEnd: "20/08/2022",
                         description: "Ceci est la description de ma dernière étape",
                         latitude: -33.918861,
                         longitude: 18.423300,
@@ -204,7 +204,7 @@ class VoyagePage extends React.Component {
                                                 <BiTimeFive size="25" />
                                             </span>
                                             <span className="info-text">
-                                                du {this.state.voyage.date_start} au {this.state.voyage.date_end}
+                                                du {this.state.voyage.dateStart} au {this.state.voyage.dateEnd}
                                             </span>
                                         </div>
 
@@ -230,7 +230,7 @@ class VoyagePage extends React.Component {
 
                                     {this.state.voyage.steps.map((element, i) => {
                                         return (
-                                            <VoyageStepCard key={i} number={i + 1} place={element.place} date_start={element.date_start} date_end={element.date_end} description={element.description} album={element.album} />
+                                            <VoyageStepCard key={i} number={i + 1} place={element.place} dateStart={element.dateStart} dateEnd={element.dateEnd} description={element.description} album={element.album} />
                                         )
                                     })}
 

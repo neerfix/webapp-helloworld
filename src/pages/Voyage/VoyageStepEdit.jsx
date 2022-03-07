@@ -1,16 +1,17 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 
 const VoyageStepPage = () => {
 	const [step, setStep] = useState({
+		id: 25,
 		voyageId: 2345,
-		stepCount: 6,
-		place: "",
-		dateStart: "",
-		dateEnd: "",
-		description: "",
+		place: "Twelve Apostles Oudekraal",
+		dateStart: "2022-07-18",
+		dateEnd: "2022-07-20",
+		description: "Ceci est la description de mon étape numéro deux",
 	});
 	
 	/*** React hooks ***/
@@ -43,7 +44,10 @@ const VoyageStepPage = () => {
 			<div className="compass"></div>
 			<div className={"w-full"}>
 				<div className="title-container">
-					<h2 className='h2'>Ajouter une étape</h2>
+					<h2 className='h2'>Editer mon étape</h2>
+					<button className={"btn btn-beige btn-icon ml-auto mr-5"} type={"submit"}>
+                        <RiDeleteBin6Line />
+					</button>
 				</div>
 			</div>
 			<div className={"bg-beige py-10"}>
@@ -98,9 +102,16 @@ const VoyageStepPage = () => {
 						</div>
 					</div>
 
+					<NavLink to={"/voyage/album/" + step.voyageId + "/" + step.id }>
+						<button className={"btn btn-outline mx-auto my-5"} type={"button"}>
+							<span className={"btn-text"}>Gérer l'album de l'étape</span>
+						</button>
+					</NavLink>
+
 					<div className={"divider"}></div>
+
 					<button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
-						<span className={"btn-text"}>Ajouter</span>
+						<span className={"btn-text"}>Sauvegarder</span>
 					</button>
                                     
 					<NavLink to={"/voyage/edit/" + step.voyageId }>
