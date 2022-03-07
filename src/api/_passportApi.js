@@ -1,24 +1,23 @@
 import axios from "axios";
 import { apiUrl, requestOptions } from "@/config/_api";
+import { handleError } from "@/api/_handleApi";
 
 /*** Profile ***/
 
 const getProfileInformation = () => {
-
+	return axios.get(`${apiUrl}/profile`, requestOptions)
+		.then((response) => response)
+		.catch((error) => handleError(error))
 }
 
 /**
  *
- * @param username
- * @param email
- * @param phone
- * @param description
- * @param links
- * @param visibility
- * @param albumSpotlight
+ * @param profile
  */
-const updateProfile = ({ username, email, phone, description, links, visibility, albumSpotlight }) => {
-
+const updateProfile = (profile) => {
+	return axios.put(`${apiUrl}/profile`, { profile }, requestOptions)
+		.then((response) => response)
+		.catch((error) => handleError(error))
 }
 
 /*** Friends ***/
@@ -27,34 +26,45 @@ const updateProfile = ({ username, email, phone, description, links, visibility,
  * Search user with his username
  *
  * @param search
+ * @returns {Promise<AxiosResponse<any>>}
  */
 const searchFriend = (search) => {
-
+	return axios.post(`${apiUrl}/users/search`, { search }, requestOptions)
+		.then((response) => response)
+		.catch((error) => handleError(error))
 }
 
 /**
  * Get all friends
  */
 const getFriends = () => {
-
+	return axios.get(`${apiUrl}/followers`, requestOptions)
+		.then((response) => response)
+		.catch((error) => handleError(error))
 }
 
 /**
  * Delete user from friends list
  *
  * @param userId
+ * @returns {Promise<AxiosResponse<any>|void>}
  */
 const removeFriend = (userId) => {
-
+	return axios.delete(`${apiUrl}/followers/${userId}`)
+		.then((response) => response)
+		.catch((error) => handleError(error))
 }
 
 /**
  * Send friend request to another user
  *
  * @param userId
+ * @returns {Promise<AxiosResponse<any>|void>}
  */
 const requestFriend = (userId) => {
-
+	return axios.post(`${apiUrl}/followers`, {}, requestOptions)
+		.then((response) => response)
+		.catch((error) => handleError(error))
 }
 
 /**
@@ -64,7 +74,9 @@ const requestFriend = (userId) => {
  * @param response
  */
 const responseToFriendRequest = (userId, response) => {
-
+	return axios.put(`${apiUrl}/followers/${userId}`, { response }, requestOptions)
+		.then((response) => response)
+		.catch((error) => handleError(error))
 }
 
 export {
