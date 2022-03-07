@@ -7,7 +7,9 @@ const Map = (props) => {
     // Récupération des paramètres de filtre
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    let mapSearchQuery = urlParams.get('search').replace('-', ' ');
+
+    let mapSearchQuery = urlParams.get('search')
+    if(mapSearchQuery) mapSearchQuery = mapSearchQuery.replace('-', ' ');
     let mapUserQuery = urlParams.get('user');
 
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
