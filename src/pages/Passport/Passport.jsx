@@ -31,8 +31,9 @@ const PassportPage = () => {
 	useEffect(() => {
 		async function fetchProfileInformation() {
 			const { data } = await getProfileInformation()
-			console.log(data)
+			console.log(data, loading)
 			setLoading(false)
+			setProfile(profile)
 		}
 		
 		fetchProfileInformation()
