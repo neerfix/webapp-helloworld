@@ -83,10 +83,21 @@ Lancer le serveur
 
 ### [Sprint 2](https://github.com/helloworld-ynovlyon/webapp/milestone/2) (07/03/2022 - 11/03/2022)
 
+- Tâches du Sprint 1 en retard :
+  - Authentification (**5**)
+  - Intégration des maquettes
+
+- Réalisations :
+  - xxx
+
 - Début de sprint - 07/03/2022 :
+  - Nombre de tâches pour ce sprint : **9**
+  - Poids total du sprint : **47**
 
-- Fin de sprint - 07/03/2022 :
-
+- Fin de sprint - 11/03/2022 :
+  - Nombre de tâches pour ce sprint : **xx**
+  - Poids total du sprint : **xx**
+  - Total des tâches réalisées lors de ce sprint : **xx**
 
 --- ---
 
@@ -104,6 +115,6 @@ Lancer le serveur
 
 **Ce qu'il faut arrêter de faire**
 - Aimee :
-- Louise : fumer
+- Louise :
 - Gregg :
 
