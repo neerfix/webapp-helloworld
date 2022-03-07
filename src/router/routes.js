@@ -6,7 +6,7 @@ import voyageRoutes from "@/router/voyageRoutes";
 
 /** Pages **/
 import HomePage from "../pages/public/Home";
-import Login from "../pages/Auth/Login";
+import Login from "../pages/auth/Login";
 import InteractiveMap from "../pages/public/InteractiveMap";
 import FeedPage from "../pages/Feed/Feed";
 
