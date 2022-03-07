@@ -12,27 +12,27 @@ class AlbumPreview extends React.Component {
 				<img
 					className={"h-full w-full rounded-xl"}
 					src={this.props.album[0]}
-					alt={"Photo 1"}
+					alt={"Album 1"}
 				/>
 				{this.props.album[1] &&
 					<img
 						className={"h-full w-full rounded-xl"}
 						src={this.props.album[1]}
-						alt={"Photo 2"}
+						alt={"Album 2"}
 					/>
 				}
 				{this.props.album[2] &&
 					<img
 						className={"h-full w-full rounded-xl"}
 						src={this.props.album[2]}
-						alt={"Photo 2"}
+						alt={"Album 3"}
 					/>
 				}
-				{this.props.album[3] && this.props.album.length - 3 == 1 &&
+				{this.props.album[3] && this.props.album.length - 3 === 1 &&
 					<img
 						className={"h-full w-full rounded-xl"}
 						src={this.props.album[2]}
-						alt={"Photo 2"}
+						alt={"Album 4"}
 					/>
 				}
 				 {this.props.album[3] && this.props.album.length - 3 > 1 &&
@@ -45,7 +45,7 @@ class AlbumPreview extends React.Component {
 						<img
 							className={"h-full w-full rounded-xl"}
 							src={this.props.album[3]}
-							alt={"Photo 3"}
+							alt={"Album 3"}
 						/>
 					</div>
 				}
