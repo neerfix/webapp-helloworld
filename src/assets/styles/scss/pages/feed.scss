@@ -1,0 +1,29 @@
+.App{
+    @apply bg-white;
+}
+
+#feedpage{
+    background-image: url('/assets/images/grid-lines.png');
+
+    .compass{
+        width: 90vw;
+        height: 90vw;
+        max-width: 800px;
+        max-height: 800px;
+        position: absolute;
+        right: -20%;
+        top: -20%;
+        background-image: url('/assets/images/compass.png');
+        background-size: cover;
+        transform: rotate(30deg);
+        mix-blend-mode: hard-light;
+        opacity: .08;
+        pointer-events: none;
+    }
+
+    #feed-list{
+        .feed-card:nth-child(odd){
+            background-color: rgba(66, 27, 8, 0.05);
+        }
+    }
+}

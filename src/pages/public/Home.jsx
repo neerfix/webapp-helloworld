@@ -10,7 +10,7 @@ import PlanetEarthImg from '@/assets/images/homepage/planet-earth.png';
 const HomePage = () => {
 	return (
 		<div className='bg-beige'>
-			<main id="homepage" className="mx-auto">
+			<div id="homepage" className="mx-auto">
 				<div className="mb-20" id="hero-banner">
 					<div className="px-10 lg:px-20">
 						<h1 id="main-title" className="text-7xl lg:text-9xl mt-20">
@@ -34,7 +34,7 @@ const HomePage = () => {
 					<div className="col-start-2 col-span-10 bg-white rounded-3xl overflow-hidden mb-10">
 						<div className="p-5 sm:p-9 md:p-7 xl:p-9 text-center">
 							<div className="title-centered">
-								<h2>
+								<h2 className='h2'>
 									Carte des voyages
 								</h2>
 							</div>
@@ -65,7 +65,7 @@ const HomePage = () => {
 				</div>
 				<div id="bloc-popular" className="mt-10 md:mt-20 py-10">
 					<div className="title-container">
-						<h2>Destinations populaires</h2>
+						<h2 className='h2'>Destinations populaires</h2>
 					</div>
 					<div className="mx-auto my-10 container">
 						<div className="grid grid-cols-12 lg:mx-5">
@@ -78,7 +78,7 @@ const HomePage = () => {
 						</div>
 					</div>
 				</div>
-			</main>
+			</div>
 		</div>
 	)
 }
