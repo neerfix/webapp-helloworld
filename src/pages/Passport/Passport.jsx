@@ -37,7 +37,7 @@ const PassportPage = () => {
 		}
 		
 		fetchProfileInformation()
-	}, [])
+	}, [loading, profile])
 	
 	return (
 		<div id={"passport"} className={"mx-auto bg-white"}>
