@@ -4,13 +4,20 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const Map = (props) => {
 
+    // Récupération des paramètres de filtre
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let mapSearchQuery = urlParams.get('search').replace('-', ' ');
+    let mapUserQuery = urlParams.get('user');
+
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
     useEffect(() => {
         let mapCenter = [0, 20];
         let mapBounds;
+        let mapZoom = 2;
 
-        if(props) {
+        if(props && props.steps) {
             let minLon = Math.min(...props.steps.map(item => item.longitude)) - .2;
             let minLat = Math.min(...props.steps.map(item => item.latitude)) - .2;
             let maxLon = Math.max(...props.steps.map(item => item.longitude)) + .2;
@@ -18,13 +25,14 @@ const Map = (props) => {
 
             mapBounds = [ [maxLon, minLat], [minLon, maxLat] ];
             mapCenter = [ (minLon + maxLon) / 2, (minLat + maxLat) / 2 ];
+            mapZoom= 10;
         }
 
         const map = new mapboxgl.Map({
             container: "mapContainer",
             style: "mapbox://styles/helloworld-ynov/ckzo9rhdg001414qirib3u3lx",
             center: mapCenter,
-            zoom: 10,
+            zoom: mapZoom,
         });
 
         if(mapBounds){
@@ -37,6 +45,15 @@ const Map = (props) => {
 
         var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
         map.addControl(geocoder, 'top-left');
+
+        if(mapSearchQuery){
+            geocoder.query(mapSearchQuery);
+            document.getElementById('mapContainer').focus();
+        }
+
+        if(mapUserQuery){
+            console.log(mapUserQuery);
+        }
 
         class MapboxGLButtonControl {
             constructor({
@@ -130,7 +147,7 @@ const Map = (props) => {
         map.addControl(new PitchToggle({ minpitchzoom: 4 }), "bottom-left");
 
         // Ajout des points
-        if(props){
+        if(props && props.steps){
             props.steps.forEach( step => {
                 // create a HTML element for each feature
                 const el = document.createElement('div');
