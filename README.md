@@ -93,17 +93,17 @@ Lancer le serveur
 ## Rétrospective du premier sprint
 
 **Ce qu'il faut commencer à faire :**
-- Aimee :
-- Louise :
-- Gregg :
+- Aimee : la gestion des voyages (création et édition)
+- Louise : 
+- Gregg : mettre en place la communication entre la webapp et l'api
 
 **Ce qu'il faut continuer à faire**
-- Aimee :
-- Louise :
-- Gregg :
+- Aimee : intégration des maquettes, mise en place de la carte intéractive
+- Louise : la partie authentification (connexion, inscription et mot de passe oublié)
+- Gregg : la gestion des tâches et du sprint, la communication entre les 2 équipes
 
 **Ce qu'il faut arrêter de faire**
 - Aimee :
-- Louise :
+- Louise : fumer
 - Gregg :
 
