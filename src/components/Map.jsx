@@ -156,7 +156,7 @@ const Map = (props) => {
                 .addTo(map);
             });
         }
-    }, []);
+    }, [props]);
 
     return (
         <div id="mapContainer" className="map">

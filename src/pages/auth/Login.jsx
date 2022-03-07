@@ -63,9 +63,9 @@ const Login = () => {
     }
 
     return (
-        <div id={"login"} className={"mx-auto hx-auto"}>
+        <div id={"login"} className={"mx-auto hx-auto bg-beige"}>
             <div className="compass"></div>
-            <main className="w-full bg-beige">
+            <main className="w-full">
                 <div id="bloc-mail" className="my-10 py-10">
                     <div className="title-container">
                         <h2>Bienvenue à bord</h2>
