@@ -82,3 +82,28 @@ Lancer le serveur
 
 
 ### [Sprint 2](https://github.com/helloworld-ynovlyon/webapp/milestone/2) (07/03/2022 - 11/03/2022)
+
+- Début de sprint - 07/03/2022 :
+
+- Fin de sprint - 07/03/2022 :
+
+
+--- ---
+
+## Rétrospective du premier sprint
+
+**Ce qu'il faut commencer à faire :**
+- Aimee :
+- Louise :
+- Gregg :
+
+**Ce qu'il faut continuer à faire**
+- Aimee :
+- Louise :
+- Gregg :
+
+**Ce qu'il faut arrêter de faire**
+- Aimee :
+- Louise :
+- Gregg :
+
