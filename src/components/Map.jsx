@@ -2,16 +2,34 @@ import React, { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-const Map = () => {
+const Map = (props) => {
+
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
     useEffect(() => {
+        let mapCenter = [0, 20];
+        let mapBounds;
+
+        if(props) {
+            let minLon = Math.min(...props.steps.map(item => item.longitude)) - .2;
+            let minLat = Math.min(...props.steps.map(item => item.latitude)) - .2;
+            let maxLon = Math.max(...props.steps.map(item => item.longitude)) + .2;
+            let maxLat = Math.max(...props.steps.map(item => item.latitude)) + .2;
+
+            mapBounds = [ [maxLon, minLat], [minLon, maxLat] ];
+            mapCenter = [ (minLon + maxLon) / 2, (minLat + maxLat) / 2 ];
+        }
+
         const map = new mapboxgl.Map({
             container: "mapContainer",
             style: "mapbox://styles/helloworld-ynov/ckzo9rhdg001414qirib3u3lx",
-            center: [0, 20],
-            zoom: 1.5,
+            center: mapCenter,
+            zoom: 10,
         });
+
+        if(mapBounds){
+            map.fitBounds(mapBounds);
+        }
 
         map.addControl(new mapboxgl.NavigationControl({
             showCompass: false
@@ -33,7 +51,7 @@ const Map = () => {
 
             onAdd(map) {
                 this._btn = document.createElement("button");
-                this._btn.className = "mapboxgl-ctrl-icon" + " " + this._className;
+                this._btn.className = "mapboxgl-ctrl-icon " + this._className;
                 this._btn.type = "button";
                 this._btn.title = this._title;
                 this._btn.onclick = this._eventHandler;
@@ -60,6 +78,7 @@ const Map = () => {
 
         function filterMapEvent(event) {
             console.log("Filtrage de la map");
+            // TODO Ajout des filtres
         }
 
         map.addControl(filterMapBtn, 'top-right');
@@ -109,7 +128,34 @@ const Map = () => {
         }
         
         map.addControl(new PitchToggle({ minpitchzoom: 4 }), "bottom-left");
-  
+
+        // Ajout des points
+        if(props){
+            props.steps.forEach( step => {
+                // create a HTML element for each feature
+                const el = document.createElement('div');
+                el.className = 'marker';
+                el.color = '#fff';
+
+                el.addEventListener('click', () => { 
+                    map.flyTo({
+                        center: [step.longitude, step.latitude],
+                        zoom: 12
+                    });
+                }); 
+
+                // make a marker for each feature and add it to the map
+                new mapboxgl.Marker(el)
+                .setLngLat([step.longitude, step.latitude])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 }) // add popups
+                    .setHTML(
+                        `<h3>${step.place}</h3><p>${step.description}</p>`
+                    )
+                )
+                .addTo(map);
+            });
+        }
 
     }, []);
 

@@ -11,6 +11,7 @@ import {BiTimeFive} from 'react-icons/bi';
 // Component
 import AlbumPreview from "@/components/AlbumPreview";
 import VoyageStepCard from "@/components/VoyageStep";
+import Map from '@/components/Map'
 
 class VoyagePage extends React.Component {
     constructor(props) {
@@ -45,6 +46,8 @@ class VoyagePage extends React.Component {
                         date_start: "18/07/2022",
                         date_end: "20/08/2022",
                         description: "Ceci est la description de mon étape numéro uno",
+                        latitude: -33.9813889,
+                        longitude: 18.3813889,
                         album: [
                             "https://jesuispartievoyager.com/wp-content/uploads/2018/03/animaux-traversant-route-afrique-sud-4.jpg",
                             "https://www.andbeyond.com/wp-content/uploads/sites/5/gorah-elephant-camp-south-africa-view-elephantss-waterholes.jpg",
@@ -53,10 +56,12 @@ class VoyagePage extends React.Component {
                         ],
                     },
                     {
-                        place: "Camp South Africa",
+                        place: "Table Mountain National Park",
                         date_start: "18/07/2022",
                         date_end: "20/08/2022",
                         description: "Ceci est la description de mon étape numéro uno",
+                        latitude: -33.9875117,
+                        longitude: 18.3658512,
                         album: [
                             "https://www.nationsonline.org/gallery/South-Africa/Twelve-Apostles-Oudekraal.jpg",
                             "https://lp-cms-production.imgix.net/2021-10/Beautiful%20flowering%20aloes%20in%20the%20Kirstenbosch%20Gardens%2C%20Cape%20Town%2C%20South%20Africa%20Julian%20Parsons%20GettyImages-1162549479%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800"
@@ -67,15 +72,19 @@ class VoyagePage extends React.Component {
                         date_start: "18/07/2022",
                         date_end: "20/08/2022",
                         description: "Ceci est la description de mon étape numéro uno",
+                        latitude: -33.9874966,
+                        longitude: 18.4305333,
                         album: [
                             "https://www.andbeyond.com/wp-content/uploads/sites/5/gorah-elephant-camp-south-africa-view-elephantss-waterholes.jpg",
                         ],
                     },
                     {
-                        place: "Elephant lake",
+                        place: "Cape Town",
                         date_start: "18/07/2022",
                         date_end: "20/08/2022",
-                        description: "Ceci est la description de mon étape numéro uno",
+                        description: "Ceci est la description de ma dernière étape",
+                        latitude: -33.918861,
+                        longitude: 18.423300,
                         album: [
                             "https://jesuispartievoyager.com/wp-content/uploads/2018/03/animaux-traversant-route-afrique-sud-4.jpg",
                             "https://lp-cms-production.imgix.net/2021-10/Beautiful%20flowering%20aloes%20in%20the%20Kirstenbosch%20Gardens%2C%20Cape%20Town%2C%20South%20Africa%20Julian%20Parsons%20GettyImages-1162549479%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800"
@@ -198,11 +207,13 @@ class VoyagePage extends React.Component {
                                         <h2 className='h2'>étapes</h2>
                                     </div>
 
-                                    {/* TODO MAP */}
+                                    <main id="interactive-map">
+                                        <Map steps={this.state.voyage.steps} />
+                                    </main>
 
                                     {this.state.voyage.steps.map((element, i) => {
                                         return (
-                                            <VoyageStepCard number={i + 1} place={element.place} date_start={element.date_start} date_end={element.date_end} description={element.description} album={element.album} />
+                                            <VoyageStepCard key={i} number={i + 1} place={element.place} date_start={element.date_start} date_end={element.date_end} description={element.description} album={element.album} />
                                         ) 
                                     })}
 

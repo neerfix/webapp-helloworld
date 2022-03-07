@@ -40,7 +40,6 @@
 		min-height: 45px;
 		min-width: 45px;
 		line-height: 30px; 
-		box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
 	}
 
 	.mapboxgl-ctrl-logo{
@@ -63,6 +62,20 @@
 		background-color: rgba(252, 250, 247, .9);
 		border-radius: 0;
 	}
+
+	.marker {
+		background-image: url('../../images/map_marker_icon.svg');
+		background-size: cover;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		filter: drop-shadow(0px 0px 6px rgba(0,0,0,.6));
+	}
+
+	.mapboxgl-popup-close-button{
+		display: none;
+	}
+	  
 }
 
 #searchTravel{
