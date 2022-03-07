@@ -2,10 +2,8 @@ import React from 'react';
 import { useEffect, useState } from "react";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { FiEdit3 } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
 
-const VoyageEditPage = () => {
+const VoyageAlbumPage = () => {
 	const [voyage, setVoyage] = useState({
 		id: 2345,
         title: "Roadtrip en Afrique",
@@ -14,29 +12,7 @@ const VoyageEditPage = () => {
         date_start: "2022-03-15",
         date_end: "2022-08-20",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum tristique erat et laoreet. Vivamus posuere feugiat rhoncus. ",
-        steps: [
-            {
-                id: 1,
-                step_count: 1,
-                place: "Twelve Apostles Oudekraal",
-            },
-            {
-                id: 2,
-                step_count: 2,
-                place: "Table Mountain National Park",
-            },
-            {
-                id: 3,
-                step_count: 3,
-                place: "Kirstenbosch garden",
-            },
-            {
-                id: 4,
-                step_count: 4,
-                place: "Cape Town",
-            }
-        ]
-    });
+	});
 	
 	const [visibility, setVisibility] = useState(0);
 	
@@ -68,7 +44,7 @@ const VoyageEditPage = () => {
 	};
 	
 	return (
-		<div id={"voyage"} className={"mx-auto bg-white"}>
+		<div id={"passport"} className={"mx-auto bg-white"}>
 			<div className="compass"></div>
 			<div className={"w-full"}>
 				<div className="title-container">
@@ -166,34 +142,12 @@ const VoyageEditPage = () => {
 							</select>
 						</div>
 					</div>
-
-					<div className={"divider"}></div>
-                    
-					<div className={"grid grid-cols-9 gap-4"}>
-                        {voyage.steps.map((element, i) => {
-                            return (
-                                <div className="col-span-7 col-start-2 flex justify-between align-center my-2">
-                                    <div className="voyage-step-card rounded-md">
-                                        <p className="text-xl mb-2 text-black capitalize">étape {element.step_count} : {element.place}</p>
-                                    </div>
-                                    
-                                    <NavLink to={"/voyage/step/" + voyage.id + "/" + element.id }>
-                                        <button className={"btn btn-icon btn-outline"}>
-                                            <FiEdit3 />
-                                        </button>
-                                    </NavLink>
-                                </div>
-                            )
-                        })}
-                    </div>
-                        
-                    <button className={"btn btn-outline mx-auto my-5"} type={"button"}>
-                        <span className={"btn-text"}>Ajouter une étape</span>
-                    </button>
-
 					<div className={"divider"}></div>
 					<button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
 						<span className={"btn-text"}>Sauvegarder</span>
+					</button>
+					<button className={"btn btn-outline mx-auto my-5"} type={"button"}>
+						<span className={"btn-text"}>Gérer les étapes</span>
 					</button>
 					<button className={"btn btn-outline mx-auto my-5"} type={"button"}>
 						<span className={"btn-text"}>Gérer l'album global</span>
@@ -204,4 +158,4 @@ const VoyageEditPage = () => {
 	);
 };
 
-export default VoyageEditPage;
+export default VoyageAlbumPage;

@@ -4,9 +4,11 @@ import React from 'react';
 import '@/assets/styles/scss/pages/voyage.scss';
 
 // Icones
-import {HiOutlineLocationMarker} from 'react-icons/hi';
-import {BsCurrencyDollar} from 'react-icons/bs';
-import {BiTimeFive} from 'react-icons/bi';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
+import { BsCurrencyDollar } from 'react-icons/bs';
+import { BiTimeFive } from 'react-icons/bi';
+import { FiEdit3 } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 
 // Component
 import AlbumPreview from "@/components/AlbumPreview";
@@ -20,8 +22,9 @@ class VoyagePage extends React.Component {
             error: null,
             isLoaded: false,
             voyage: {
-                title : "Roadtrip en Afrique",
-                user : {
+                id: 2345,
+                title: "Roadtrip en Afrique",
+                user: {
                     id: 12345,
                     name: "JohnDoe",
                     avatar: "https://avatars.githubusercontent.com/u/827205?v=4",
@@ -42,6 +45,8 @@ class VoyagePage extends React.Component {
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum tristique erat et laoreet. Vivamus posuere feugiat rhoncus. ",
                 steps: [
                     {
+                        id: 1,
+                        step_count: 1,
                         place: "Twelve Apostles Oudekraal",
                         date_start: "18/07/2022",
                         date_end: "20/08/2022",
@@ -56,6 +61,8 @@ class VoyagePage extends React.Component {
                         ],
                     },
                     {
+                        id: 2,
+                        step_count: 2,
                         place: "Table Mountain National Park",
                         date_start: "18/07/2022",
                         date_end: "20/08/2022",
@@ -68,6 +75,8 @@ class VoyagePage extends React.Component {
                         ],
                     },
                     {
+                        id: 3,
+                        step_count: 3,
                         place: "Kirstenbosch garden",
                         date_start: "18/07/2022",
                         date_end: "20/08/2022",
@@ -79,6 +88,8 @@ class VoyagePage extends React.Component {
                         ],
                     },
                     {
+                        id: 4,
+                        step_count: 4,
                         place: "Cape Town",
                         date_start: "18/07/2022",
                         date_end: "20/08/2022",
@@ -129,13 +140,19 @@ class VoyagePage extends React.Component {
                     <div id="voyagepage" className="mx-auto">
 
                         <div className="voyage-img absolute top-0">
-                            <img src={this.state.voyage.thumbnail} alt="" className="w-full"/>
+                            <img src={this.state.voyage.thumbnail} alt="" className="w-full" />
                         </div>
 
                         <div className="container mx-auto">
                             <div className="travel-card relative rounded-xl bg-white mx-5 py-5 mb-10">
                                 <div className="title-container pr-5">
                                     <h1 className='h1'>{this.state.voyage.title}</h1>
+
+                                    <NavLink to={"/voyage/edit/" + this.state.voyage.id}>
+                                        <button className={"btn btn-icon btn-outline ml-5"}>
+                                            <FiEdit3 />
+                                        </button>
+                                    </NavLink>
                                 </div>
 
                                 <div className="grid grid-col-12">
@@ -162,7 +179,7 @@ class VoyagePage extends React.Component {
                                                     {this.state.voyage.user.name}
                                                 </span>
                                             </a>
-                                        </div>  
+                                        </div>
 
                                         <div className="voyage-info flex items-center justify-center my-4 mx-4 text-brown col-span-11 lg:col-span-3">
                                             <span className="info-icon mr-5">
@@ -171,7 +188,7 @@ class VoyagePage extends React.Component {
                                             <span className="info-text">
                                                 {this.state.voyage.location}
                                             </span>
-                                        </div>  
+                                        </div>
 
                                         <div className="voyage-info flex items-center justify-center my-4 mx-4 text-brown col-span-11 lg:col-span-3">
                                             <span className="info-icon mr-5">
@@ -192,7 +209,7 @@ class VoyagePage extends React.Component {
                                         </div>
 
                                         <p className="col-span-12 px-5 my-3 text-dark">
-                                            {this.state.voyage.description} 
+                                            {this.state.voyage.description}
                                         </p>
 
                                     </div>
@@ -201,7 +218,7 @@ class VoyagePage extends React.Component {
                                         <AlbumPreview album={this.state.voyage.gallery} />
                                     </div>
 
-                                    <hr className="my-5 opacity-30"/>
+                                    <hr className="my-5 opacity-30" />
 
                                     <div className="title-container pr-5">
                                         <h2 className='h2'>étapes</h2>
@@ -214,7 +231,7 @@ class VoyagePage extends React.Component {
                                     {this.state.voyage.steps.map((element, i) => {
                                         return (
                                             <VoyageStepCard key={i} number={i + 1} place={element.place} date_start={element.date_start} date_end={element.date_end} description={element.description} album={element.album} />
-                                        ) 
+                                        )
                                     })}
 
                                 </div>
