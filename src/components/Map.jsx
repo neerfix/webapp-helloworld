@@ -156,7 +156,6 @@ const Map = (props) => {
                 .addTo(map);
             });
         }
-
     }, []);
 
     return (
