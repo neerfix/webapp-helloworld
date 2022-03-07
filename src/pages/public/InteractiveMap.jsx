@@ -8,7 +8,7 @@ const InteractiveMap = () => {
 		<div className='bg-beige'>
 			<main id="interactive-map" className="w-full">
 				<Map />
-				<SearchBar />
+				{/* <SearchBar /> */}
 			</main>
 		</div>
 	)

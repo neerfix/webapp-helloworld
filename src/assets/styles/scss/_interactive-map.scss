@@ -2,4 +2,13 @@
 #interactive-map {
 	font-family: 'DM Serif Display', serif;
 	height: calc(100vh - 98px);
+	position: relative;
+}
+
+#searchTravel{
+	margin: 15px auto;
+	width: calc(100vw - 30px);
+	position: absolute;
+	left: 70px;
+	top: 15px;
 }
