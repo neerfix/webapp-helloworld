@@ -7,20 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           build: npm run build
           start: npm start
       # ScreenShots
       - name: Create Screenshots folder
         run: |
-          ls && mkdir cypress/screenshots
+          mkdir cypress/screenshots
       - name: Upload Screenshots
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         if: ${{ failure() }}
         with:
           name: cypress-screenshots
@@ -28,9 +28,9 @@ jobs:
       # Videos
       - name: Create Videos folder
         run: |
-          sudo mkdir cypress/videos
-      - name: Videos
-        uses: actions/upload-artifact@v1
+          mkdir cypress/videos
+      - name: Upload Videos
+        uses: actions/upload-artifact@v2
         if: ${{ always() }}
         with:
           name: cypress-videos
