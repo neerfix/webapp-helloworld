@@ -15,9 +15,9 @@ class VoyageTile extends React.Component {
                     <NavLink className="w-full" to={"/voyage/" + this.props.id }>
                         <div className="card-text p-3 flex items-center justify-between">
                             <p className="text-xl text-brown mr-3">{this.props.title}</p>
-                                <button className={"btn btn-icon btn-outline rounded-full"} type={"button"}>
-                                    <BsArrowRightShort />
-                                </button>
+                            <button className={"btn btn-icon btn-outline rounded-full"} type={"button"}>
+                                <BsArrowRightShort />
+                            </button>
                         </div>
                     </NavLink>
                 </div>

@@ -1,10 +1,22 @@
 
+.App{
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-beige{
+    display: flex;
+    flex-direction: column;
+}
+
 #homepage{
 	font-family: 'DM Serif Display', serif;
     background-image: url('/assets/images/topo-lines.svg');
+    position: relative;
+    z-index: 2;
 
     #hero-banner{
-        z-index: 1;
+        margin-top: 200px;
 
         &::before{
             content: "";
@@ -16,22 +28,53 @@
             background-image: url('/assets/images/homepage/hero-banner.jpg');
             object-fit: cover;
             background-position: center center;
-            z-index: 0;
             max-height: 120vh;
+            z-index: -2;
+        }
+
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100%;
+            background-color: black;
+            max-height: 120vh;
+            opacity: .3;
+            z-index: -1;
         }
 
         #main-title{
-            font-weight: 800;
-            color: #291D11;
-            line-height: .9;
+            font-weight: bold;
+            color: transparent;
+            line-height: .75;
             mix-blend-mode: hard-light;
             margin-top: 10vh;
+            text-align: center;
+            -webkit-text-stroke: 1px #f7eee5;
+            letter-spacing: 2px;
+            opacity: .9;
+
+            .sub-title{
+                color: #f7eee5;
+                -webkit-text-stroke: 0px #f7eee5;
+                transform: scale(1.1);
+                font-size: 10rem;
+                mix-blend-mode: hard-light;
+                
+                @media (max-width: 600px) {
+                    font-size: 80px;
+                }
+            }
         }
     }
 
     #bloc-map{
         position: relative;
         z-index: 2;
+        max-width: 900px;
+        margin: 0 auto;
 
         .earth-visual{
             opacity: .9;
