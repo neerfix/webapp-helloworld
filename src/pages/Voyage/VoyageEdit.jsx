@@ -1,150 +1,213 @@
 import React from 'react';
+import { useEffect, useState } from "react";
 
-// Style
-import '@/assets/styles/scss/pages/voyage.scss';
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FiEdit3 } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 
-// Icones
-import { HiOutlineLocationMarker } from 'react-icons/hi';
-import { BsCurrencyDollar } from 'react-icons/bs';
-import { BiTimeFive } from 'react-icons/bi';
-
-class VoyageEditPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            error: null,
-            isLoaded: false,
-            voyage: {
-                title : "Roadtrip en Afrique",
-                gallery: [
-                    "https://jesuispartievoyager.com/wp-content/uploads/2018/03/animaux-traversant-route-afrique-sud-4.jpg",
-                    "https://www.andbeyond.com/wp-content/uploads/sites/5/gorah-elephant-camp-south-africa-view-elephantss-waterholes.jpg",
-                    "https://www.nationsonline.org/gallery/South-Africa/Twelve-Apostles-Oudekraal.jpg",
-                    "https://lp-cms-production.imgix.net/2021-10/Beautiful%20flowering%20aloes%20in%20the%20Kirstenbosch%20Gardens%2C%20Cape%20Town%2C%20South%20Africa%20Julian%20Parsons%20GettyImages-1162549479%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800",
-                    "https://lp-cms-production.imgix.net/2021-10/Beautiful%20flowering%20aloes%20in%20the%20Kirstenbosch%20Gardens%2C%20Cape%20Town%2C%20South%20Africa%20Julian%20Parsons%20GettyImages-1162549479%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800",
-                    "https://lp-cms-production.imgix.net/2021-10/Beautiful%20flowering%20aloes%20in%20the%20Kirstenbosch%20Gardens%2C%20Cape%20Town%2C%20South%20Africa%20Julian%20Parsons%20GettyImages-1162549479%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800"
-                ],
-                thumbnail: "https://media.timeout.com/images/105274435/image.jpg",
-                budget: "2000 €",
-                location: "Afrique du Sud",
-                date_start: "18/07/2022",
-                date_end: "20/08/2022",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum tristique erat et laoreet. Vivamus posuere feugiat rhoncus. ",
+const VoyageEditPage = () => {
+	const [voyage, setVoyage] = useState({
+		idVoyage: 2345,
+        title: "Roadtrip en Afrique",
+        budget: "2000 €",
+        location: "Afrique du Sud",
+        dateStart: "2022-03-15",
+        dateEnd: "2022-08-20",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum tristique erat et laoreet. Vivamus posuere feugiat rhoncus. ",
+        steps: [
+            {
+                idStep: 1,
+                stepCount: 1,
+                place: "Twelve Apostles Oudekraal",
+            },
+            {
+                idStep: 2,
+                stepCount: 2,
+                place: "Table Mountain National Park",
+            },
+            {
+                idStep: 3,
+                stepCount: 3,
+                place: "Kirstenbosch garden",
+            },
+            {
+                idStep: 4,
+                stepCount: 4,
+                place: "Cape Town",
             }
-        };
-    }
+        ]
+    });
+	
+	const [visibility, setVisibility] = useState(0);
+	
+	/*** React hooks ***/
+	
+	useEffect(() => {
+		// TODO: Call Api to get voyage information
+	});
+	
+	/*** Custom functions ***/
+	
+	const handleChange = (event) => {
+		setVoyage({
+			...voyage,
+			[event.target.name]: event.target.value,
+		});
+	};
+	
+	const saveVoyage = (event) => {
+		event.preventDefault();
+		
+		const payload = {
+			...voyage,
+			visibility: visibility,
+		};
+		
+		// TODO: Call api to save voyage modification
+		console.log(payload);
+	};
+	
+	return (
+		<div id={"voyage"} className={"mx-auto bg-white"}>
+			<div className="compass"></div>
+			<div className={"w-full"}>
+				<div className="title-container">
+					<h2 className='h2'>Editer mon voyage</h2>
+					<button className={"btn btn-beige btn-icon ml-auto mr-5"} type={"submit"}>
+                        <RiDeleteBin6Line />
+					</button>
+				</div>
+			</div>
+			<div className={"bg-beige py-10"}>
+				<form onSubmit={saveVoyage}>
+					<div className={"mb-4 grid grid-cols-9 gap-4"}>
+						<div className={"form-field col-span-7 col-start-2"}>
+							<label>Titre du voyage</label>
+							<input
+								type={"text"}
+								name={"title"}
+								value={voyage.title}
+								required
+								className={"focus:border-dark-brown focus:ring-dark-brown"}
+								onChange={(e) => handleChange(e)}
+							/>
+						</div>
+					</div>
+					<div className={"mb-4 grid grid-cols-9 gap-4"}>
+						<div className={"form-field col-span-7 col-start-2"}>
+							<label>Description</label>
+							<input
+								type={"text"}
+								name={"description"}
+								value={voyage.description}
+								required
+								onChange={(e) => handleChange(e)}
+							/>
+						</div>
+					</div>
+					<div className={"divider"}></div>
+					<div className={"mb-4 grid grid-cols-9 gap-4"}>
+						<div className={"form-field col-span-7 col-start-2"}>
+							<label>Budget</label>
+							<input
+								type={"text"}
+								name={"budget"}
+								value={voyage.budget}
+								onChange={(e) => handleChange(e)}
+							/>
+						</div>
+					</div>
+					<div className={"mb-4 grid grid-cols-9 gap-4"}>
+						<div className={"form-field col-span-7 col-start-2"}>
+							<label>Lieu</label>
+							<input
+								type={"text"}
+								name={"location"}
+								value={voyage.location}
+								onChange={(e) => handleChange(e)}
+							/>
+						</div>
+					</div>
+					<div className={"divider"}></div>
+					<div className={"mb-4 grid grid-cols-9 gap-4"}>
+						<div className={"form-field col-span-7 col-start-2"}>
+							<label>Date de début</label>
+							<input
+								type={"date"}
+								name={"dateStart"}
+								value={voyage.dateStart}
+								onChange={(e) => handleChange(e)}
+							/>
+						</div>
+					</div>
+					<div className={"mb-4 grid grid-cols-9 gap-4"}>
+						<div className={"form-field col-span-7 col-start-2"}>
+							<label>Date de fin</label>
+							<input
+								type={"date"}
+								name={"dateEnd"}
+								value={voyage.dateEnd}
+								onChange={(e) => handleChange(e)}
+							/>
+						</div>
+					</div>
 
-    componentDidMount() {
-        fetch("https://api.example.com/items")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        voyage: result.voyage
-                    });
-                },
-                // Remarque : il est important de traiter les erreurs ici
-                // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
-                // des exceptions provenant de réels bugs du composant.
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
-    }
+					<div className={"divider"}></div>
+					<div className={"grid grid-cols-9 gap-4"}>
+						<div className={"form-field col-span-7 col-start-2"}>
+							<label>Visibilité du voyage</label>
+							<select
+								value={visibility}
+								onChange={(e) => setVisibility(e.target.value)}
+							>
+								<option value={0}>Privé</option>
+								<option value={1}>Amis seulement</option>
+								<option value={2}>Public</option>
+							</select>
+						</div>
+					</div>
 
-    render() {
-        const { voyage, error, isLoaded } = this.state;
-        if (!voyage && error) {
-            return <div>Erreur : {error.message}</div>;
-        } else if (!voyage && !isLoaded) {
-            return <div>Chargement…</div>;
-        } else {
-            return (
-                <div>
-                    <div id="voyagepage" className="mx-auto">
-
-                        <div className="voyage-img absolute top-0">
-                            <img src={this.state.voyage.thumbnail} alt="" className="w-full"/>
-                        </div>
-
-                        <div className="container mx-auto">
-                            <div className="travel-card relative rounded-xl bg-white mx-5 py-5 mb-10">
-                                <div className="title-container pr-5">
-                                    <h1 className='h1'>{this.state.voyage.title}</h1>
-                                </div>
-
-                                <div className="grid grid-col-12">
-                                    <div className='flex justify-center flex-wrap'>
-                                        <button className="btn btn-dark m-3">
-                                            <span className="btn-text">Suivre</span>
-                                        </button>
-
-                                        <button className="btn btn-outline m-3">
-                                            <span className="btn-text">
-                                                <span className="hidden sm:inline-block">Ajouter à la&nbsp;</span>
-                                                <span className="inline-block sm:hidden">+&nbsp;</span>
-                                                liste de souhait
-                                            </span>
-                                        </button>
+					<div className={"divider"}></div>
+                    
+					<div className={"grid grid-cols-9 gap-4"}>
+                        {voyage.steps.map((element, i) => {
+                            return (
+                                <div className="col-span-7 col-start-2 flex justify-between align-center my-2">
+                                    <div className="voyage-step-card rounded-md">
+                                        <p className="text-xl mb-2 text-black capitalize">étape {element.stepCount} : {element.place}</p>
                                     </div>
-
-                                    <div className="grid grid-cols-12 lg:px-5">
-
-                                        <div className="py-1 px-4 mr-3 pr-5 card-user col-span-12 lg:col-span-3">
-                                            <a className="flex items-center justify-center my-2" href={"/passport/" + this.state.voyage.user.id}>
-                                                <img className="rounded-md mr-2" src={this.state.voyage.user.avatar} width="100" height="100" alt="" />
-                                                <span className="text-xl md:text-2xl">
-                                                    {this.state.voyage.user.name}
-                                                </span>
-                                            </a>
-                                        </div>  
-
-                                        <div className="voyage-info flex items-center justify-center my-4 mx-4 text-brown col-span-11 lg:col-span-3">
-                                            <span className="info-icon mr-5">
-                                                <HiOutlineLocationMarker size="25" />
-                                            </span>
-                                            <span className="info-text">
-                                                {this.state.voyage.location}
-                                            </span>
-                                        </div>  
-
-                                        <div className="voyage-info flex items-center justify-center my-4 mx-4 text-brown col-span-11 lg:col-span-3">
-                                            <span className="info-icon mr-5">
-                                                <BsCurrencyDollar size="25" />
-                                            </span>
-                                            <span className="info-text">
-                                                {this.state.voyage.budget}
-                                            </span>
-                                        </div>
-
-                                        <div className="voyage-info flex items-center justify-center my-4 mx-4 text-brown col-span-11 lg:col-span-3">
-                                            <span className="info-icon mr-5">
-                                                <BiTimeFive size="25" />
-                                            </span>
-                                            <span className="info-text">
-                                                du {this.state.voyage.date_start} au {this.state.voyage.date_end}
-                                            </span>
-                                        </div>
-
-                                        <p className="col-span-12 px-5 my-3 text-dark">
-                                            {this.state.voyage.description} 
-                                        </p>
-
-                                    </div>
-
+                                    
+                                    <NavLink to={"/voyage/step/" + voyage.idVoyage + "/" + element.idStep }>
+                                        <button className={"btn btn-icon btn-outline"}>
+                                            <FiEdit3 />
+                                        </button>
+                                    </NavLink>
                                 </div>
-                            </div>
-                        </div>
-
+                            )
+                        })}
                     </div>
-                </div>
-            );
-        }
-    }
-}
+
+                    <NavLink to={"/voyage/step/" + voyage.idVoyage }>
+                        <button className={"btn btn-outline mx-auto my-5"} type={"button"}>
+                            <span className={"btn-text"}>Ajouter une étape</span>
+                        </button>
+                    </NavLink>
+
+					<div className={"divider"}></div>
+					<button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
+						<span className={"btn-text"}>Sauvegarder</span>
+					</button>
+                    
+					<NavLink to={"/voyage/album/" + voyage.idVoyage }>
+                        <button className={"btn btn-outline mx-auto my-5"} type={"button"}>
+                            <span className={"btn-text"}>Gérer l'album global</span>
+                        </button>
+					</NavLink>
+
+				</form>
+			</div>
+		</div>
+	);
+};
 
 export default VoyageEditPage;
