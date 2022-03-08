@@ -14,11 +14,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           build: npm run build
-          start: npm start
       # ScreenShots
-      - name: Create Screenshots folder
-        run: |
-          mkdir cypress/screenshots
       - name: Upload Screenshots
         uses: actions/upload-artifact@v2
         if: ${{ failure() }}
@@ -26,9 +22,6 @@ jobs:
           name: cypress-screenshots
           path: cypress/screenshots
       # Videos
-      - name: Create Videos folder
-        run: |
-          mkdir cypress/videos
       - name: Upload Videos
         uses: actions/upload-artifact@v2
         if: ${{ always() }}
