@@ -175,7 +175,7 @@ const Map = (props) => {
                 .addTo(map);
             });
         }
-    }, [props]);
+    }, [props, mapSearchQuery, mapUserQuery]);
 
     return (
         <div id="mapContainer" className="map">
