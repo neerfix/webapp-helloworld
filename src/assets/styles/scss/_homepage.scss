@@ -11,39 +11,38 @@
 
 #homepage{
 	font-family: 'DM Serif Display', serif;
-    background-image: url('/assets/images/topo-lines.svg');
     position: relative;
     z-index: 2;
 
     #hero-banner{
         margin-top: 200px;
 
-        &::before{
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100vw;
-            height: 100%;
-            background-image: url('/assets/images/homepage/hero-banner.jpg');
-            object-fit: cover;
-            background-position: center center;
-            max-height: 120vh;
-            z-index: -2;
-        }
+        // &::before{
+        //     content: "";
+        //     position: absolute;
+        //     left: 0;
+        //     top: 0;
+        //     width: 100vw;
+        //     height: 100%;
+        //     background-image: url('/assets/images/homepage/hero-banner.jpg');
+        //     object-fit: cover;
+        //     background-position: center center;
+        //     max-height: 120vh;
+        //     z-index: -2;
+        // }
 
-        &::after{
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100vw;
-            height: 100%;
-            background-color: black;
-            max-height: 120vh;
-            opacity: .3;
-            z-index: -1;
-        }
+        // &::after{
+        //     content: "";
+        //     position: absolute;
+        //     left: 0;
+        //     top: 0;
+        //     width: 100vw;
+        //     height: 100%;
+        //     background-color: black;
+        //     max-height: 120vh;
+        //     opacity: .3;
+        //     z-index: -1;
+        // }
 
         #main-title{
             font-weight: bold;
@@ -75,6 +74,7 @@
         z-index: 2;
         max-width: 900px;
         margin: 0 auto;
+        // background-image: url('/assets/images/topo-lines.svg');
 
         .earth-visual{
             opacity: .9;
@@ -142,7 +142,7 @@
         position: relative;
         
         .diamond{
-            font-size: 20px;
+            font-size: 15px;
             position: relative;
             display: flex;
             align-items: center;
@@ -152,8 +152,8 @@
 
             &:after {
                 content: "";
-                height: 25px;
-                width: 25px;
+                height: 20px;
+                width: 20px;
                 position: absolute;
                 border: 1px solid;
                 transition: 0.3s background-color;
@@ -168,6 +168,30 @@
     }
 }
 
+#hero-video-container{
+    position: absolute;
+    // z-index: -3;
+    // transform: scale(2);
+    width: 100%;
+
+    video{
+        min-height: 865px;
+        max-height: 865px;
+        max-width: none;
+    }
+
+    &::after{
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        max-height: 865px;
+        opacity: .4;
+    }
+}
 
 @keyframes pulse {
     0% {

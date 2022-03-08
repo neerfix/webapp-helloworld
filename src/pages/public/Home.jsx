@@ -55,6 +55,12 @@ const HomePage = () => {
 				`
 				}}
 			/>
+
+			<div id="hero-video-container">
+				<video autoPlay muted loop id="hero-video"
+					src="/videos/video-hero-full.mp4">
+				</video>
+			</div>
 			
 			<div id="homepage">
 				<div className="mb-20" id="hero-banner">
