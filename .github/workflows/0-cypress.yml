@@ -18,7 +18,7 @@ jobs:
       # ScreenShots
       - name: Create Screenshots folder
         run: |
-          mkdir -p cypress/screenshots
+          mkdir /home/runner/work/webapp/webapp/cypress/screenshots
       - name: Upload Screenshots
         uses: actions/upload-artifact@v1
         if: ${{ failure() }}
@@ -28,7 +28,7 @@ jobs:
       # Videos
       - name: Create Videos folder
         run: |
-          mkdir -p cypress/videos
+          mkdir /home/runner/work/webapp/webapp/cypress/videos
       - name: Videos
         uses: actions/upload-artifact@v1
         if: ${{ always() }}
