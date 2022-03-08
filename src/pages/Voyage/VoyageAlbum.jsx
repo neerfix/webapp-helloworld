@@ -109,10 +109,12 @@ const VoyageAlbumPage = () => {
 			<div className={"w-full"}>
 				<div className="title-container">
 					<h2 className='h2'>
-                        Editer mon album&nbsp;
-                        {!stepId && <span>de voyage</span>}
-                        {stepId && <span>d'étape</span>}
-                    </h2>
+              <span>
+                Editer mon album&nbsp;
+                {!stepId && <span>de voyage</span>}
+                {stepId && <span>d'étape</span>}
+              </span>
+          </h2>
 					<button className={"btn btn-beige btn-icon ml-auto mr-5"} type={"submit"}>
                         <RiDeleteBin6Line />
 					</button>
@@ -123,9 +125,9 @@ const VoyageAlbumPage = () => {
 
                     <Dropzone onDrop={onDrop} accept={"image/*"} />
                     {images && images.length > 0 && (
-                        <div class="flex align-items-center justify-between mx-10">
-                            <p>Glissez et déposez les images pour les réorganiser</p>
-                            <p>{images.length} image(s)</p>
+                        <div class="flex align-items-center justify-between mx-10 flex-wrap">
+                            <p>Déplacez les images pour les réorganiser</p>
+                            <p class="italic">{images.length} image{images.length > 1 && "s"}</p>
                         </div>
                     )}
                     <DndProvider backend={backendForDND}>
