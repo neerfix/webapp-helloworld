@@ -18,7 +18,7 @@ jobs:
       # ScreenShots
       - name: Create Screenshots folder
         run: |
-          ls
+          ls && mkdir cypress/screenshots
       - name: Upload Screenshots
         uses: actions/upload-artifact@v1
         if: ${{ failure() }}
