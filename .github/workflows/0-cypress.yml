@@ -16,13 +16,19 @@ jobs:
           build: npm run build
           start: npm start
       # ScreenShots
-      - name: Screenshots
+      - name: Create Screenshots folder
+        run: |
+          mkdir -p cypress/screenshots
+      - name: Upload Screenshots
         uses: actions/upload-artifact@v1
         if: ${{ failure() }}
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Videos
+      - name: Create Videos folder
+        run: |
+          mkdir -p cypress/videos
       - name: Videos
         uses: actions/upload-artifact@v1
         if: ${{ always() }}
