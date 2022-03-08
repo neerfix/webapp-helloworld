@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const InteractiveMap = () => {
 
-	const [voyages, setVoyages] = useState({
+	const voyages = useState({
 		steps: [
 			{
 				id: 2345,

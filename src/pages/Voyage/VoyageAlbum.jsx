@@ -61,14 +61,6 @@ const VoyageAlbumPage = () => {
 		// TODO: Call Api to get voyage information
 	});
 	
-	/*** Custom functions ***/
-	
-	const handleChange = (event) => {
-		setImages({
-			...images,
-		});
-	};
-	
 	const saveImages = (event) => {
 		event.preventDefault();
 		

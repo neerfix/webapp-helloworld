@@ -6,10 +6,12 @@ import VoyageStepPage from "@/pages/Voyage/VoyageStep";
 import VoyageStepEditPage from "@/pages/Voyage/VoyageStepEdit";
 import VoyageAlbumPage from "@/pages/Voyage/VoyageAlbum";
 import VoyageListPage from "@/pages/Voyage/VoyageList";
+import VoyageWishlistPage from "@/pages/Voyage/VoyageWishlist";
 
 const routes = [
 	{ path: '/voyage/new', element: <VoyageEditPage /> },
 	{ path: '/voyage/list', element: <VoyageListPage /> },
+	{ path: '/voyage/wishlist', element: <VoyageWishlistPage /> },
 	{ path: '/voyage/:voyageId', element: <VoyagePage /> },
 	{ path: '/voyage/edit/:voyageId', element: <VoyageEditPage /> },
 	{ path: '/voyage/step/:voyageId', element: <VoyageStepPage /> },

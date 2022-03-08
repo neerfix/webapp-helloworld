@@ -8,11 +8,11 @@ const Map = (props) => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+
     let mapSearchQuery = urlParams.get('search')
     if(mapSearchQuery) mapSearchQuery = mapSearchQuery.replace('-', ' ');
     let mapUserQuery = urlParams.get('user');
-
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
     useEffect(() => {
         let mapCenter = [0, 20];
