@@ -22,6 +22,8 @@ jobs:
       - name: Upload Screenshots
         uses: actions/upload-artifact@v2
         if: ${{ failure() }}
+        run: |
+          ls
         with:
           name: cypress-screenshots
           path: cypress/screenshots
