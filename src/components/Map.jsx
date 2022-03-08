@@ -20,14 +20,14 @@ const Map = (props) => {
         let mapZoom = 2;
 
         if(props && props.steps) {
-            let minLon = Math.min(...props.steps.map(item => item.longitude)) - .2;
-            let minLat = Math.min(...props.steps.map(item => item.latitude)) - .2;
-            let maxLon = Math.max(...props.steps.map(item => item.longitude)) + .2;
-            let maxLat = Math.max(...props.steps.map(item => item.latitude)) + .2;
+            let minLon = Math.min(...props.steps.map(item => item.longitude)) - 5.5;
+            let minLat = Math.min(...props.steps.map(item => item.latitude)) - 5.5;
+            let maxLon = Math.max(...props.steps.map(item => item.longitude)) + 5.5;
+            let maxLat = Math.max(...props.steps.map(item => item.latitude)) + 5.5;
 
             mapBounds = [ [maxLon, minLat], [minLon, maxLat] ];
             mapCenter = [ (minLon + maxLon) / 2, (minLat + maxLat) / 2 ];
-            mapZoom= 10;
+            mapZoom= 4;
         }
 
         const map = new mapboxgl.Map({

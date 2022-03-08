@@ -34,10 +34,28 @@ class VoyageListPage extends React.Component {
                     image : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tomb_of_Shah_Rukn-e-Alam_View_Multan.jpg/1280px-Tomb_of_Shah_Rukn-e-Alam_View_Multan.jpg" 
                 },
             ],
-            steps: [
-                {},
-                {},
-                {}
+            markers: [
+                {
+                    id: 2345,
+                    place: "Découverte de Noursoultan",
+                    description: "Voyage au Kazakhstan",
+                    latitude: 51.169392,
+                    longitude: 71.449074,
+                },
+                {
+                    id: 23456,
+                    place: "Yokohama, Nagoya, Osaka",
+                    description: "Voyage au Japon",
+                    latitude: 34.665394,
+                    longitude: 135.432526,
+                },
+                {
+                    id: 33456,
+                    place: "Séjour à Multan",
+                    description: "Séjour au Pakistan",
+                    latitude: 30.181459,
+                    longitude: 71.492157,
+                }
             ],
         };
     }
@@ -78,36 +96,32 @@ class VoyageListPage extends React.Component {
                             <h1 className='h1'>Liste des voyages</h1>
                         </div>
 
-                        <div className="container mx-auto">
-                            <div className="travel-card relative rounded-xl bg-white mx-5 py-5 mb-10">
+                        { this.state.markers && 
+                            <main id="interactive-map">
+                                <Map steps={this.state.markers} />
+                            </main>
+                        }
 
-                                { this.state.voyages && this.state.voyages.markers && 
-                                    <main id="interactive-map">
-                                        <Map steps={this.state.voyages.markers} />
-                                    </main>
+                        <div className="container mx-auto">
+                            <div className="travel-card relative rounded-xl bg-white py-5 mb-10">
+
+                                { this.state.voyages && 
+                                    <div className="flex flex-wrap">
+                                        {this.state.voyages.map((element, i) => {
+                                            return (
+                                                <VoyageCard key={i} 
+                                                title={element.title} location={element.location} id={element.id} 
+                                                    image={element.image} />
+                                            )
+                                        })}
+                                    </div>
                                 }
 
-                                <div className="grid grid-col-12">
-
-                                    { this.state.voyages && 
-                                        <div>
-                                            {this.state.voyages.map((element, i) => {
-                                                return (
-                                                    <VoyageCard key={i} 
-                                                    title={element.title} location={element.location} id={element.id} 
-                                                     image={element.image} />
-                                                )
-                                            })}
-                                        </div>
-                                    }
-
-                                    { !this.state.voyages && 
-                                        <p>
-                                            Aucun voyage trouvé
-                                        </p>
-                                    }
-
-                                </div>
+                                { !this.state.voyages && 
+                                    <p>
+                                        Aucun voyage trouvé
+                                    </p>
+                                }
                             </div>
                         </div>
 

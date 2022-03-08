@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 class VoyageCard extends React.Component {
     render() {
         return (
-            <div className="feed-card rounded-md">
+            <div className="feed-card rounded-md m-3">
                 <div className="flex mt-2">
                     <div className="card-img mr-5 py-4 my-2">
                         <img className='rounded-right-md' src={this.props.image} alt=""/>
@@ -16,7 +16,7 @@ class VoyageCard extends React.Component {
 
                         <NavLink to={"/voyage/" + this.props.id }>
                             <button className={"btn btn-outline my-5"} type={"button"}>
-                                <span className={"btn-text"}>Voir le voyage</span>
+                                <span className={"btn-text"}>Consulter</span>
                             </button>
                         </NavLink>
                     </div>
