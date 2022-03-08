@@ -1,6 +1,6 @@
 describe('Check Home Page content', function() {
 	beforeEach(() => {
-		cy.visit('/')
+		cy.visit(Cypress.env('baseUrl'))
 	})
 	
 	it('Travels Map', () => {
