@@ -64,9 +64,11 @@ const PassportPage = () => {
 			<div className={"bg-beige py-10 px-6"}>
 				<div className={"md:mx-auto md:max-w-[500px]"}>
 					<div>
-						<button className={"btn btn-dark my-5 w-full"}>
-							<span className={"btn-text"}>Mes voyages</span>
-						</button>
+						<NavLink to={"/voyage/list"}>
+							<button className={"btn btn-dark my-5 w-full"}>
+								<span className={"btn-text"}>Mes voyages</span>
+							</button>
+						</NavLink>
 						<button className={"btn btn-outline my-5 w-full"}>
 							<span className={"btn-text"}>Ma liste de souhait</span>
 						</button>
