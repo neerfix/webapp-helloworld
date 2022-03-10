@@ -175,7 +175,7 @@ class VoyagePage extends React.Component {
                                     <div className="grid grid-cols-12 lg:px-5">
 
                                         <div className="py-1 px-4 mr-3 pr-5 card-user col-span-12 lg:col-span-3">
-                                            <a className="flex items-center justify-center my-2" href={"/passport/" + this.state.voyage.user.id}>
+                                            <a className="flex items-center justify-center my-2" href={"/profile/" + this.state.voyage.user.id}>
                                                 <img className="rounded-md mr-2" src={this.state.voyage.user.avatar} width="100" height="100" alt="" />
                                                 <span className="text-xl md:text-2xl">
                                                     {this.state.voyage.user.name}
