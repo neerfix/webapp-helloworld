@@ -39,7 +39,8 @@ class Header extends React.Component {
 							}
 							{!this.state.isLogged &&
 								<NavLink to={"login"} className={"nav-btn"}>
-									Connexion / Inscription
+									<span className="hidden visible-lg mx-2 w-full">Connexion / Inscription</span>
+									<span className="hidden-lg mx-2 w-full">Compte</span>
 								</NavLink>
 							}
 						</div>

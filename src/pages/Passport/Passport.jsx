@@ -53,9 +53,10 @@ const PassportPage = () => {
 					<div className="passport-card relative rounded-xl bg-white mx-5 py-5 mb-10">
 
 						<div className={"w-full"}>
+							<h2 className="text-xl tracking-widest text-brown text-center">◆&nbsp;PASSEPORT&nbsp;◆</h2>
 							<div className="title-container pr-5">
-								<div className={"flex w-full items-center justify-between pr-8"}>
-									<h1 className="h1">Passeport de {profile.username}</h1>
+								<div className={"flex w-full items-center justify-between pr-3"}>
+									<h1 className="h1">{profile.username}</h1>
 									<NavLink to={"/passport/edit"}>
 										<button className={"btn btn-icon btn-outline"}>
 											<FiEdit3 />
@@ -67,7 +68,7 @@ const PassportPage = () => {
 
 						<div className={"bg-beige py-10 px-6 rounded-md"}>
 							<div className={"mx-auto"}>
-								<div className="flex align-items-center justify-center">
+								<div className="flex flex-wrap align-items-center justify-center">
 									<NavLink to={"/voyage/list"}>
 										<button className={"btn btn-dark my-5 mr-3"}>
 											<span className={"btn-text"}>Mes voyages</span>
