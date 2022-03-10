@@ -1,12 +1,12 @@
-import {NavLink} from "react-router-dom";
-import {FiEdit3} from "react-icons/fi";
-import banner from "@/assets/images/homepage/hero-banner.jpg";
-import PassportInformation from "@/pages/Passport/components/PassportInformation";
-import {useEffect, useState} from "react";
 
+import {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 
-const ProfilePage = (props) => {
+import PassportInformation from "@/pages/Passport/components/PassportInformation";
+
+import banner from "@/assets/images/homepage/hero-banner.jpg";
+
+const ProfilePage = () => {
 	const params = useParams()
 	
 	const [loading, setLoading] = useState(true)
