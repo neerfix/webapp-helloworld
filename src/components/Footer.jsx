@@ -10,54 +10,115 @@ class Footer extends React.Component {
 		return (
 			<div className={"footer border-t-2 border-dark-brown bg-beige pt-4 pb-2"}>
 				<div className={"footer-content mb-2 flex items-center"}>
-					<div className={"flex w-full w-1/2 justify-center"}>
+					<div className={"flex w-full w-1/3 justify-center"}>
 						<div className={"flex items-center space-x-2"}>
 							<Logo className={"logo"} />
-							<div className={"text-2xl font-semibold leading-7"}>
+							<div className={"text-4xl font-semibold leading-7"}>
 								<span>Hello</span>
-								<br />
 								<span>World</span>
 							</div>
 						</div>
 					</div>
-					<div className={"flex w-full w-1/2 justify-center"}>
-						<div className={"lg:flex lg:items-center lg:space-x-2"}>
-							<div className={"flex items-center justify-start space-x-2"}>
-								<span className={"text-2xs"}>◆</span>
+					<div className={"w-full w-1/3 my-5 justify-center"}>
+						<div className="m-r5">
+							<p>
+								Grâce à HelloWorld, votre carnet de voyage en ligne, vous pouvez mettre en avant vos meilleurs voyages, étapes par étapes et avec photos.
+								<br />
+								Rejoignez la communauté de voyageurs et inspirez les autres !
+							</p>
+						</div>
+						<div className={"d-block mt-3"}>
+							<p>
+								Retrouvez tous les voyages sur la&nbsp;
 								<NavLink
 									to={"map"}
-									className={"nav-link text-lg font-semibold"}
+									className={"nav-link font-semibold underline"}
 								>
-									Carte
+									carte interactive
 								</NavLink>
-							</div>
-							<div className={"flex items-center justify-start space-x-2"}>
-								<span className={"text-2xs"}>◆</span>
+							</p>
+							<p>
+								Si vous ne possédez pas de compte, vous pouvez dès à présent&nbsp;
 								<NavLink
-									to={"carnet"}
-									className={"nav-link text-lg font-semibold"}
+									to={"login"}
+									className={"nav-link font-semibold underline"}
 								>
-									Carnet
+									vous inscrire
 								</NavLink>
-							</div>
-							<div className={"flex items-center justify-start space-x-2"}>
-								<span className={"text-2xs"}>◆</span>
-								<NavLink
-									to={"passport"}
-									className={"nav-link text-lg font-semibold"}
-								>
-									Passport
-								</NavLink>
-							</div>
+							</p>
+						</div>
+					</div>
+					<div className={"w-full w-1/3 my-5 justify-center"}>
+						<div className="m-5 text-sm">
+							<p>
+								<ol>
+									<li className="flex items-center">
+										<span className={"mr-2 text-brown"}>
+											⬩ Gregg SANCHEZ
+										</span>
+										<a href="https://github.com/Arty3P" className={"text-sm"}>
+											<FaGithub />
+										</a>
+									</li>
+									<li className="flex items-center">
+										<span className={"mr-2 text-brown"}>
+											⬩ Romain FRECHET
+										</span>
+										<a href="https://github.com/Hikari-rom" className={"text-sm"}>
+											<FaGithub />
+										</a>
+									</li>
+									<li className="flex items-center">
+										<span className={"mr-2 text-brown"}>
+											⬩ Emeline PAL
+										</span>
+										<a href="https://github.com/emelinepal" className={"text-sm"}>
+											<FaGithub />
+										</a>
+									</li>
+									<li className="flex items-center">
+										<span className={"mr-2 text-brown"}>
+											⬩ Nicolas NOTARARIGO
+										</span>
+										<a href="https://github.com/Neerfix" className={"text-sm"}>
+											<FaGithub />
+										</a>
+									</li>
+									<li className="flex items-center">
+										<span className={"mr-2 text-brown"}>
+											⬩ Aimee RITLENG
+										</span>
+										<a href="https://github.com/Aimee-RTLNG" className={"text-sm"}>
+											<FaGithub />
+										</a>
+									</li>
+									<li className="flex items-center">
+										<span className={"mr-2 text-brown"}>
+											⬩ Louise BAULAN
+										</span>
+										<a href="https://github.com/Fayaah" className={"text-sm"}>
+											<FaGithub />
+										</a>
+									</li>
+									<li className="flex items-center">
+										<span className={"mr-2 text-brown"}>
+											⬩ Matisse LIVAIN
+										</span>
+										<a href="https://github.com/MLivain" className={"text-sm"}>
+											<FaGithub />
+										</a>
+									</li>
+								</ol>
+							</p>
 						</div>
 					</div>
 				</div>
 				<div className={"footer-bottom flex items-center justify-between py-4"}>
 					<h4 className={"text-sm"}>© Hello World 2022-2023</h4>
-					<h4 className={"text-sm"}>
+					<a href="https://github.com/helloworld-ynovlyon/" className={"text-sm flex items-center mr-10 pr-4"}>
 						<span className={"mr-2"}>SOURCE</span>
 						<FaGithub />
-					</h4>
+					</a>
 				</div>
 			</div>
 		);

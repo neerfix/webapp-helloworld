@@ -77,7 +77,7 @@ const HomePage = () => {
 				<div className="mb-20" id="hero-banner">
 					<div className="px-10 lg:px-20">
 						<h1 id="main-title" className="mt-20">
-							<span className="text-8xl lg:text-9xl">Hello</span>
+							<span className="text-8xl lg:text-9xl first-title">Hello</span>
 							<br />
 							<span className="sub-title">World</span>
 						</h1>
