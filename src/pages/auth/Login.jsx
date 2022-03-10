@@ -48,60 +48,56 @@ const Login = () => {
 
     return (
         <div className={"bg-beige"}>
-            <div id="bloc-mail" className="py-5">
+            <div id="bloc-mail" className="pt-5 pb-3">
                 <div className="title-container">
                     <h1 className='h1'>Bienvenue à bord</h1>
                 </div>
-                <div className="mx-auto my-10 container">
-                    <form onSubmit={(e) => handleMailValidation(e)}>
-                        <div className={"mb-4 grid grid-cols-9 gap-4"}>
-                            <div className={"form-field col-span-7 col-start-2"}>
-                                <label id={"email"}>Adresse mail</label>
-                                <input
-                                    type={"email"}
-                                    name={"email"}
-                                    value={email}
-                                    required
-                                    className={"focus:border-dark-brown focus:ring-dark-brown"}
-                                    onChange={e => setEmail(e.target.value)}
-                                />
-                            </div>
-                        </div>
-                        <div className={"btn-loading mx-auto"}>
-                            <button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
-                                <span className={"btn-text"}>S'identifier avec un mail</span>
-                            </button>
-                            {emailLoading &&
-                                <div className={"btn-overlay"}>
-                                    <VscRefresh className={"animate-spin"} />
-                                </div>
-                            }
-                        </div>
-                    </form>
-                </div>
             </div>
-            <main className="w-full bg-beige">
-                
-
-                {emailIsKnown === null &&
-                    <h1>empty</h1>
+            <main className="w-full bg-beige account-sign-container mx-auto">
+                {!emailIsKnown && emailIsKnown !== false &&
+                    <div className="mb-10 mx-auto container">
+                        <form onSubmit={(e) => handleMailValidation(e)}>
+                            <div className={"mb-4 grid grid-cols-9 gap-4"}>
+                                <div className={"form-field col-span-7 col-start-2"}>
+                                    <label id={"email"}>Adresse mail</label>
+                                    <input
+                                        type={"email"}
+                                        name={"email"}
+                                        value={email}
+                                        required
+                                        className={"focus:border-dark-brown focus:ring-dark-brown"}
+                                        onChange={e => setEmail(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            <div className={"btn-loading mx-auto"}>
+                                <button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
+                                    <span className={"btn-text"}>S'identifier avec un mail</span>
+                                </button>
+                                {emailLoading &&
+                                    <div className={"btn-overlay"}>
+                                        <VscRefresh className={"animate-spin"} />
+                                    </div>
+                                }
+                            </div>
+                        </form>
+                    </div>
                 }
 
                 {emailIsKnown === true &&
-                    <div id="bloc-login" className="my-10 py-10">
-                        <div className="title-container">
-                            <h2>Connectez-vous</h2>
-                        </div>
+                    <div id="bloc-login" className="mb-10">
                         <form onSubmit={(e) => handleLogin(e)}>
                             <div className={"mb-4 grid grid-cols-9 gap-4"}>
                                 <div className={"form-field col-span-7 col-start-2"}>
-                                    <label>Pseudonyme</label>
+                                    <label>Adresse mail</label>
                                     <input
-                                        type={"text"}
-                                        name={"username"}
-                                        value={username}
+                                        type={"email"}
+                                        name={"email"}
+                                        value={email}
+                                        required
                                         className={"focus:border-dark-brown focus:ring-dark-brown"}
-                                        onChange={e => setUsername(e.target.value)}
+                                        readOnly="readonly"
+                                        onChange={e => setEmail(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -116,10 +112,10 @@ const Login = () => {
                                         onChange={e => setPassword(e.target.value)}
                                     />
                                 </div>
+                                <Link to={"/"} className="text-right nav-link col-span-7 col-start-2">
+                                    <p className={"forgot-password-link"}>J'ai oublié mon mot de passe</p>
+                                </Link>
                             </div>
-                            <Link to={"/"}>
-                                <p className={"forgot-password-link"}>Mot de passe oublié</p>
-                            </Link>
                             <button type={"submit"} className="btn btn-dark mx-auto my-5">
                                 <span className="btn-text">Se connecter</span>
                             </button>
@@ -128,11 +124,22 @@ const Login = () => {
                 }
 
                 {emailIsKnown === false &&
-                    <div id="bloc-registration" className="my-10 py-10">
-                        <div className="title-container">
-                            <h2>Inscrivez-vous</h2>
-                        </div>
+                    <div id="bloc-registration" className="mb-10">
                         <form onSubmit={(e) => handleRegistration(e)}>
+                            <div className={"mb-4 grid grid-cols-9 gap-4"}>
+                                <div className={"form-field col-span-7 col-start-2"}>
+                                    <label>Adresse mail</label>
+                                    <input
+                                        type={"email"}
+                                        name={"email"}
+                                        value={email}
+                                        required
+                                        className={"focus:border-dark-brown focus:ring-dark-brown"}
+                                        readOnly="readonly"
+                                        onChange={e => setEmail(e.target.value)}
+                                    />
+                                </div>
+                            </div>
                             <div className={"mb-4 grid grid-cols-9 gap-4"}>
                                 <div className={"form-field col-span-7 col-start-2"}>
                                     <label>Pseudonyme</label>
