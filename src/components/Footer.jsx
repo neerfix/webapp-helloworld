@@ -9,8 +9,8 @@ class Footer extends React.Component {
 	render() {
 		return (
 			<div className={"footer border-t-2 border-dark-brown bg-beige pt-4 pb-2"}>
-				<div className={"footer-content mb-2 flex items-center"}>
-					<div className={"flex w-full w-1/3 justify-center"}>
+				<div className={"footer-content mb-2 flex flex-col lg:flex-row items-center"}>
+					<div className={"flex w-full lg:w-1/3 justify-center"}>
 						<div className={"flex items-center space-x-2"}>
 							<Logo className={"logo"} />
 							<div className={"text-4xl font-semibold leading-7"}>
@@ -19,7 +19,7 @@ class Footer extends React.Component {
 							</div>
 						</div>
 					</div>
-					<div className={"w-full w-1/3 my-5 justify-center"}>
+					<div className={"w-full lg:w-1/3 my-5 justify-center px-4"}>
 						<div className="m-r5">
 							<p>
 								Grâce à HelloWorld, votre carnet de voyage en ligne, vous pouvez mettre en avant vos meilleurs voyages, étapes par étapes et avec photos.
@@ -48,7 +48,7 @@ class Footer extends React.Component {
 							</p>
 						</div>
 					</div>
-					<div className={"w-full w-1/3 my-5 justify-center"}>
+					<div className={"w-full lg:w-1/3 justify-center px-4"}>
 						<div className="m-5 text-sm">
 							<p>
 								<ol>
@@ -113,9 +113,9 @@ class Footer extends React.Component {
 						</div>
 					</div>
 				</div>
-				<div className={"footer-bottom flex items-center justify-between py-4"}>
+				<div className={"footer-bottom flex flew-wrap items-center justify-between py-4"}>
 					<h4 className={"text-sm"}>© Hello World 2022-2023</h4>
-					<a href="https://github.com/helloworld-ynovlyon/" className={"text-sm flex items-center mr-10 pr-4"}>
+					<a href="https://github.com/helloworld-ynovlyon/" className={"hidden sm:flex text-sm flex items-center mr-10 pr-4"}>
 						<span className={"mr-2"}>SOURCE</span>
 						<FaGithub />
 					</a>
