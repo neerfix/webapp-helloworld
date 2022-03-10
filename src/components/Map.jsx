@@ -14,16 +14,18 @@ const Map = (props) => {
     if(mapSearchQuery) mapSearchQuery = mapSearchQuery.replace('-', ' ');
     let mapUserQuery = urlParams.get('user');
 
+
     useEffect(() => {
         let mapCenter = [0, 20];
         let mapBounds;
         let mapZoom = 2;
 
-        if(props && props.steps) {
-            let minLon = Math.min(...props.steps.map(item => item.longitude)) - 5.5;
-            let minLat = Math.min(...props.steps.map(item => item.latitude)) - 5.5;
-            let maxLon = Math.max(...props.steps.map(item => item.longitude)) + 5.5;
-            let maxLat = Math.max(...props.steps.map(item => item.latitude)) + 5.5;
+        if(props && props.steps[0]) {
+
+            let minLon = Math.min(...props.steps[0].map(item => item.longitude)) - 5.5;
+            let minLat = Math.min(...props.steps[0].map(item => item.latitude)) - 5.5;
+            let maxLon = Math.max(...props.steps[0].map(item => item.longitude)) + 5.5;
+            let maxLat = Math.max(...props.steps[0].map(item => item.latitude)) + 5.5;
 
             mapBounds = [ [maxLon, minLat], [minLon, maxLat] ];
             mapCenter = [ (minLon + maxLon) / 2, (minLat + maxLat) / 2 ];
@@ -149,8 +151,8 @@ const Map = (props) => {
         map.addControl(new PitchToggle({ minpitchzoom: 4 }), "bottom-left");
 
         // Ajout des points
-        if(props && props.steps){
-            props.steps.forEach( step => {
+        if(props && props.steps[0]){
+            props.steps[0].forEach( step => {
                 // create a HTML element for each feature
                 const el = document.createElement('div');
                 el.className = 'marker';

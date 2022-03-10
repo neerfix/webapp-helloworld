@@ -5,8 +5,7 @@ import { useState } from "react";
 
 const InteractiveMap = () => {
 
-	const voyages = useState({
-		steps: [
+	const voyages = useState([
 			{
 				id: 2345,
 				place: "Voyage en Italie",
@@ -42,13 +41,12 @@ const InteractiveMap = () => {
 				latitude: 35.652832,
 				longitude: 139.839478,
 			}
-		]
-	});
+		]);
 
 	return (
 		<div className='bg-beige'>
 			<main id="interactive-map" className="w-full">
-				<Map steps={voyages.steps} />
+				<Map steps={voyages} />
 			</main>
 		</div>
 	)
