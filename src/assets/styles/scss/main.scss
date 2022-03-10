@@ -53,22 +53,20 @@ p {
 	display: flex;
 	margin: 25px 0;
 	position: relative;
+	align-items: center;
 
 	@apply text-brown;
 	
-	&:before{
-		content: "";
-		position: absolute;
-		left: 0;
-		width: 100px;
-		height: 1.5px;
-		top: 16px;
-			
-		@media (max-width: 600px) {
-			width: 40px;
-		}
+	@media (min-width: 600px) {
+		&:before{
+			content: "";
+			position: absolute;
+			left: 0;
+			width: 100px;
+			height: 1.5px;
 
-		@apply bg-brown;
+			@apply bg-brown;
+		}
 	}
 	
 	h2, h1{
@@ -87,27 +85,29 @@ p {
 			line-height: 35px;
 
 			@media (max-width: 600px) {
-				font-size: 36px;
+				font-size: 30px;
 				line-height: 32px;
 			}
 		}
 			
 		@media (max-width: 600px) {
-			margin-left: 55px;
+			margin-left: 10px;
 		}
 	
-		&:before{
-			content: "◆";
-			position: absolute;
-			left: 90px;
-			font-size: 15px;
-			top: 0;
-			height: 100%;
-
-			@apply text-brown;
+		@media (min-width: 600px) {
+			&:before{
+				content: "◆";
+				position: absolute;
+				left: 90px;
+				font-size: 15px;
+				top: 0;
+				height: 100%;
 	
-			@media (max-width: 600px) {
-				left: 35px;
+				@apply text-brown;
+		
+				@media (max-width: 600px) {
+					left: 35px;
+				}
 			}
 		}
 	}
@@ -150,7 +150,7 @@ p {
 		left: 0;
 		width: 5vw;
 		height: 1.5px;
-		top: 25px;
+		top: 26px;
 			
 		@media (max-width: 600px) {
 			width: 20px;
@@ -198,6 +198,8 @@ p {
 
 	&.btn-dark{
 		@apply text-beige bg-brown;
+		border-width: 2px;
+		@apply border-brown;
 	
 		&:before{
 			@apply bg-beige;
@@ -358,4 +360,9 @@ form {
 	margin: 35px auto 25px;
 
 	@apply bg-brown;
+}
+
+input:read-only{
+	pointer-events: none;
+	opacity: .4;
 }

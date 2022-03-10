@@ -8,6 +8,13 @@
 		width: 100%;
 	}
 
+	.mapboxgl-canvas-container{
+		background: url('/assets/images/map-loading.jpg');
+		background-position: center center;
+		background-size: cover;
+		border: 1px solid #867065;
+	}
+
 	.mapboxgl-ctrl-top-left{
 		padding-right: 100px;
 	}

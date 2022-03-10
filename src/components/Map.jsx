@@ -14,12 +14,14 @@ const Map = (props) => {
     if(mapSearchQuery) mapSearchQuery = mapSearchQuery.replace('-', ' ');
     let mapUserQuery = urlParams.get('user');
 
+
     useEffect(() => {
         let mapCenter = [0, 20];
         let mapBounds;
         let mapZoom = 2;
 
         if(props && props.steps) {
+
             let minLon = Math.min(...props.steps.map(item => item.longitude)) - 5.5;
             let minLat = Math.min(...props.steps.map(item => item.latitude)) - 5.5;
             let maxLon = Math.max(...props.steps.map(item => item.longitude)) + 5.5;
@@ -169,7 +171,7 @@ const Map = (props) => {
                 .setPopup(
                     new mapboxgl.Popup({ offset: 25 }) // add popups
                     .setHTML(
-                        `<h3>${step.place}</h3><p>${step.description}</p>`
+                        `<h3>${step.place}</h3><p>${step.description}</p><a href="/voyage/${step.id}">Découvrir</a>`
                     )
                 )
                 .addTo(map);
