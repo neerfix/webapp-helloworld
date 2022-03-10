@@ -26,6 +26,10 @@ class Header extends React.Component {
 							<NavLink to={"passport"} className={"nav-link"}>
 								Passeport
 							</NavLink>
+							<span className="separator">◆</span>
+							<NavLink to={"login"} className={"nav-btn"}>
+								Connexion / Inscription
+							</NavLink>
 						</div>
 					</nav>
 				</div>

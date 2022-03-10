@@ -41,6 +41,17 @@ const HomePage = () => {
 						font-weight: normal;
 					}
 
+					#header-container .nav-btn{
+						color: #f4e9dd;
+						font-weight: normal;
+					}
+
+					#header-container .nav-btn:hover{
+						background: #f4e9dd;
+						color: black;
+						border-color: #f4e9dd;
+					}
+
 					#header-container .nav-link::after{
 						background-color: #f4e9dd;
 					}
