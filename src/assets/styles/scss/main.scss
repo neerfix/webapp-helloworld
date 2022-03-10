@@ -243,6 +243,30 @@ p {
 	}
 }
 
+.btn-loading {
+	position: relative;
+	max-width: max-content;
+
+	.btn-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100%;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		background-color: rgba(0, 0, 0, 0.9);
+
+		svg {
+			@apply text-white text-xl;
+		}
+	}
+}
+
 // ANCHOR DestinationCard
 
 .destination-card, .feed-card{
