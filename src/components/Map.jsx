@@ -20,12 +20,12 @@ const Map = (props) => {
         let mapBounds;
         let mapZoom = 2;
 
-        if(props && props.steps[0]) {
+        if(props && props.steps) {
 
-            let minLon = Math.min(...props.steps[0].map(item => item.longitude)) - 5.5;
-            let minLat = Math.min(...props.steps[0].map(item => item.latitude)) - 5.5;
-            let maxLon = Math.max(...props.steps[0].map(item => item.longitude)) + 5.5;
-            let maxLat = Math.max(...props.steps[0].map(item => item.latitude)) + 5.5;
+            let minLon = Math.min(...props.steps.map(item => item.longitude)) - 5.5;
+            let minLat = Math.min(...props.steps.map(item => item.latitude)) - 5.5;
+            let maxLon = Math.max(...props.steps.map(item => item.longitude)) + 5.5;
+            let maxLat = Math.max(...props.steps.map(item => item.latitude)) + 5.5;
 
             mapBounds = [ [maxLon, minLat], [minLon, maxLat] ];
             mapCenter = [ (minLon + maxLon) / 2, (minLat + maxLat) / 2 ];
@@ -151,8 +151,8 @@ const Map = (props) => {
         map.addControl(new PitchToggle({ minpitchzoom: 4 }), "bottom-left");
 
         // Ajout des points
-        if(props && props.steps[0]){
-            props.steps[0].forEach( step => {
+        if(props && props.steps){
+            props.steps.forEach( step => {
                 // create a HTML element for each feature
                 const el = document.createElement('div');
                 el.className = 'marker';
@@ -171,7 +171,7 @@ const Map = (props) => {
                 .setPopup(
                     new mapboxgl.Popup({ offset: 25 }) // add popups
                     .setHTML(
-                        `<h3>${step.place}</h3><p>${step.description}</p>`
+                        `<h3>${step.place}</h3><p>${step.description}</p><a href="/voyage/${step.id}">Découvrir</a>`
                     )
                 )
                 .addTo(map);
