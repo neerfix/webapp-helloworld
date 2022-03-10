@@ -11,6 +11,7 @@
 @import url('_login.scss');
 @import url('_interactive-map.scss');
 @import url('_map.scss');
+@import url('_notification.scss');
 
 // ANCHOR Scrollbar
 
@@ -19,6 +20,10 @@
 	/* IE and Edge */
 	scrollbar-width: thin;
 	scrollbar-color: #867065 white;
+}
+
+.page-content{
+	min-height: 100vh;
 }
 
 body{
@@ -137,12 +142,17 @@ p {
 	align-items: center;
 	padding: 15px 25px 15px 0;
 	white-space: nowrap;
+	transition: all .15s;
+
+	@apply text-brown bg-beige;
+
+	&:hover{
+		@apply bg-dark-beige;
+	}
 
 	@media (max-width: 600px) {
 		padding: 10px 20px 10px 0;
 	}
-
-	@apply text-brown bg-beige;
 	
 	&:not(.btn-icon):before{
 		content: "";
@@ -200,6 +210,11 @@ p {
 		@apply text-beige bg-brown;
 		border-width: 2px;
 		@apply border-brown;
+		transition: all .15s;
+
+		&:hover{
+			@apply bg-dark-brown;
+		}
 	
 		&:before{
 			@apply bg-beige;
@@ -217,6 +232,20 @@ p {
 		border: 2px solid #7B6253;
 
 		@apply border-brown;
+
+		&:hover{
+			@apply text-beige bg-brown;
+
+			&:before{
+				@apply bg-beige;
+			}
+
+			.btn-text{
+				&:before{
+					@apply text-beige;
+				}
+			}
+		}
 	}
 
 	&.btn-icon {

@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 
 import { FiEdit3 } from "react-icons/fi";
 
-import banner from "@/assets/images/homepage/hero-banner.jpg";
 import PassportInformation from "@/pages/Passport/components/PassportInformation";
 
 import { getProfileInformation } from "@/api/_passportApi";
