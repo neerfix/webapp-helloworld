@@ -9,7 +9,6 @@ import PassportInformation from "@/pages/Passport/components/PassportInformation
 import { getProfileInformation } from "@/api/_passportApi";
 
 const PassportPage = () => {
-	const [loading, setLoading] = useState(true)
 	const [profile, setProfile] = useState({
 		username: "Tariflette98",
 		album: [
@@ -30,13 +29,11 @@ const PassportPage = () => {
 	useEffect(() => {
 		async function fetchProfileInformation() {
 			const { data } = await getProfileInformation()
-			console.log(data, loading)
-			setLoading(false)
-			setProfile(profile)
+			console.log(data)
 		}
 
 		fetchProfileInformation()
-	}, [loading, profile])
+	}, [profile])
 
 	return (
 		<div>
@@ -49,7 +46,7 @@ const PassportPage = () => {
 				<div className="compass" />
 
 				<div className="container mx-auto">
-					<div className="passport-card relative rounded-xl bg-white mx-5 py-5 mb-10">
+					<div className="passport-card relative rounded-xl shadow bg-white mx-5 py-5 mb-10">
 
 						<div className={"w-full"}>
 							<h2 className="text-xl tracking-widest text-brown text-center">◆&nbsp;PASSEPORT&nbsp;◆</h2>
