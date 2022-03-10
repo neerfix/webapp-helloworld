@@ -2,26 +2,39 @@ import axios from "axios";
 import { apiUrl, requestOptions } from "@/config/_api";
 import { handleError } from "@/api/_handleApi";
 
-/**
- *
- * @param email
- * @param password
- */
-const login = (email, password) => {
-	return axios.post(`${apiUrl}/auth/login`, { email, password }, requestOptions)
+const checkEmailExist = (email) => {
+	return axios.post(`${apiUrl}/users/checkEmail`, { email }, requestOptions)
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
 
 /**
  *
- * @param firstname
- * @param lastname
  * @param email
- * @param dateOfBirth
+ * @param password
  */
-const register = ({ firstname, lastname, email, dateOfBirth }) => {
-	return axios.post(`${apiUrl}/auth/register`, {}, requestOptions)
+const login = (username, password) => {
+	return axios.post(`${apiUrl}/auth/login`, { username, password }, requestOptions)
+		.then((response) => response)
+		.catch((error) => handleError(error))
+}
+
+/**
+ *
+ * @param email
+ * @param password
+ * @param username
+ * @param birthdate
+ * @returns {Promise<AxiosResponse<any>>}
+ */
+const register = (email, password, username, birthdate) => {
+	return axios.post(`${apiUrl}/users`, {
+		email,
+		password,
+		username,
+		birthDate: birthdate,
+		is_verified: false
+	}, requestOptions)
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -43,6 +56,7 @@ const logout = () => {
 }
 
 export {
+	checkEmailExist,
 	login,
 	register,
 	forgetPassword,

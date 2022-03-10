@@ -4,6 +4,13 @@ import { ReactComponent as Logo } from "@/assets/images/logo.svg";
 import { NavLink } from "react-router-dom";
 
 class Header extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isLogged: !!localStorage.getItem('authentication')
+		}
+	}
+	
 	render() {
 		return (
 			<div id="header-container">
@@ -19,17 +26,22 @@ class Header extends React.Component {
 								Carte
 							</NavLink>
 							<span className="separator">◆</span>
-							<NavLink to={"feed"} className={"nav-link"}>
-								Fil d'actu
-							</NavLink>
-							<span className="separator">◆</span>
-							<NavLink to={"passport"} className={"nav-link"}>
-								Passeport
-							</NavLink>
-							<span className="separator">◆</span>
-							<NavLink to={"login"} className={"nav-btn"}>
-								Connexion / Inscription
-							</NavLink>
+							{this.state.isLogged &&
+								<>
+									<NavLink to={"feed"} className={"nav-link"}>
+										Fil d'actu
+									</NavLink>
+									<span className="separator">◆</span>
+									<NavLink to={"passport"} className={"nav-link"}>
+										Passeport
+									</NavLink>
+								</>
+							}
+							{!this.state.isLogged &&
+								<NavLink to={"login"} className={"nav-btn"}>
+									Connexion / Inscription
+								</NavLink>
+							}
 						</div>
 					</nav>
 				</div>

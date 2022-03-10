@@ -1,81 +1,58 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { checkEmailExist, register, login } from "@/api/_authenticationApi";
+
+import { VscRefresh } from 'react-icons/vsc'
+
 const Login = () => {
-    // fixme : get real users and check real emails in database
-    const usersToCheck = [
-        { pseudo: "", email: "john.doe@example.xyz", phoneNumber: "", password: "12345678" },
-        { pseudo: "", email: "jane.doe@example.xyz", phoneNumber: "06 31 25 65 28", password: "12345678" }
-    ];
 
     const [email, setEmail] = useState('');
     const [emailIsKnown, setEmailIsKnown] = useState(null);
+    const [emailLoading, setEmailLoading] = useState(false)
 
-    const [pseudo, setPseudo] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [username, setUsername] = useState('');
+    const [birthdate, setBirthdate] = useState('');
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
-    const handleFacebook = (e) => {
+    const handleMailValidation = async (e) => {
         e.preventDefault();
-        alert("Facebook authentication");
+        setEmailLoading(true)
+        await checkEmailExist(email)
+            .then(() => setEmailIsKnown(false))
+            .catch(() => setEmailIsKnown(true))
+        setEmailLoading(false)
     }
 
-    const handleMailValidation = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        const user = usersToCheck.find(u => u.email === email);
-        console.log(user);
-        if (user) {
-            setEmailIsKnown(true);
-        } else {
-            setEmailIsKnown(false);
-        }
+        await login(username, password)
+            .then((response) => {
+                localStorage.setItem('authentication', JSON.stringify(response.data.data))
+                //history.push('/passport')
+            })
+            .catch((error) => console.log(error))
     }
 
-    const handleLogin = (e) => {
+    const handleRegistration = async (e) => {
         e.preventDefault();
-        
-        const userPwd = usersToCheck.find(u => u.password === password)
-        if (userPwd) {
-            alert("logged");
-        } else {
-            alert("wrong password");
-        }
-    }
-
-    const handleRegistration = (e) => {
-        e.preventDefault();
-
-        if (usersToCheck.find(u => u.email === email || u.phoneNumber === phoneNumber || u.pseudo === pseudo)) {
-            alert("already exists");
-            return;
-        }
-
-        const user = {
-            pseudo: pseudo,
-            email: email,
-            phoneNumber: phoneNumber,
-            password: newPassword
-        }
-
-        usersToCheck.push(user);
-        alert("registered")
+        await register(email, newPassword, username, birthdate)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     return (
-        <div id={"login"} className={"mx-auto hx-auto"}>
-            <div className="compass"></div>
-            <main className="w-full bg-beige">
-                <div id="bloc-mail" className="my-10 py-10">
-                    <div className="title-container">
-                        <h2>Bienvenue à bord</h2>
-                    </div>
-                    <form onSubmit={(e) => handleFacebook(e)}>
-                        <button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
-                            <span className={"btn-text"}>S'identifier avec facebook</span>
-                        </button>
-                    </form>
-
+        <div className={"bg-beige"}>
+            <div id="bloc-mail" className="py-5">
+                <div className="title-container">
+                    <h1 className='h1'>Bienvenue à bord</h1>
+                </div>
+                <div className="mx-auto my-10 container">
                     <form onSubmit={(e) => handleMailValidation(e)}>
                         <div className={"mb-4 grid grid-cols-9 gap-4"}>
                             <div className={"form-field col-span-7 col-start-2"}>
@@ -90,12 +67,21 @@ const Login = () => {
                                 />
                             </div>
                         </div>
-
-                        <button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
-                            <span className={"btn-text"}>S'identifier avec un mail</span>
-                        </button>
+                        <div className={"btn-loading mx-auto"}>
+                            <button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
+                                <span className={"btn-text"}>S'identifier avec un mail</span>
+                            </button>
+                            {emailLoading &&
+                                <div className={"btn-overlay"}>
+                                    <VscRefresh className={"animate-spin"} />
+                                </div>
+                            }
+                        </div>
                     </form>
                 </div>
+            </div>
+            <main className="w-full bg-beige">
+                
 
                 {emailIsKnown === null &&
                     <h1>empty</h1>
@@ -107,6 +93,18 @@ const Login = () => {
                             <h2>Connectez-vous</h2>
                         </div>
                         <form onSubmit={(e) => handleLogin(e)}>
+                            <div className={"mb-4 grid grid-cols-9 gap-4"}>
+                                <div className={"form-field col-span-7 col-start-2"}>
+                                    <label>Pseudonyme</label>
+                                    <input
+                                        type={"text"}
+                                        name={"username"}
+                                        value={username}
+                                        className={"focus:border-dark-brown focus:ring-dark-brown"}
+                                        onChange={e => setUsername(e.target.value)}
+                                    />
+                                </div>
+                            </div>
                             <div className={"grid grid-cols-9 gap-4"}>
                                 <div className={"form-field col-span-7 col-start-2"}>
                                     <label>Mot de passe</label>
@@ -140,22 +138,22 @@ const Login = () => {
                                     <label>Pseudonyme</label>
                                     <input
                                         type={"text"}
-                                        name={"pseudo"}
-                                        value={pseudo}
+                                        name={"username"}
+                                        value={username}
                                         className={"focus:border-dark-brown focus:ring-dark-brown"}
-                                        onChange={e => setPseudo(e.target.value)}
+                                        onChange={e => setUsername(e.target.value)}
                                     />
                                 </div>
                             </div>
                             <div className={"mb-4 grid grid-cols-9 gap-4"}>
                                 <div className={"form-field col-span-7 col-start-2"}>
-                                    <label>Numéro de téléphone</label>
+                                    <label>Date de naissance</label>
                                     <input
-                                        type={"text"}
-                                        name={"phone"}
-                                        value={phoneNumber}
+                                        type={"date"}
+                                        name={"birthdate"}
+                                        value={birthdate}
                                         className={"focus:border-dark-brown focus:ring-dark-brown"}
-                                        onChange={e => setPhoneNumber(e.target.value)}
+                                        onChange={e => setBirthdate(e.target.value)}
                                     />
                                 </div>
                             </div>
