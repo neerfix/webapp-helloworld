@@ -198,6 +198,8 @@ p {
 
 	&.btn-dark{
 		@apply text-beige bg-brown;
+		border-width: 2px;
+		@apply border-brown;
 	
 		&:before{
 			@apply bg-beige;

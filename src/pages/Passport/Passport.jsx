@@ -1,5 +1,5 @@
 
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { FiEdit3 } from "react-icons/fi";
@@ -12,7 +12,7 @@ import { getProfileInformation } from "@/api/_passportApi";
 const PassportPage = () => {
 	const [loading, setLoading] = useState(true)
 	const [profile, setProfile] = useState({
-		description: 'Bonjour je suis Emelicorne, j’aime les randonnées et les patates ! Nice to meet you',
+		username: "Tariflette98",
 		album: [
 			"https://jesuispartievoyager.com/wp-content/uploads/2018/03/animaux-traversant-route-afrique-sud-4.jpg",
 			"https://www.andbeyond.com/wp-content/uploads/sites/5/gorah-elephant-camp-south-africa-view-elephantss-waterholes.jpg",
@@ -27,7 +27,7 @@ const PassportPage = () => {
 			days: 50
 		}
 	})
-	
+
 	useEffect(() => {
 		async function fetchProfileInformation() {
 			const { data } = await getProfileInformation()
@@ -35,52 +35,62 @@ const PassportPage = () => {
 			setLoading(false)
 			setProfile(profile)
 		}
-		
+
 		fetchProfileInformation()
 	}, [loading, profile])
-	
+
 	return (
-		<div id={"passport"} className={"mx-auto bg-white"}>
-			<div className="compass"/>
-			<div className={"w-full"}>
-				<div className="title-container">
-					<div className={"flex w-full items-center justify-between pr-8"}>
-						<h2 className="h2">Passeport</h2>
-						<NavLink to={"/passport/edit"}>
-							<button className={"btn btn-icon btn-outline"}>
-								<FiEdit3 />
-							</button>
-						</NavLink>
-					</div>
+		<div>
+			<div id={"passportpage"} className={"bg-white"}>
+
+				<div className="voyage-img absolute top-0">
+					<img src="https://images.unsplash.com/photo-1574410206732-0000dbcb116d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2076&q=80" alt="" className="w-full" />
 				</div>
-				<div className={"relative min-h-[400px]"}>
-					<img
-						src={banner}
-						alt={"avatar"}
-						className={"absolute top-0 left-0 h-full w-full"}
-					/>
-				</div>
-			</div>
-			<div className={"bg-beige py-10 px-6"}>
-				<div className={"md:mx-auto md:max-w-[500px]"}>
-					<div>
-						<NavLink to={"/voyage/list"}>
-							<button className={"btn btn-dark my-5 w-full"}>
-								<span className={"btn-text"}>Mes voyages</span>
-							</button>
-						</NavLink>
-						<button className={"btn btn-outline my-5 w-full"}>
-							<span className={"btn-text"}>Ma liste de souhait</span>
-						</button>
-						<button className={"btn btn-outline my-5 w-full"}>
-							<span className={"btn-text"}>Mes compagnons d'aventure</span>
-						</button>
+
+				<div className="compass" />
+
+				<div className="container mx-auto">
+					<div className="passport-card relative rounded-xl bg-white mx-5 py-5 mb-10">
+
+						<div className={"w-full"}>
+							<div className="title-container pr-5">
+								<div className={"flex w-full items-center justify-between pr-8"}>
+									<h1 className="h1">Passeport de {profile.username}</h1>
+									<NavLink to={"/passport/edit"}>
+										<button className={"btn btn-icon btn-outline"}>
+											<FiEdit3 />
+										</button>
+									</NavLink>
+								</div>
+							</div>
+						</div>
+
+						<div className={"bg-beige py-10 px-6 rounded-md"}>
+							<div className={"mx-auto"}>
+								<div className="flex align-items-center justify-center">
+									<NavLink to={"/voyage/list"}>
+										<button className={"btn btn-dark my-5 mr-3"}>
+											<span className={"btn-text"}>Mes voyages</span>
+										</button>
+									</NavLink>
+									<NavLink to={"voyage/wishlist"}>
+										<button className={"btn btn-outline my-5 mr-3"}>
+											<span className={"btn-text"}>Ma liste de souhait</span>
+										</button>
+									</NavLink>
+									<NavLink to={"/voyage/list"}>
+										<button className={"btn btn-outline my-5"}>
+											<span className={"btn-text"}>Mes compagnons d'aventure</span>
+										</button>
+									</NavLink>
+								</div>
+								<PassportInformation
+									album={profile.album}
+									statistics={profile.statistics}
+								/>
+							</div>
+						</div>
 					</div>
-					<PassportInformation
-						description={profile.description}
-						album={profile.album}
-						statistics={profile.statistics}
-					/>
 				</div>
 			</div>
 		</div>

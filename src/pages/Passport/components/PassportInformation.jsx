@@ -4,7 +4,6 @@ import AlbumPreview from "@/components/AlbumPreview";
 const PassportInformation = ({ description, album, statistics }) => {
 	return (
 		<>
-			<p className={"my-14 text-[18px]"}>{description}</p>
 			<div className={"divider"}></div>
 			<h2 className={"subtitle"}>Album préféré</h2>
 			<AlbumPreview album={album} />
