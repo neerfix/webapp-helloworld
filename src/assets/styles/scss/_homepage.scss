@@ -1,20 +1,19 @@
-
-.App{
+.App {
     display: flex;
     flex-direction: column;
 }
 
-.bg-beige{
+.bg-beige {
     display: flex;
     flex-direction: column;
 }
 
-#homepage{
-	font-family: 'DM Serif Display', serif;
+#homepage {
+    font-family: 'DM Serif Display', serif;
     position: relative;
     z-index: 2;
 
-    #hero-banner{
+    #hero-banner {
         margin-top: 200px;
 
         // &::before{
@@ -44,7 +43,7 @@
         //     z-index: -1;
         // }
 
-        #main-title{
+        #main-title {
             font-weight: bold;
             color: transparent;
             line-height: .75;
@@ -54,14 +53,20 @@
             -webkit-text-stroke: 1px #f7eee5;
             letter-spacing: 2px;
             opacity: .9;
+            cursor: default;
 
-            .sub-title{
+            .sub-title {
                 color: #f7eee5;
                 -webkit-text-stroke: 0px #f7eee5;
                 transform: scale(1.1);
                 font-size: 10rem;
                 mix-blend-mode: hard-light;
-                
+                pointer-events: none;
+
+                -webkit-mask-image: linear-gradient(-75deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
+                -webkit-mask-size: 200%;
+                animation: shine 9s infinite;
+
                 @media (max-width: 600px) {
                     font-size: 80px;
                 }
@@ -69,14 +74,14 @@
         }
     }
 
-    #bloc-map{
+    #bloc-map {
         position: relative;
         z-index: 2;
         max-width: 900px;
         margin: 0 auto;
         // background-image: url('/assets/images/topo-lines.svg');
 
-        .earth-visual{
+        .earth-visual {
             opacity: .9;
             height: 350px;
             overflow: hidden;
@@ -87,31 +92,31 @@
             @media (max-width: 600px) {
                 height: 290px;
             }
-    
-            img{
+
+            img {
                 max-width: none;
                 width: 115%;
                 height: auto;
-                filter: drop-shadow( 0 0 15px rgba(4, 0, 65, 0.4));
+                filter: drop-shadow(0 0 15px rgba(4, 0, 65, 0.4));
 
                 @media (max-width: 600px) {
                     width: 135%;
                     margin-top: 20px;
                 }
             }
-    
-            .earth-visual-coords{
+
+            .earth-visual-coords {
                 display: flex;
                 justify-content: space-around;
-    
-                .coords{
+
+                .coords {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     color: #7B6253;
                     position: relative;
-    
-                    &:before{
+
+                    &:before {
                         content: "";
                         position: absolute;
                         background: #7B6253;
@@ -119,8 +124,8 @@
                         height: 160px;
                         width: 1.5px;
                     }
-    
-                    &:after{
+
+                    &:after {
                         content: "◆";
                         color: #7B6253;
                         position: absolute;
@@ -132,16 +137,16 @@
         }
     }
 
-    #bloc-popular{
+    #bloc-popular {
         background-color: white;
         background-image: url('/assets/images/grid-lines.png');
         background-blend-mode: hard-light;
     }
 
-    .diamond-decoration{
+    .diamond-decoration {
         position: relative;
-        
-        .diamond{
+
+        .diamond {
             font-size: 15px;
             position: relative;
             display: flex;
@@ -161,26 +166,26 @@
                 transform: rotate(45deg);
                 -webkit-transform: rotate(45deg);
                 animation: pulse 10s infinite ease-in-out;
-                
+
                 @apply border-beige;
             }
         }
     }
 }
 
-#hero-video-container{
+#hero-video-container {
     position: absolute;
     // z-index: -3;
     // transform: scale(2);
     width: 100%;
 
-    video{
+    video {
         min-height: 865px;
         max-height: 865px;
         max-width: none;
     }
 
-    &::after{
+    &::after {
         content: "";
         position: absolute;
         left: 0;
@@ -197,13 +202,22 @@
     0% {
         transform: rotate(45deg) scale(1);
     }
-    
+
     50% {
         transform: rotate(45deg) scale(1.2);
     }
-    
+
     100% {
         transform: rotate(45deg) scale(1);
     }
-  }
-  
+}
+
+@keyframes shine {
+    from {
+        -webkit-mask-position: 150%;
+    }
+
+    to {
+        -webkit-mask-position: -50%;
+    }
+}
