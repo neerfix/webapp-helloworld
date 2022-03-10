@@ -11,6 +11,7 @@
 @import url('_login.scss');
 @import url('_interactive-map.scss');
 @import url('_map.scss');
+@import url('_notification.scss');
 
 // ANCHOR Scrollbar
 
@@ -19,6 +20,10 @@
 	/* IE and Edge */
 	scrollbar-width: thin;
 	scrollbar-color: #867065 white;
+}
+
+.page-content{
+	min-height: 100vh;
 }
 
 body{

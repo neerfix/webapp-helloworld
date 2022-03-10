@@ -10,12 +10,16 @@ import reportWebVitals from './reportWebVitals';
 import './assets/styles/index.css';
 import './assets/styles/scss/main.scss';
 
+import NotificationProvider from './notifications/NotificationProvider';
+
 const history = createBrowserHistory();
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Router history={history}>
-			<App />
+			<NotificationProvider>
+				<App />
+			</NotificationProvider>
 		</Router>
 	</React.StrictMode>,
 	document.getElementById('root')

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { checkEmailExist, register, login } from "@/api/_authenticationApi";
+import {useNotification} from "@/notifications/NotificationProvider";
 
 import { VscRefresh } from 'react-icons/vsc'
 
@@ -16,23 +17,42 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
+    // Notification
+	const dispatch = useNotification();
+
+	const handleNotification = (type, message, title) => {
+		dispatch({
+		  type: type,
+		  message: message,
+		  title: title
+		})
+	}
+
+    // Validation du mail
     const handleMailValidation = async (e) => {
         e.preventDefault();
         setEmailLoading(true)
         await checkEmailExist(email)
-            .then(() => setEmailIsKnown(false))
-            .catch(() => setEmailIsKnown(true))
+            .then(() => {
+                setEmailIsKnown(false);
+            }).catch(() => {
+                setEmailIsKnown(true);
+            })
         setEmailLoading(false)
     }
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        await login(username, password)
+        await login(email, password)
             .then((response) => {
+                handleNotification("success", "Vous êtes désormais connecté !",  "Connexion");
                 localStorage.setItem('authentication', JSON.stringify(response.data.data))
-                //history.push('/passport')
+                // history.push('/passport')
             })
-            .catch((error) => console.log(error))
+            .catch((error) => {
+                handleNotification("error", "Identifiants incorrects",  "Connexion");
+                console.log(error)
+            })
     }
 
     const handleRegistration = async (e) => {
@@ -47,7 +67,7 @@ const Login = () => {
     }
 
     return (
-        <div className={"bg-beige"}>
+        <div className={"page-content bg-beige"}>
             <div id="bloc-mail" className="pt-5 pb-3">
                 <div className="title-container">
                     <h1 className='h1'>Bienvenue à bord</h1>
