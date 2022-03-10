@@ -2,13 +2,13 @@
 const apiUrl = process.env.REACT_APP_API_URL
 
 // Authentication Token
-const token = localStorage.getItem('token')
+const authentication = JSON.parse(localStorage.getItem('authentication'))
 
 // Request options for all requests in application (headers)
 const requestOptions = {
 	headers: {
 		'Content-Type': 'application/json',
-		...(token && { 'Authorization': token })
+		...(authentication && { 'Authorization': `Bearer ${authentication.accessToken}` })
 	}
 }
 

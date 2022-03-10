@@ -5,7 +5,7 @@ import { handleError } from "@/api/_handleApi";
 /*** Profile ***/
 
 const getProfileInformation = () => {
-	return axios.get(`${apiUrl}/profile`, requestOptions)
+	return axios.get(`${apiUrl}/users/me`, requestOptions)
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
