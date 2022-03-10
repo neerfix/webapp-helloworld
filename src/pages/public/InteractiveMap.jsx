@@ -1,7 +1,6 @@
 // Icones
 //import { VscChevronDown } from 'react-icons/vsc';
 import Map from '@/components/Map';
-import { useState } from "react";
 
 const InteractiveMap = () => {
 
