@@ -361,6 +361,7 @@ form {
 	.form-field {
 		display: flex;
 		flex-direction: column;
+		width: 100%;
 
 		label {
 			@apply text-brown text-lg;
@@ -372,6 +373,7 @@ form {
 			background-color: theme('colors.white');
 			padding: 10px 20px;
 			font-size: 14px;
+			min-width: 250px;
 
 			&:focus {
 				outline: none;

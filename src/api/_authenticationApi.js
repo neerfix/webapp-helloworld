@@ -1,9 +1,11 @@
 import axios from "axios";
-import { apiUrl, requestOptions } from "@/config/_api";
+import { apiUrl, headers } from "@/config/_api";
 import { handleError } from "@/api/_handleApi";
 
 const checkEmailExist = (email) => {
-	return axios.post(`${apiUrl}/users/checkEmail`, { email }, requestOptions)
+	return axios.post(`${apiUrl}/users/checkEmail`, { email }, {
+		headers: headers
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -13,9 +15,14 @@ const checkEmailExist = (email) => {
  * @param email
  * @param password
  */
-const login = (username, password) => {
-	return axios.post(`${apiUrl}/auth/login`, { username, password }, requestOptions)
-		.then((response) => response)
+const login = (email, password) => {
+	return axios.post(`${apiUrl}/auth/login`, { username: email, password }, {
+		headers: headers
+	})
+		.then((response) => {
+			localStorage.setItem('authentication', JSON.stringify(response.data.data))
+			return response
+		})
 		.catch((error) => handleError(error))
 }
 
@@ -34,13 +41,17 @@ const register = (email, password, username, birthdate) => {
 		username,
 		birthDate: birthdate,
 		is_verified: false
-	}, requestOptions)
+	}, {
+		headers: headers
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
 
 const forgetPassword = (email) => {
-	return axios.post(`${apiUrl}/auth/register`, { email }, requestOptions)
+	return axios.post(`${apiUrl}/auth/register`, { email }, {
+		headers: headers
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -50,9 +61,7 @@ const resetPassword = () => {
 }
 
 const logout = () => {
-	return axios.put(`${apiUrl}/auth/logout`, {}, requestOptions)
-		.then((response) => response)
-		.catch((error) => handleError(error))
+	localStorage.removeItem('authentication')
 }
 
 export {

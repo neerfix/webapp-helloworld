@@ -1,11 +1,17 @@
 import axios from "axios";
-import { apiUrl, requestOptions } from "@/config/_api";
+import { apiUrl, headers } from "@/config/_api";
 import { handleError } from "@/api/_handleApi";
 
 /*** Travels ***/
 
 const getPopularTravels = () => {
-	return axios.get(`${apiUrl}/travels`, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.get(`${apiUrl}/travels`, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -16,7 +22,13 @@ const getPopularTravels = () => {
  * @param travelId
  */
 const getTravelDetails = (travelId) => {
-	return axios.get(`${apiUrl}/travels/${travelId}`, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.get(`${apiUrl}/travels/${travelId}`, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -34,7 +46,13 @@ const updateTravel = () => {
  * @param travelId
  */
 const followTravel = (travelId) => {
-	return axios.put(`${apiUrl}/travels/${travelId}/follow`, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.put(`${apiUrl}/travels/${travelId}/follow`, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -44,7 +62,13 @@ const followTravel = (travelId) => {
  * @param travelId
  */
 const unfollowTravel = (travelId) => {
-	return axios.put(`${apiUrl}/travels/${travelId}/unfollow`, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.put(`${apiUrl}/travels/${travelId}/unfollow`, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -54,7 +78,13 @@ const unfollowTravel = (travelId) => {
  * @param travelId
  */
 const removeTravel = (travelId) => {
-	return axios.delete(`${apiUrl}/travels/${travelId}`, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.delete(`${apiUrl}/travels/${travelId}`, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -90,7 +120,13 @@ const updateStep = ({ title, startDate, endDate, description, album }) => {
  * @param stepId
  */
 const removeStep = (stepId) => {
-	return axios.delete(`${apiUrl}/steps/${stepId}`, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.delete(`${apiUrl}/steps/${stepId}`, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }

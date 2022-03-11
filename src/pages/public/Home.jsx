@@ -94,7 +94,7 @@ const HomePage = () => {
 					</div>
 				</div>
 				<div id="bloc-map" className="grid grid-cols-12">
-					<div className="col-start-2 col-span-10 bg-white rounded-3xl overflow-hidden mb-10">
+					<div className="col-start-2 col-span-10 bg-white rounded-3xl overflow-hidden shadow mb-10">
 						<div className="p-5 sm:p-9 md:p-7 xl:p-9 text-center">
 							<div className="title-centered">
 								<h2 className='h2'>
