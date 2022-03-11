@@ -78,7 +78,6 @@ const PassportEditPage = () => {
 		
 		await updateProfile(profile.uuid, user)
 			.then((response) => {
-				console.log(response)
 				handleNotification("success", "Vous passeport à bien été modifié",  "Modification");
 			})
 			.catch((error) => {

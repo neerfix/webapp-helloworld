@@ -134,6 +134,29 @@ Lancer le serveur
 - Gregg : la gestion des tâches et du sprint, la communication entre les 2 équipes
 
 **Ce qu'il faut arrêter de faire**
-- Aimee : RAS
+- Aimee : perdre du temps sur l'esthetique du site
 - Louise : RAS
 - Gregg : RAS
+
+---- 
+
+Pour se connecter à l'application, vous pouvez utiliser le compte :
+Mail : oui@oui.fr
+Mot de passe : azerty
+
+## Liste des fonctionnalités reliées avec le back: 
+- Connexion
+- Inscription (si pas de redirection, vérifier la connexion)
+- Map interactive
+- Edition du passport 
+- Création d'un voyage
+
+Il manque :
+- edition d'un voyage
+- ajout d'étapes
+- modification d'étapes
+- récuparation d'un voyage
+- système d'amis
+- système d'abonnement et de feed
+- système de wishlist (partie back manquante)
+- envoi des images 
