@@ -4,10 +4,10 @@ import AlbumPreview from "@/components/AlbumPreview";
 const PassportInformation = ({ description, album, statistics }) => {
 	return (
 		<>
-			<div className={"divider"}></div>
+			<div className={"divider"} />
 			<h2 className={"subtitle"}>Album préféré</h2>
 			<AlbumPreview album={album} />
-			<div className={"divider"}></div>
+			<div className={"divider"} />
 			<h2 className={"subtitle"}>Statistiques</h2>
 			<div className={"grid grid-cols-8 items-center"}>
 				<PassportStatCard
