@@ -129,7 +129,7 @@ Lancer le serveur
 - Gregg : corriger les warnings 
 
 **Ce qu'il faut continuer à faire**
-- Aimee : relier la gestion des voyages (création et édition)
+- Aimee : relier la gestion des voyages (édition)
 - Louise : la partie amis / compagnons
 - Gregg : la gestion des tâches et du sprint, la communication entre les 2 équipes
 
@@ -151,12 +151,12 @@ Mot de passe : azerty
 - Edition du passport 
 - Création d'un voyage
 
-Il manque :
-- edition d'un voyage
+Il manque (par ordre d'importance):
+- récuparation d'un voyage (erreur back)
+- édition d'un voyage (erreur back)
+- envoi des images (blocage en cascade sur les fonctionnalités ci-dessus)
 - ajout d'étapes
 - modification d'étapes
-- récuparation d'un voyage
 - système d'amis
 - système d'abonnement et de feed
 - système de wishlist (partie back manquante)
-- envoi des images 

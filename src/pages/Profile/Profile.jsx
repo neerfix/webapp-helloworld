@@ -62,7 +62,7 @@ const ProfilePage = () => {
 						<div className={"mx-auto"}>
 							<div className="flex flex-wrap align-items-center justify-center">
 								<button className={"btn btn-dark my-5 mr-3"}>
-									<span className={"btn-text"}>Ajouter en amis</span>
+									<span className={"btn-text"}>Ajouter en ami</span>
 								</button>
 							</div>
 							<PassportInformation
