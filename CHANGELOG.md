@@ -1,5 +1,53 @@
 # Changelog
 
+## [1.1.0](https://github.com/helloworld-ynovlyon/webapp/compare/v1.0.1...v1.1.0) (2022-03-11)
+
+
+### Features
+
+* 404 page ([07fd691](https://github.com/helloworld-ynovlyon/webapp/commit/07fd691d7b5df03eb4a5342bcca1829ba71a593c))
+* add geocoder for voyage creation ([9225bb9](https://github.com/helloworld-ynovlyon/webapp/commit/9225bb92cfc51a51e8afee93fa9fdcb593660950))
+* add global notification system ([d749c2f](https://github.com/helloworld-ynovlyon/webapp/commit/d749c2f2f267fd9698c8eb4e856393ad6fe37735))
+* add homepage description for app ([145fd5d](https://github.com/helloworld-ynovlyon/webapp/commit/145fd5dc879be8916b12a918caa5850a3fe78c37))
+* add notification when disconnected ([14e703d](https://github.com/helloworld-ynovlyon/webapp/commit/14e703d6fce4d9091d6b33a7d324ce296b1d5637))
+* add scroll homepage to arrow btn ([b3e4a3a](https://github.com/helloworld-ynovlyon/webapp/commit/b3e4a3a9bb5ff3dd14f65ea10dbf02ed894ec2be))
+* **album:** add pages & interactive global map markers ([a068ebc](https://github.com/helloworld-ynovlyon/webapp/commit/a068ebc82135cc75dac7590299d46acd28b1ebdf))
+* **album:** dropzone & reorder images ([489cfca](https://github.com/helloworld-ynovlyon/webapp/commit/489cfcab871311a1e418ff9fe4f40fc7c15381f3))
+* **footer:** add team links & some text ([04938b7](https://github.com/helloworld-ynovlyon/webapp/commit/04938b7507e107f71e4d541d8bb5c1374684dc4c))
+* init mapbox ([dc50db4](https://github.com/helloworld-ynovlyon/webapp/commit/dc50db40f00b1bab791e4ac2e673304def542224))
+* **map:** add geocoding ([7b9ca8a](https://github.com/helloworld-ynovlyon/webapp/commit/7b9ca8a5d071330722e6fb8c87a679c50a9dea95))
+* **map:** add interactive map of user travels ([e2b129e](https://github.com/helloworld-ynovlyon/webapp/commit/e2b129e017ade46db41d31abfe9034bd135a1a9f))
+* **map:** add markers and fit to bounds ([3269c53](https://github.com/helloworld-ynovlyon/webapp/commit/3269c534a482c973c1dd2ef2d4bcd725fcf9b8d7))
+* **map:** parameter search query ([e7b8aa3](https://github.com/helloworld-ynovlyon/webapp/commit/e7b8aa388ce76ac5e456b0e743e88d64a1814b63))
+* **voyage:** add edit page and edit step page ([8108d38](https://github.com/helloworld-ynovlyon/webapp/commit/8108d38aaed4eb77c06939b139affa96f6e3bbf9))
+* **voyage:** voyage creation & voyage list ([9fb93b8](https://github.com/helloworld-ynovlyon/webapp/commit/9fb93b8de76ea2ddc3e72859e988ba72c0bfc045))
+* **wishlist:** add voyage tile wishlist ([9fc0388](https://github.com/helloworld-ynovlyon/webapp/commit/9fc03886eb2cb9c38fe36570a9ee8f506653a8b5))
+
+
+### Bug Fixes
+
+* **album:** dropzone style & text ([0d7dadb](https://github.com/helloworld-ynovlyon/webapp/commit/0d7dadb8e335f6c651fe3f5a96720cf341d1643d))
+* **footer:** responsive display ([0d18d3f](https://github.com/helloworld-ynovlyon/webapp/commit/0d18d3f4a9eb80e014727f9866b2eeb07edf63cd))
+* **header:** add link to login page, need display condition ([4ef87d4](https://github.com/helloworld-ynovlyon/webapp/commit/4ef87d4f8f559b491baf27d5add0e42908944d7d))
+* **home:** add video ([f387d1e](https://github.com/helloworld-ynovlyon/webapp/commit/f387d1ea23a06e195d6b4e210c83212542fac7ef))
+* **login:** form fields appears when needed ([1351931](https://github.com/helloworld-ynovlyon/webapp/commit/1351931ccdc2da8b085738343b39e0bcc2e0b2f8))
+* logo and title app ([7953ae4](https://github.com/helloworld-ynovlyon/webapp/commit/7953ae41bc746fc19ab7c0424d2a0a33590c3294))
+* **logs:** react warnings things not used ([3031668](https://github.com/helloworld-ynovlyon/webapp/commit/3031668c6c65a99356bbda9309b80f4ae6c67b45))
+* **logs:** warnings from react ([62f82a9](https://github.com/helloworld-ynovlyon/webapp/commit/62f82a964ad58768684c989f5ed4edbac62b97bd))
+* **map:** add filter ctrl btn & fix style ([cb2f025](https://github.com/helloworld-ynovlyon/webapp/commit/cb2f0257b4b20926b698a5e4d0cfcf5ef4f2f1ca))
+* **map:** add loading img map ([1d82ce8](https://github.com/helloworld-ynovlyon/webapp/commit/1d82ce8eb0b9d0f1d0a6806e29a27a1904712c0d))
+* **map:** if no search query error ([4404a32](https://github.com/helloworld-ynovlyon/webapp/commit/4404a32bf797fb02a7549f7a93f3d2a4fcf15531))
+* **map:** interactive markers ([b03cc69](https://github.com/helloworld-ynovlyon/webapp/commit/b03cc692c515675e5f9446a1e15eb0a8a124142b))
+* **map:** markers on global map ([70d4c07](https://github.com/helloworld-ynovlyon/webapp/commit/70d4c070f633bef2fc12986a73bfc5fbf0b068b7))
+* router add key && notification index ([40f4536](https://github.com/helloworld-ynovlyon/webapp/commit/40f453696509e70349f0496ff94787436c16c990))
+* **style:** button and title shine ([67de8f6](https://github.com/helloworld-ynovlyon/webapp/commit/67de8f6d758da0382acdb76170bc955429cfbabe))
+* **style:** button hover animation ([7b64e45](https://github.com/helloworld-ynovlyon/webapp/commit/7b64e456442358c940892d22d0bcace71ab2d69a))
+* **style:** homepage title & style ([976d4b3](https://github.com/helloworld-ynovlyon/webapp/commit/976d4b3fd9a2bfbee9523df8636ea5be686aad23))
+* **style:** passport ([f39c1d3](https://github.com/helloworld-ynovlyon/webapp/commit/f39c1d367c85c9b04d14e682081cbb5bf7851904))
+* **style:** passport page ([af4d484](https://github.com/helloworld-ynovlyon/webapp/commit/af4d4847300cb2bde930730341b71a9ce6963dea))
+* **style:** responsive video homepage ([0a83972](https://github.com/helloworld-ynovlyon/webapp/commit/0a83972f00068e318889834457ee15878c331f17))
+* wishlist link ([010f27d](https://github.com/helloworld-ynovlyon/webapp/commit/010f27d9d2fa4987fc58b1242e204b75fc130054))
+
 ## 1.0.0 (2022-02-18)
 
 
