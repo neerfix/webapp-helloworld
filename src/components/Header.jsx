@@ -8,12 +8,13 @@ import { ReactComponent as Logo } from "@/assets/images/logo.svg";
 
 const Header = () => {
 	const navigate = useNavigate();
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
 	
 	const [isLogged, setIsLogged] = useState(false)
 	
 	useEffect(() => {
-		setIsLogged(!!localStorage.getItem('authentication'))
-	}, [])
+		setIsLogged(!!authentication)
+	}, [authentication])
 	
 	const disconnection = async () => {
 		await logout()

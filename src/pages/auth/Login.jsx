@@ -60,8 +60,14 @@ const Login = () => {
     const handleRegistration = async (e) => {
         e.preventDefault();
         await register(email, newPassword, username, birthdate)
-            .then((response) => {
+            .then(async (response) => {
                 console.log(response)
+                await login(email, newPassword)
+                    .then((response) => {
+                        handleNotification("success", "Vous êtes désormais connecté !",  "Connexion");
+                        localStorage.setItem('authentication', JSON.stringify(response.data.data))
+                        navigate('/passport');
+                    })
             })
             .catch((error) => {
                 console.log(error)
