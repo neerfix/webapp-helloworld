@@ -161,7 +161,7 @@ class VoyagePage extends React.Component {
                                             <span className="btn-text">Suivre</span>
                                         </button>
 
-                                        <NavLink to={"/voyage/wishlist/"}>
+                                        <NavLink to={"/voyage/wishlist"}>
                                             <button className="btn btn-outline m-3">
                                                 <span className="btn-text">
                                                     <span className="hidden sm:inline-block">Ajouter à la&nbsp;</span>

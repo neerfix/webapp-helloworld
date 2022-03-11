@@ -23,8 +23,7 @@ class Footer extends React.Component {
 						<div className="m-r5">
 							<p>
 								Grâce à HelloWorld, votre carnet de voyage en ligne, vous pouvez mettre en avant vos meilleurs voyages, étapes par étapes et avec photos.
-								<br />
-								Rejoignez la communauté de voyageurs et inspirez les autres !
+								Rejoignez la communauté de voyageurs et inspirez les autres&nbsp;!
 							</p>
 						</div>
 						<div className={"d-block mt-3"}>
@@ -34,7 +33,7 @@ class Footer extends React.Component {
 									to={"map"}
 									className={"nav-link font-semibold underline"}
 								>
-									carte interactive
+									carte interactive.
 								</NavLink>
 							</p>
 							<p>
@@ -43,7 +42,7 @@ class Footer extends React.Component {
 									to={"login"}
 									className={"nav-link font-semibold underline"}
 								>
-									vous inscrire
+									vous inscrire.
 								</NavLink>
 							</p>
 						</div>
