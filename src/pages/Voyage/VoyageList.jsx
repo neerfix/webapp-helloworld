@@ -1,7 +1,9 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 // Style
 import '@/assets/styles/scss/pages/voyage.scss';
+import { IoIosAdd } from "react-icons/io";
 
 // Component
 import VoyageCard from '@/components/VoyageCard'
@@ -103,7 +105,7 @@ class VoyageListPage extends React.Component {
                         }
 
                         <div className="container mx-auto">
-                            <div className="travel-card relative rounded-xl bg-white py-5 mb-10">
+                            <div className="travel-card relative rounded-xl bg-white py-5 mb-5">
 
                                 { this.state.voyages && 
                                     <div className="flex flex-wrap">
@@ -123,6 +125,16 @@ class VoyageListPage extends React.Component {
                                     </p>
                                 }
                             </div>
+                            <NavLink
+                                to={"/voyage/new"}
+                            >
+                               <button className={"btn btn-icon btn-outline mx-auto mb-10"}>
+                                    <span className={"px-4 py-2 flex items-center"}>
+                                        <IoIosAdd className={"mr-4"} />    
+                                        Créer un nouveau voyage
+                                    </span>
+                                </button>
+                            </NavLink>
                         </div>
 
                     </div>

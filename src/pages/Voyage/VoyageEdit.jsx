@@ -6,9 +6,30 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiEdit3 } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 
+// Mapbox
+import mapboxgl from "mapbox-gl";
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+
 const VoyageEditPage = () => {
 
     let { voyageId } = useParams();
+
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+
+	useEffect(() => {
+		var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
+		geocoder.addTo('#geocoder-container');
+
+		geocoder.on('result', function(results) {
+			let result = results.result
+			voyage.place.name = result.place_name_fr;
+			voyage.place.longitude = result.center[0];
+			voyage.place.latitude = result.center[1];
+			voyage.location = result.place_name_fr;
+			console.log(voyage.place);
+		})
+	}, []);
 
 	const [voyage, setVoyage] = useState({
 		voyageId: "",
@@ -18,7 +39,16 @@ const VoyageEditPage = () => {
         dateStart: "",
         dateEnd: "",
         description: "",
-        steps: []
+        steps: [],
+		place: {
+			address: "",
+			city: "",
+			zipcode: "",
+			country: "",
+			name: "",
+			latitude: "",
+			longitude: ""
+		}
     });
 
     if( voyageId ) {
@@ -72,6 +102,8 @@ const VoyageEditPage = () => {
 	
 	const saveVoyage = (event) => {
 		event.preventDefault();
+
+		console.log(voyage);
 		
 		const payload = {
 			...voyage,
@@ -83,7 +115,7 @@ const VoyageEditPage = () => {
 	};
 	
 	return (
-		<div id={"voyage"} className={"mx-auto bg-white"}>
+		<div id={"voyage"} className={"bg-white"}>
 			<div className="compass"></div>
 			<div className={"w-full"}>
 				<div className="title-container">
@@ -91,9 +123,11 @@ const VoyageEditPage = () => {
 						{ voyageId && "Editer mon voyage" }
 						{ !voyageId && "Ajouter un voyage" }
 					</h2>
-					<button className={"btn btn-beige btn-icon ml-auto mr-5"} type={"submit"}>
-                        <RiDeleteBin6Line />
-					</button>
+					{ voyageId && 
+						<button className={"btn btn-beige btn-icon ml-auto mr-5"} type={"submit"}>
+							<RiDeleteBin6Line />
+						</button>
+					}
 				</div>
 			</div>
 			<div className={"bg-beige py-10"}>
@@ -139,11 +173,15 @@ const VoyageEditPage = () => {
 						<div className={"form-field col-span-7 col-start-2"}>
 							<label>Lieu</label>
 							<input
+								hidden
+								id="place"
+								className="place"
 								type={"text"}
 								name={"location"}
 								value={voyage.location}
 								onChange={(e) => handleChange(e)}
 							/>
+							<div id='geocoder-container' className="w-full"></div>
 						</div>
 					</div>
 					<div className={"divider"}></div>

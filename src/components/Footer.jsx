@@ -49,66 +49,64 @@ class Footer extends React.Component {
 					</div>
 					<div className={"w-full lg:w-1/3 justify-center px-4"}>
 						<div className="m-5 text-sm">
-							<p>
-								<ol>
-									<li className="flex items-center">
-										<span className={"mr-2 text-brown"}>
-											⬩ Gregg SANCHEZ
-										</span>
-										<a href="https://github.com/Arty3P" className={"text-sm"}>
-											<FaGithub />
-										</a>
-									</li>
-									<li className="flex items-center">
-										<span className={"mr-2 text-brown"}>
-											⬩ Romain FRECHET
-										</span>
-										<a href="https://github.com/Hikari-rom" className={"text-sm"}>
-											<FaGithub />
-										</a>
-									</li>
-									<li className="flex items-center">
-										<span className={"mr-2 text-brown"}>
-											⬩ Emeline PAL
-										</span>
-										<a href="https://github.com/emelinepal" className={"text-sm"}>
-											<FaGithub />
-										</a>
-									</li>
-									<li className="flex items-center">
-										<span className={"mr-2 text-brown"}>
-											⬩ Nicolas NOTARARIGO
-										</span>
-										<a href="https://github.com/Neerfix" className={"text-sm"}>
-											<FaGithub />
-										</a>
-									</li>
-									<li className="flex items-center">
-										<span className={"mr-2 text-brown"}>
-											⬩ Aimee RITLENG
-										</span>
-										<a href="https://github.com/Aimee-RTLNG" className={"text-sm"}>
-											<FaGithub />
-										</a>
-									</li>
-									<li className="flex items-center">
-										<span className={"mr-2 text-brown"}>
-											⬩ Louise BAULAN
-										</span>
-										<a href="https://github.com/Fayaah" className={"text-sm"}>
-											<FaGithub />
-										</a>
-									</li>
-									<li className="flex items-center">
-										<span className={"mr-2 text-brown"}>
-											⬩ Matisse LIVAIN
-										</span>
-										<a href="https://github.com/MLivain" className={"text-sm"}>
-											<FaGithub />
-										</a>
-									</li>
-								</ol>
-							</p>
+							<ol>
+								<li className="flex items-center">
+									<span className={"mr-2 text-brown"}>
+										⬩ Gregg SANCHEZ
+									</span>
+									<a href="https://github.com/Arty3P" className={"text-sm"}>
+										<FaGithub />
+									</a>
+								</li>
+								<li className="flex items-center">
+									<span className={"mr-2 text-brown"}>
+										⬩ Romain FRECHET
+									</span>
+									<a href="https://github.com/Hikari-rom" className={"text-sm"}>
+										<FaGithub />
+									</a>
+								</li>
+								<li className="flex items-center">
+									<span className={"mr-2 text-brown"}>
+										⬩ Emeline PAL
+									</span>
+									<a href="https://github.com/emelinepal" className={"text-sm"}>
+										<FaGithub />
+									</a>
+								</li>
+								<li className="flex items-center">
+									<span className={"mr-2 text-brown"}>
+										⬩ Nicolas NOTARARIGO
+									</span>
+									<a href="https://github.com/Neerfix" className={"text-sm"}>
+										<FaGithub />
+									</a>
+								</li>
+								<li className="flex items-center">
+									<span className={"mr-2 text-brown"}>
+										⬩ Aimee RITLENG
+									</span>
+									<a href="https://github.com/Aimee-RTLNG" className={"text-sm"}>
+										<FaGithub />
+									</a>
+								</li>
+								<li className="flex items-center">
+									<span className={"mr-2 text-brown"}>
+										⬩ Louise BAULAN
+									</span>
+									<a href="https://github.com/Fayaah" className={"text-sm"}>
+										<FaGithub />
+									</a>
+								</li>
+								<li className="flex items-center">
+									<span className={"mr-2 text-brown"}>
+										⬩ Matisse LIVAIN
+									</span>
+									<a href="https://github.com/MLivain" className={"text-sm"}>
+										<FaGithub />
+									</a>
+								</li>
+							</ol>
 						</div>
 					</div>
 				</div>

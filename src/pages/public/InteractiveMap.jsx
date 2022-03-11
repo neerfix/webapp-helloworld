@@ -1,8 +1,23 @@
-// Icones
-//import { VscChevronDown } from 'react-icons/vsc';
+import { useState } from "react";
 import Map from '@/components/Map';
 
+import { getPopularTravels } from "@/api/_travelApi";
+
 const InteractiveMap = () => {
+
+	const [voyages, setVoyages] = useState([]);
+	
+    const handleTravels = async (e) => {
+        await getPopularTravels()
+            .then((response) => {
+				console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+	handleTravels();
 
 	const steps = [
 		{
