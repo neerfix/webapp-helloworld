@@ -114,7 +114,28 @@ class VoyagePage extends React.Component {
 
         await getTravelDetails(voyageId)
         .then(async (response) => {
-            console.log(response);
+            let voyageResponse = response.data.data;
+            if(voyageResponse){
+                let formattedVoyage = {
+                    id: voyageResponse.uuid,
+                    title: voyageResponse.name,
+                    user: {
+                        id: voyageResponse.userId.uuid,
+                        name: voyageResponse.userId.username,
+                        avatar: "https://static.vecteezy.com/system/resources/thumbnails/004/416/817/small/man-traveler-with-backpack-pointing-out-vector.jpg",
+                    },
+                    thumbnail: "https://media.timeout.com/images/105274435/image.jpg",
+                    budget: voyageResponse.budget,
+                    location: voyageResponse.placeId.name,
+                    dateStart: "18/07/2022",
+                    dateEnd: "20/08/2022",
+                    description: voyageResponse.description,
+                }
+                this.setState({
+                    isLoaded: true,
+                    voyage: formattedVoyage
+                });
+            }
         })
         .catch((error) => {
             console.log(error)
@@ -210,24 +231,32 @@ class VoyagePage extends React.Component {
                                     </div>
 
                                     <div className="px-0 lg:px-5 my-3">
-                                        <AlbumPreview album={this.state.voyage.gallery} />
+                                        {this.state.voyage.gallery && 
+                                            <AlbumPreview album={this.state.voyage.gallery} />
+                                        }
                                     </div>
 
                                     <hr className="my-5 opacity-30" />
 
-                                    <div className="title-container pr-5">
-                                        <h2 className='h2'>étapes</h2>
-                                    </div>
 
-                                    <main id="interactive-map">
-                                        <Map steps={this.state.voyage.steps} />
-                                    </main>
+                                    {this.state.voyage.steps && 
+                                        <div>
+                                            <div className="title-container pr-5">
+                                                <h2 className='h2'>étapes</h2>
+                                            </div>
 
-                                    {this.state.voyage.steps.map((element, i) => {
-                                        return (
-                                            <VoyageStepCard key={i} number={i + 1} place={element.place} dateStart={element.dateStart} dateEnd={element.dateEnd} description={element.description} album={element.album} />
-                                        )
-                                    })}
+                                            <main id="interactive-map">
+                                                <Map steps={this.state.voyage.steps} />
+                                            </main>
+
+                                            {this.state.voyage.steps.map((element, i) => {
+                                                return (
+                                                    <VoyageStepCard key={i} number={i + 1} place={element.place} dateStart={element.dateStart} dateEnd={element.dateEnd} description={element.description} album={element.album} />
+                                                )
+                                            })}
+                                        </div>
+                                     }
+                                    
 
                                 </div>
                             </div>
