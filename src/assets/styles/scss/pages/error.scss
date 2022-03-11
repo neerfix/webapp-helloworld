@@ -1,0 +1,39 @@
+#notfoundpage{
+    position: relative;
+
+    .notfound-image{
+        width: 100vw;
+        max-height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+
+    .notfound-content{
+        position: relative;
+        z-index: 1;
+
+        input{
+            @apply bg-beige;
+        }
+    }
+
+    .input-container{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+
+        input{
+            flex-grow: 1;
+        }
+
+        .btn{
+            padding: 10px;
+        }
+
+        @apply bg-beige;
+    }
+}
