@@ -40,7 +40,7 @@ const VoyageStepPage = () => {
 	};
 	
 	return (
-		<div id={"step"} className={"mx-auto bg-white"}>
+		<div id={"step"} className={"bg-white"}>
 			<div className="compass"></div>
 			<div className={"w-full"}>
 				<div className="title-container">

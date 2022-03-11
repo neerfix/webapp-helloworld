@@ -12,7 +12,7 @@ const getPopularTravels = () => {
 			'Authorization': `Bearer ${authentication.accessToken}`
 		}
 	})
-		.then((response) => response)
+		.then((response) => response.data)
 		.catch((error) => handleError(error))
 }
 
@@ -29,16 +29,30 @@ const getTravelDetails = (travelId) => {
 			'Authorization': `Bearer ${authentication.accessToken}`
 		}
 	})
-		.then((response) => response)
+		.then((response) => {
+			return response
+		})
 		.catch((error) => handleError(error))
 }
 
 const createTravel = (travel) => {
-	return axios.post(`${apiUrl}/travels`, { travel }, {
-		headers: headers
+	const authentication = JSON.parse(localStorage.getItem('authentication'));
+
+	// Convertir isSharable en boolean 
+	if(travel.isSharable === "true") {
+		travel.isSharable = true;
+	} else {
+		travel.isSharable = false;
+	}
+
+	return axios.post(`${apiUrl}/travels`, travel, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
 	})
 		.then((response) => {
-			return response
+			return response.data.data.uuid;
 		})
 		.catch((error) => handleError(error))
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
+// Icones
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiEdit3 } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
@@ -11,10 +12,19 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
+// Imports
+import { createTravel } from "@/api/_travelApi";
+import { useNotification } from "@/notifications/NotificationProvider";
+
 const VoyageEditPage = () => {
 
     let { voyageId } = useParams();
+	const navigate = useNavigate();
+	const dispatch = useNotification();
+	const [isSharable, setIsSharable] = useState(false);
 
+	let isGeocoderLoaded = false;
+	
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 	const [voyage, setVoyage] = useState({
@@ -27,30 +37,28 @@ const VoyageEditPage = () => {
         endedAt: "", // fin du voyage Y-m-d
         description: "", // date de description
 		place: {
-			address: "",
-			city: "",
-			zipcode: "",
-			country: "",
 			name: "", // required
 			latitude: "", // required
 			longitude: "" // required
-		},
-        steps: [], // liste des étapes
+		}
     });
 
 	useEffect(() => {
-		var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
-		geocoder.addTo('#geocoder-container');
+		if(!isGeocoderLoaded && !geocoder) {
+			var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
+			geocoder.addTo('#geocoder-container');
+	
+			geocoder.on('result', function(results) {
+				let result = results.result
+				voyage.place.name = result.place_name_fr;
+				voyage.place.longitude = result.center[0];
+				voyage.place.latitude = result.center[1];
+				voyage.location = result.place_name_fr;
+			})
 
-		geocoder.on('result', function(results) {
-			let result = results.result
-			voyage.place.name = result.place_name_fr;
-			voyage.place.longitude = result.center[0];
-			voyage.place.latitude = result.center[1];
-			voyage.location = result.place_name_fr;
-			console.log(voyage.place);
-		})
-	}, [voyage]);
+			isGeocoderLoaded = true;
+		}
+	}, []);
 
     if( voyageId ) {
 		voyage.voyageId = parseInt(voyageId);
@@ -89,15 +97,7 @@ const VoyageEditPage = () => {
             }
         ];
 	}
-	
-	const [isSharable, setIsSharable] = useState(0);
-	
-	/*** React hooks ***/
-	
-	useEffect(() => {
-		// TODO: Call Api to get voyage information
-	});
-	
+
 	/*** Custom functions ***/
 	
 	const handleChange = (event) => {
@@ -106,12 +106,18 @@ const VoyageEditPage = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
+
+	const handleNotification = (type, message, title) => {
+		dispatch({
+		  type: type,
+		  message: message,
+		  title: title
+		})
+	}
 	
-	const saveVoyage = (event) => {
+	const saveVoyage = async (event) => {
 		event.preventDefault();
 
-		console.log(voyage);
-		
 		const payload = {
 			...voyage,
 			isSharable: isSharable,
@@ -119,6 +125,20 @@ const VoyageEditPage = () => {
 		
 		// TODO: Call api to save voyage modification
 		console.log(payload);
+
+		await createTravel(payload)
+            .then(async (voyageId) => {
+				if(voyage.voyageId) {
+					handleNotification("success", "Votre voyage est modifié !",  "Modification");
+					navigate('/voyage/' + voyage.voyageId);
+				} else {
+					handleNotification("success", "Votre voyage est créé !",  "Création");
+					navigate('/voyage/' + voyageId);
+				}
+            })
+            .catch((error) => {
+                console.log(error)
+            })
 	};
 	
 	return (
@@ -154,7 +174,7 @@ const VoyageEditPage = () => {
 					</div>
 					<div className={"mb-4 grid grid-cols-9 gap-4"}>
 						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Description</label>
+							<label>Description (au moins 5 mots)</label>
 							<input
 								type={"text"}
 								name={"description"}
@@ -223,8 +243,8 @@ const VoyageEditPage = () => {
 								value={isSharable}
 								onChange={(e) => setIsSharable(e.target.value)}
 							>
-								<option value={0}>Privé</option>
-								<option value={1}>Public</option>
+								<option value="true">Public</option>
+								<option value="false">Privé</option>
 							</select>
 						</div>
 					</div>

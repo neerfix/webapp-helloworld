@@ -129,11 +129,34 @@ Lancer le serveur
 - Gregg : corriger les warnings 
 
 **Ce qu'il faut continuer à faire**
-- Aimee : relier la gestion des voyages (création et édition)
+- Aimee : relier la gestion des voyages (édition)
 - Louise : la partie amis / compagnons
 - Gregg : la gestion des tâches et du sprint, la communication entre les 2 équipes
 
 **Ce qu'il faut arrêter de faire**
-- Aimee : RAS
+- Aimee : perdre du temps sur l'esthetique du site
 - Louise : RAS
 - Gregg : RAS
+
+---- 
+
+Pour se connecter à l'application, vous pouvez utiliser le compte :
+Mail : oui@oui.fr
+Mot de passe : azerty
+
+## Liste des fonctionnalités reliées avec le back: 
+- Connexion
+- Inscription (si pas de redirection, vérifier la connexion)
+- Map interactive
+- Edition du passport 
+- Création d'un voyage
+
+Il manque (par ordre d'importance):
+- récuparation d'un voyage (erreur back)
+- édition d'un voyage (erreur back)
+- envoi des images (blocage en cascade sur les fonctionnalités ci-dessus)
+- ajout d'étapes
+- modification d'étapes
+- système d'amis
+- système d'abonnement et de feed
+- système de wishlist (partie back manquante)
