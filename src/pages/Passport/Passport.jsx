@@ -29,11 +29,14 @@ const PassportPage = () => {
 	useEffect(() => {
 		async function fetchProfileInformation() {
 			const { data } = await getProfileInformation()
-			console.log(data)
+			setProfile({
+				...profile,
+				username: data.username
+			})
 		}
 
 		fetchProfileInformation()
-	}, [profile])
+	}, [])
 
 	return (
 		<div>

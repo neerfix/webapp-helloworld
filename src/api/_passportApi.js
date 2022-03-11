@@ -6,7 +6,7 @@ import { handleError } from "@/api/_handleApi";
 
 const getProfileInformation = () => {
 	return axios.get(`${apiUrl}/users/me`, requestOptions)
-		.then((response) => response)
+		.then((response) => response.data)
 		.catch((error) => handleError(error))
 }
 
@@ -30,7 +30,7 @@ const updateProfile = (profile) => {
  */
 const searchFriend = (search) => {
 	return axios.post(`${apiUrl}/users/search`, { search }, requestOptions)
-		.then((response) => response)
+		.then((response) => response.data)
 		.catch((error) => handleError(error))
 }
 
