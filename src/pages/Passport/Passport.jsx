@@ -36,7 +36,7 @@ const PassportPage = () => {
 		}
 
 		fetchProfileInformation()
-	}, [])
+	}, [profile])
 
 	return (
 		<div>

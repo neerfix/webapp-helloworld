@@ -17,12 +17,15 @@ const getProfileInformation = () => {
 }
 
 /**
+ * Update user profile
  *
+ * @param uuid
  * @param profile
+ * @returns {Promise<AxiosResponse<any>>}
  */
-const updateProfile = (profile) => {
+const updateProfile = (uuid, profile) => {
 	const authentication = JSON.parse(localStorage.getItem('authentication'))
-	return axios.put(`${apiUrl}/profile`, { profile }, {
+	return axios.put(`${apiUrl}/users/${uuid}`, { ...profile }, {
 		headers: {
 			...headers,
 			'Authorization': `Bearer ${authentication.accessToken}`
@@ -37,12 +40,11 @@ const updateProfile = (profile) => {
 /**
  * Search user with his username
  *
- * @param search
  * @returns {Promise<AxiosResponse<any>>}
  */
-const searchFriend = (search) => {
+const searchFriend = () => {
 	const authentication = JSON.parse(localStorage.getItem('authentication'))
-	return axios.post(`${apiUrl}/users/search`, { search }, {
+	return axios.get(`${apiUrl}/users` , {
 		headers: {
 			...headers,
 			'Authorization': `Bearer ${authentication.accessToken}`
@@ -74,7 +76,7 @@ const getFriends = () => {
  * @returns {Promise<AxiosResponse<any>|void>}
  */
 const removeFriend = (userId) => {
-	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	// const authentication = JSON.parse(localStorage.getItem('authentication'))
 	return axios.delete(`${apiUrl}/followers/${userId}`)
 		.then((response) => response)
 		.catch((error) => handleError(error))

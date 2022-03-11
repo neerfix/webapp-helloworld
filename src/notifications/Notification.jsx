@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import { BiErrorCircle } from 'react-icons/bi';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const Notification = props => {
-    const [exit, setExit] = useState(false);
+    // const [exit, setExit] = useState(false);
     const [width, setWidth] = useState(0);
     const [intervalID, setIntervalID] = useState(null);
 
@@ -23,29 +23,29 @@ const Notification = props => {
         setIntervalID(id);
     };
 
-    const handlePauseTimer = () => {
+    const handlePauseTimer = useCallback(() => {
         clearInterval(intervalID);
-    };
+    }, [intervalID])
 
-    const handleCloseNotification = () => {
+    const handleCloseNotification = useCallback(() => {
         handlePauseTimer();
-        setExit(true);
+        // setExit(true);
         setTimeout(() => {
             props.dispatch({
                 type: "REMOVE_NOTIFICATION",
                 id: props.id
             })
         }, 400)
-    };
+    }, [handlePauseTimer, props]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (width === 100) {
             // Close notification
             handleCloseNotification()
         }
-    }, [width])
+    }, [width, handleCloseNotification])
 
-    React.useEffect(() => {
+    useEffect(() => {
         handleStartTimer();
     }, []);
 

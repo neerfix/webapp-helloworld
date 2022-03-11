@@ -1,9 +1,17 @@
 
 import { useEffect, useState } from "react";
+import { DateTime } from "luxon/build/es6/luxon";
+import { getProfileInformation, updateProfile } from "@/api/_passportApi";
+import {useNotification} from "@/notifications/NotificationProvider";
+import {VscRefresh} from "react-icons/vsc";
 
 const PassportEditPage = () => {
+	const dispatch = useNotification();
+	
 	const [profile, setProfile] = useState({
-		pseudo: "",
+		uuid: "",
+		username: "",
+		password: "",
 		birthdate: "",
 		email: "",
 		about: "",
@@ -16,13 +24,37 @@ const PassportEditPage = () => {
 	const [visibility, setVisibility] = useState(0);
 	const [albumSpotlight, setAlbumSpotlight] = useState(0);
 	
+	const [loading, setLoading] = useState(false)
+	
 	/*** React hooks ***/
 	
 	useEffect(() => {
-		// TODO: Call Api to get profile information
-	});
+		async function fetchProfileInformation() {
+			const { data } = await getProfileInformation()
+			console.log(data)
+			setProfile(profile => {
+				return {
+					...profile,
+					uuid: data.uuid,
+					username: data.username,
+					birthdate: DateTime.fromISO(data.dateOfBirth).toFormat('y-MM-d'),
+					email: data.email
+				}
+			})
+		}
+		
+		fetchProfileInformation()
+	}, []);
 	
 	/*** Custom functions ***/
+	
+	const handleNotification = (type, message, title) => {
+		dispatch({
+			type: type,
+			message: message,
+			title: title
+		})
+	}
 	
 	const handleChange = (event) => {
 		setProfile({
@@ -31,17 +63,30 @@ const PassportEditPage = () => {
 		});
 	};
 	
-	const saveProfile = (event) => {
+	const saveProfile = async (event) => {
 		event.preventDefault();
 		
-		const payload = {
-			...profile,
-			visibility: visibility,
-			albumSpotlight: albumSpotlight,
+		setLoading(true)
+		
+		const user = {
+			email: profile.email,
+			birthDate: profile.birthdate,
+			username: profile.username,
+			password: profile.password,
+			isVerify: true
 		};
 		
-		// TODO: Call api to save profile modification
-		console.log(payload);
+		await updateProfile(profile.uuid, user)
+			.then((response) => {
+				console.log(response)
+				handleNotification("success", "Vous passeport à bien été modifié",  "Modification");
+			})
+			.catch((error) => {
+				console.log(error)
+				handleNotification("error", "Une erreur est survenue",  "Modification");
+			})
+		
+		setLoading(false)
 	};
 	
 	return (
@@ -68,8 +113,8 @@ const PassportEditPage = () => {
 										<label>Pseudonyme</label>
 										<input
 											type={"text"}
-											name={"pseudo"}
-											value={profile.pseudo}
+											name={"username"}
+											value={profile.username}
 											required
 											className={"focus:border-dark-brown focus:ring-dark-brown"}
 											onChange={(e) => handleChange(e)}
@@ -99,8 +144,20 @@ const PassportEditPage = () => {
 										/>
 									</div>
 								</div>
+								<div className={"flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:space-x-10 mt-6"}>
+									<div className={"form-field"}>
+										<label>Mot de passe</label>
+										<input
+											type={"password"}
+											name={"password"}
+											value={profile.password}
+											required
+											onChange={(e) => handleChange(e)}
+										/>
+									</div>
+								</div>
 								<div className={"divider"} />
-								<div className={"flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:space-x-10 mt-4"}>
+								{/*<div className={"flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:space-x-10 mt-4"}>
 									<div className={"form-field"}>
 										<label>Lien Facebook</label>
 										<input
@@ -144,7 +201,7 @@ const PassportEditPage = () => {
 										/>
 									</div>
 								</div>
-								<div className={"divider"} />
+								<div className={"divider"} />*/}
 								<div className={"flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:space-x-10 mt-6"}>
 									<div className={"form-field col-span-7 col-start-2"}>
 										<label>Visibilité du profil</label>
@@ -173,9 +230,16 @@ const PassportEditPage = () => {
 										</select>
 									</div>
 								</div>
-								<button className={"btn btn-dark mx-auto mt-10"} type={"submit"}>
-									<span className={"btn-text"}>Sauvegarder</span>
-								</button>
+								<div className={"btn-loading mx-auto mt-10"}>
+									<button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
+										<span className={"btn-text"}>Sauvegarder</span>
+									</button>
+									{loading &&
+										<div className={"btn-overlay"}>
+											<VscRefresh className={"animate-spin"} />
+										</div>
+									}
+								</div>
 							</form>
 						</div>
 					</div>

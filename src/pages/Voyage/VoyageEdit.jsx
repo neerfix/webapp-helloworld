@@ -17,19 +17,6 @@ const VoyageEditPage = () => {
 
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
-	useEffect(() => {
-		var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
-		geocoder.addTo('#geocoder-container');
-
-		geocoder.on('result', function(results) {
-			let result = results.result
-			voyage.place.name = result.place_name_fr;
-			voyage.place.longitude = result.center[0];
-			voyage.place.latitude = result.center[1];
-			console.log(voyage.place);
-		})
-	}, []);
-
 	const [voyage, setVoyage] = useState({
 		voyageId: null,
         name: "", // titre du voyage
@@ -50,6 +37,20 @@ const VoyageEditPage = () => {
 		},
         steps: [], // liste des étapes
     });
+
+	useEffect(() => {
+		var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
+		geocoder.addTo('#geocoder-container');
+
+		geocoder.on('result', function(results) {
+			let result = results.result
+			voyage.place.name = result.place_name_fr;
+			voyage.place.longitude = result.center[0];
+			voyage.place.latitude = result.center[1];
+			voyage.location = result.place_name_fr;
+			console.log(voyage.place);
+		})
+	}, [voyage]);
 
     if( voyageId ) {
 		voyage.voyageId = parseInt(voyageId);

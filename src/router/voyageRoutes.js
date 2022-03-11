@@ -9,15 +9,15 @@ import VoyageListPage from "@/pages/Voyage/VoyageList";
 import VoyageWishlistPage from "@/pages/Voyage/VoyageWishlist";
 
 const routes = [
-	{ path: '/voyage/new', element: <VoyageEditPage /> },
-	{ path: '/voyage/list', element: <VoyageListPage /> },
-	{ path: '/voyage/wishlist', element: <VoyageWishlistPage /> },
-	{ path: '/voyage/:voyageId', element: <VoyagePage /> },
-	{ path: '/voyage/edit/:voyageId', element: <VoyageEditPage /> },
-	{ path: '/voyage/step/:voyageId', element: <VoyageStepPage /> },
-	{ path: '/voyage/step/:voyageId/:stepId', element: <VoyageStepEditPage /> },
-	{ path: '/voyage/album/:voyageId', element: <VoyageAlbumPage /> },
-	{ path: '/voyage/album/:voyageId/:stepId', element: <VoyageAlbumPage /> }
+	{ path: '/voyage/new', element: <VoyageEditPage />, authRequired: true },
+	{ path: '/voyage/list', element: <VoyageListPage />, authRequired: false },
+	{ path: '/voyage/wishlist', element: <VoyageWishlistPage />, authRequired: true },
+	{ path: '/voyage/:voyageId', element: <VoyagePage />, authRequired: false },
+	{ path: '/voyage/edit/:voyageId', element: <VoyageEditPage />, authRequired: true },
+	{ path: '/voyage/step/:voyageId', element: <VoyageStepPage />, authRequired: false },
+	{ path: '/voyage/step/:voyageId/:stepId', element: <VoyageStepEditPage />, authRequired: false },
+	{ path: '/voyage/album/:voyageId', element: <VoyageAlbumPage />, authRequired: false },
+	{ path: '/voyage/album/:voyageId/:stepId', element: <VoyageAlbumPage />, authRequired: false }
 ];
 
 export default routes;

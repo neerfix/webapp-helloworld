@@ -1,12 +1,9 @@
 
 import { useEffect, useState } from "react";
-import {NavLink, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 import { getProfileInformation } from "@/api/_profileApi";
 import PassportInformation from "@/pages/Passport/components/PassportInformation";
-
-import banner from "@/assets/images/homepage/hero-banner.jpg";
-import {FiEdit3} from "react-icons/fi";
 
 const ProfilePage = () => {
 	const params = useParams()

@@ -1,6 +1,6 @@
 
 .notification {
-    position: absolute;
+    position: fixed;
     bottom: 25px;
     right: 25px;
     flex-direction: column;
@@ -15,7 +15,7 @@
     justify-content: space-between;
     letter-spacing: 0.5px;
     text-align: center;
-    z-index: 1;
+    z-index: 99;
 
     p{
         padding: 10px 25px;
