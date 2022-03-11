@@ -73,7 +73,7 @@ const PassportPage = () => {
 											<span className={"btn-text"}>Mes voyages</span>
 										</button>
 									</NavLink>
-									<NavLink to={"voyage/wishlist"}>
+									<NavLink to={"/voyage/wishlist"}>
 										<button className={"btn btn-outline my-5 mr-3"}>
 											<span className={"btn-text"}>Ma liste de souhait</span>
 										</button>
