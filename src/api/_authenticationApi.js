@@ -13,8 +13,8 @@ const checkEmailExist = (email) => {
  * @param email
  * @param password
  */
-const login = (username, password) => {
-	return axios.post(`${apiUrl}/auth/login`, { username, password }, requestOptions)
+const login = (email, password) => {
+	return axios.post(`${apiUrl}/auth/login`, { username: email, password }, requestOptions)
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -50,7 +50,7 @@ const resetPassword = () => {
 }
 
 const logout = () => {
-	return localStorage.removeItem('authentication')
+	localStorage.removeItem('authentication')
 }
 
 export {
