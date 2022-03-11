@@ -8,12 +8,15 @@ import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { BiTimeFive } from 'react-icons/bi';
 import { FiEdit3 } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 // Component
 import AlbumPreview from "@/components/AlbumPreview";
 import VoyageStepCard from "@/components/VoyageStep";
 import Map from '@/components/Map'
+
+// Routes
+import { getTravelDetails } from "@/api/_travelApi";
 
 class VoyagePage extends React.Component {
     constructor(props) {
@@ -25,7 +28,7 @@ class VoyagePage extends React.Component {
                 id: 2345,
                 title: "Roadtrip en Afrique",
                 user: {
-                    id: 12345,
+                    id: '4d257253-1991-42a8-8187-0660fef87614',
                     name: "JohnDoe",
                     avatar: "https://avatars.githubusercontent.com/u/827205?v=4",
                 },
@@ -106,26 +109,37 @@ class VoyagePage extends React.Component {
         };
     }
 
-    componentDidMount() {
-        // fetch("https://api.example.com/items")
-        //     .then(res => res.json())
-        //     .then(
-        //         (result) => {
-        //             this.setState({
-        //                 isLoaded: true,
-        //                 voyage: result.voyage
-        //             });
-        //         },
-        //         // Remarque : il est important de traiter les erreurs ici
-        //         // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
-        //         // des exceptions provenant de réels bugs du composant.
-        //         (error) => {
-        //             this.setState({
-        //                 isLoaded: true,
-        //                 error
-        //             });
-        //         }
-        //     )
+    async componentDidMount() {
+        const voyageId = this.props.params.voyageId;
+
+        await getTravelDetails(voyageId)
+        .then(async (response) => {
+            let voyageResponse = response.data.data;
+            if(voyageResponse){
+                let formattedVoyage = {
+                    id: voyageResponse.uuid,
+                    title: voyageResponse.name,
+                    user: {
+                        id: voyageResponse.userId.uuid,
+                        name: voyageResponse.userId.username,
+                        avatar: "https://static.vecteezy.com/system/resources/thumbnails/004/416/817/small/man-traveler-with-backpack-pointing-out-vector.jpg",
+                    },
+                    thumbnail: "https://media.timeout.com/images/105274435/image.jpg",
+                    budget: voyageResponse.budget,
+                    location: voyageResponse.placeId.name,
+                    dateStart: "18/07/2022",
+                    dateEnd: "20/08/2022",
+                    description: voyageResponse.description,
+                }
+                this.setState({
+                    isLoaded: true,
+                    voyage: formattedVoyage
+                });
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     }
 
     render() {
@@ -217,24 +231,32 @@ class VoyagePage extends React.Component {
                                     </div>
 
                                     <div className="px-0 lg:px-5 my-3">
-                                        <AlbumPreview album={this.state.voyage.gallery} />
+                                        {this.state.voyage.gallery && 
+                                            <AlbumPreview album={this.state.voyage.gallery} />
+                                        }
                                     </div>
 
                                     <hr className="my-5 opacity-30" />
 
-                                    <div className="title-container pr-5">
-                                        <h2 className='h2'>étapes</h2>
-                                    </div>
 
-                                    <main id="interactive-map">
-                                        <Map steps={this.state.voyage.steps} />
-                                    </main>
+                                    {this.state.voyage.steps && 
+                                        <div>
+                                            <div className="title-container pr-5">
+                                                <h2 className='h2'>étapes</h2>
+                                            </div>
 
-                                    {this.state.voyage.steps.map((element, i) => {
-                                        return (
-                                            <VoyageStepCard key={i} number={i + 1} place={element.place} dateStart={element.dateStart} dateEnd={element.dateEnd} description={element.description} album={element.album} />
-                                        )
-                                    })}
+                                            <main id="interactive-map">
+                                                <Map steps={this.state.voyage.steps} />
+                                            </main>
+
+                                            {this.state.voyage.steps.map((element, i) => {
+                                                return (
+                                                    <VoyageStepCard key={i} number={i + 1} place={element.place} dateStart={element.dateStart} dateEnd={element.dateEnd} description={element.description} album={element.album} />
+                                                )
+                                            })}
+                                        </div>
+                                     }
+                                    
 
                                 </div>
                             </div>
@@ -247,4 +269,11 @@ class VoyagePage extends React.Component {
     }
 }
 
-export default VoyagePage;
+const VoyagePageExport = (props) => (
+        <VoyagePage
+            {...props}
+            params={useParams()}
+        />
+);
+
+export default VoyagePageExport

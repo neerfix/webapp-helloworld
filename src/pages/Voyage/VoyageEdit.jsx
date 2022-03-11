@@ -1,7 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
+// Icones
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiEdit3 } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
@@ -11,54 +12,69 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
+// Imports
+import { createTravel } from "@/api/_travelApi";
+import { useNotification } from "@/notifications/NotificationProvider";
+
 const VoyageEditPage = () => {
 
     let { voyageId } = useParams();
+	const navigate = useNavigate();
+	const dispatch = useNotification();
+	const [isSharable, setIsSharable] = useState(false);
+
+	let isGeocoderLoaded = false;
+	
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 	const [voyage, setVoyage] = useState({
-		voyageId: "",
-        title: "",
-        budget: "",
-        location: "",
-        dateStart: "",
-        dateEnd: "",
-        description: "",
-        steps: [],
+		voyageId: null,
+        name: "", // titre du voyage
+        status: "active", // statut active
+        isSharable: true, // voyage public ou privé 
+        budget: "", // budget du voyage
+        startedAt: "", // début du voyage Y-m-d
+        endedAt: "", // fin du voyage Y-m-d
+        description: "", // date de description
 		place: {
-			address: "",
-			city: "",
-			zipcode: "",
-			country: "",
-			name: "",
-			latitude: "",
-			longitude: ""
+			name: "", // required
+			latitude: "", // required
+			longitude: "" // required
 		}
     });
 
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+	useEffect((isGeocoderLoaded) => {
+		if(!isGeocoderLoaded) {
+			var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
+			geocoder.addTo('#geocoder-container');
+	
+			geocoder.on('result', function(results) {
+				let result = results.result
+				voyage.place.name = result.place_name_fr;
+				voyage.place.longitude = result.center[0];
+				voyage.place.latitude = result.center[1];
+				voyage.location = result.place_name_fr;
+			})
 
-	useEffect(() => {
-		var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
-		geocoder.addTo('#geocoder-container');
-
-		geocoder.on('result', function(results) {
-			let result = results.result
-			voyage.place.name = result.place_name_fr;
-			voyage.place.longitude = result.center[0];
-			voyage.place.latitude = result.center[1];
-			voyage.location = result.place_name_fr;
-			console.log(voyage.place);
-		})
-	}, [voyage]);
+			isGeocoderLoaded = true;
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isGeocoderLoaded]);
 
     if( voyageId ) {
 		voyage.voyageId = parseInt(voyageId);
-		voyage.title = "Roadtrip en Afrique";
+		voyage.name = "Roadtrip en Afrique";
+		voyage.status = "active";
+		voyage.isSharable = true;
 		voyage.budget = "2000 €";
-		voyage.location = "Afrique du Sud";
-		voyage.dateStart = "2022-03-15";
-		voyage.dateEnd = "2022-08-20";
+		voyage.startedAt = "2022-03-15";
+		voyage.endedAt = "2022-08-20";
 		voyage.description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum tristique erat et laoreet. Vivamus posuere feugiat rhoncus. ";
+		voyage.place = {
+			name: "Afrique du Sud",
+			latitude: -30.559482,
+			longitude: 	22.937506
+		}
 		voyage.steps = [
             {
                 idStep: 1,
@@ -82,15 +98,7 @@ const VoyageEditPage = () => {
             }
         ];
 	}
-	
-	const [visibility, setVisibility] = useState(0);
-	
-	/*** React hooks ***/
-	
-	useEffect(() => {
-		// TODO: Call Api to get voyage information
-	});
-	
+
 	/*** Custom functions ***/
 	
 	const handleChange = (event) => {
@@ -99,19 +107,39 @@ const VoyageEditPage = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
+
+	const handleNotification = (type, message, title) => {
+		dispatch({
+		  type: type,
+		  message: message,
+		  title: title
+		})
+	}
 	
-	const saveVoyage = (event) => {
+	const saveVoyage = async (event) => {
 		event.preventDefault();
 
-		console.log(voyage);
-		
 		const payload = {
 			...voyage,
-			visibility: visibility,
+			isSharable: isSharable,
 		};
 		
 		// TODO: Call api to save voyage modification
 		console.log(payload);
+
+		await createTravel(payload)
+            .then(async (voyageId) => {
+				if(voyage.voyageId) {
+					handleNotification("success", "Votre voyage est modifié !",  "Modification");
+					navigate('/voyage/' + voyage.voyageId);
+				} else {
+					handleNotification("success", "Votre voyage est créé !",  "Création");
+					navigate('/voyage/' + voyageId);
+				}
+            })
+            .catch((error) => {
+                console.log(error)
+            })
 	};
 	
 	return (
@@ -137,8 +165,8 @@ const VoyageEditPage = () => {
 							<label>Titre du voyage</label>
 							<input
 								type={"text"}
-								name={"title"}
-								value={voyage.title}
+								name={"name"}
+								value={voyage.name}
 								required
 								className={"focus:border-dark-brown focus:ring-dark-brown"}
 								onChange={(e) => handleChange(e)}
@@ -147,7 +175,7 @@ const VoyageEditPage = () => {
 					</div>
 					<div className={"mb-4 grid grid-cols-9 gap-4"}>
 						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Description</label>
+							<label>Description (au moins 5 mots)</label>
 							<input
 								type={"text"}
 								name={"description"}
@@ -177,8 +205,8 @@ const VoyageEditPage = () => {
 								id="place"
 								className="place"
 								type={"text"}
-								name={"location"}
-								value={voyage.location}
+								name={"place_name"}
+								value={voyage.place.name}
 								onChange={(e) => handleChange(e)}
 							/>
 							<div id='geocoder-container' className="w-full"></div>
@@ -190,8 +218,8 @@ const VoyageEditPage = () => {
 							<label>Date de début</label>
 							<input
 								type={"date"}
-								name={"dateStart"}
-								value={voyage.dateStart}
+								name={"startedAt"}
+								value={voyage.startedAt}
 								onChange={(e) => handleChange(e)}
 							/>
 						</div>
@@ -201,8 +229,8 @@ const VoyageEditPage = () => {
 							<label>Date de fin</label>
 							<input
 								type={"date"}
-								name={"dateEnd"}
-								value={voyage.dateEnd}
+								name={"endedAt"}
+								value={voyage.endedAt}
 								onChange={(e) => handleChange(e)}
 							/>
 						</div>
@@ -213,12 +241,11 @@ const VoyageEditPage = () => {
 						<div className={"form-field col-span-7 col-start-2"}>
 							<label>Visibilité du voyage</label>
 							<select
-								value={visibility}
-								onChange={(e) => setVisibility(e.target.value)}
+								value={isSharable}
+								onChange={(e) => setIsSharable(e.target.value)}
 							>
-								<option value={0}>Privé</option>
-								<option value={1}>Amis seulement</option>
-								<option value={2}>Public</option>
+								<option value="true">Public</option>
+								<option value="false">Privé</option>
 							</select>
 						</div>
 					</div>

@@ -66,7 +66,6 @@ const Login = () => {
         setRegisterLoading(true)
         await register(email, newPassword, username, birthdate)
             .then(async (response) => {
-                console.log(response)
                 await login(email, newPassword)
                     .then((response) => {
                         handleNotification("success", "Vous êtes désormais connecté !",  "Connexion");

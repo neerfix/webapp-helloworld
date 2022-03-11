@@ -96,7 +96,7 @@ const VoyageAlbumPage = () => {
     };
 	
 	return (
-		<div id={"album"} className={"mx-auto bg-white"}>
+		<div id={"album"} className={"bg-white"}>
 			<div className="compass"></div>
 			<div className={"w-full"}>
 				<div className="title-container">
