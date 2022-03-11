@@ -80,21 +80,11 @@ Lancer le serveur
   - Poids total du sprint : **61**
   - Total des tâches réalisées lors de ce sprint : **20**
 
-
-### [Sprint 2](https://github.com/helloworld-ynovlyon/webapp/milestone/2) (07/03/2022 - 11/03/2022)
-
-- Début de sprint - 07/03/2022 :
-
-- Fin de sprint - 07/03/2022 :
-
-
---- ---
-
 ## Rétrospective du premier sprint
 
 **Ce qu'il faut commencer à faire :**
 - Aimee : la gestion des voyages (création et édition)
-- Louise : 
+- Louise : la liste des compagnons d'aventure
 - Gregg : mettre en place la communication entre la webapp et l'api
 
 **Ce qu'il faut continuer à faire**
@@ -103,7 +93,47 @@ Lancer le serveur
 - Gregg : la gestion des tâches et du sprint, la communication entre les 2 équipes
 
 **Ce qu'il faut arrêter de faire**
-- Aimee :
-- Louise : fumer
-- Gregg :
+- Aimee : RAS
+- Louise : RAS
+- Gregg : RAS
 
+--- ---
+
+### [Sprint 2](https://github.com/helloworld-ynovlyon/webapp/milestone/2) (07/03/2022 - 11/03/2022)
+
+- Tâches du Sprint 1 en retard :
+  - Authentification (**5**)
+  - Intégration des maquettes
+
+- Réalisations :
+  - Authentification terminée et reliée au front
+  - Maquettes terminées
+  - Développement : Page des amis, Page des étapes, Page d'upload des images, Page Wishlist, Page 404, Page "Mes voyages", Page visualisation / édition de voyage
+
+- Début de sprint - 07/03/2022 :
+  - Nombre de tâches pour ce sprint : **9**
+  - Poids total du sprint : **47**
+
+- Fin de sprint - 11/03/2022 :
+  - Nombre de tâches pour ce sprint : **13**
+  - Poids total du sprint : **63**
+  - Total des tâches réalisées lors de ce sprint : **8**
+
+--- ---
+
+## Rétrospective du deuxième sprint
+
+**Ce qu'il faut commencer à faire :**
+- Aimee : la gestion des étapes d'un voyage
+- Louise : relier la wishlist
+- Gregg : corriger les warnings 
+
+**Ce qu'il faut continuer à faire**
+- Aimee : relier la gestion des voyages (création et édition)
+- Louise : la partie amis / compagnons
+- Gregg : la gestion des tâches et du sprint, la communication entre les 2 équipes
+
+**Ce qu'il faut arrêter de faire**
+- Aimee : RAS
+- Louise : RAS
+- Gregg : RAS

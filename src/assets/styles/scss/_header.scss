@@ -1,7 +1,8 @@
 
+
 #header{
     position: relative;
-    z-index: 2;
+    z-index: 5;
 	font-family: 'DM Serif Display', serif;
 	text-transform: uppercase;
 	border-bottom: 1px solid;
@@ -52,6 +53,28 @@
 			&:after{
 				width: 100%;
 			}
+		}
+	}
+
+	.nav-btn {
+		font-size: 15px;
+		letter-spacing: 2px;
+		opacity: 1;
+		font-weight: bold;
+		background: none;
+		border: 2.5px solid;
+		position: relative;
+		display: flex;
+		align-items: center;
+		padding: 15px 25px;
+		white-space: nowrap;
+		text-align: center;
+		transition: all .1s;
+
+		&:hover{
+			background: #291d11;
+			color: #f4e9dd;
+			border-color: #291d11;
 		}
 	}
 }

@@ -1,0 +1,29 @@
+#login {
+  font-family: 'DM Serif Display', serif;
+
+  .compass {
+    width: 90vw;
+    height: 90vw;
+    max-width: 800px;
+    max-height: 800px;
+    position: absolute;
+    right: -20%;
+    top: 20%;
+    background-image: url('/assets/images/compass.png');
+    background-size: cover;
+    transform: rotate(30deg);
+    mix-blend-mode: hard-light;
+    opacity: .08;
+  }
+
+  .forgot-password-link {
+    font-family: 'Raleway', serif;
+    text-decoration: underline;
+
+    @apply text-dark-brown
+  }
+}
+
+.account-sign-container{
+  max-width: 1000px;
+}

@@ -1,0 +1,98 @@
+
+#interactive-map {
+	font-family: 'DM Serif Display', serif;
+	height: calc(100vh - 98px);
+	position: relative;
+
+	.mapboxgl-ctrl-geocoder, .mapboxgl-control-container, .mapboxgl-ctrl-top-left{
+		width: 100%;
+	}
+
+	.mapboxgl-canvas-container{
+		background: url('/assets/images/map-loading.jpg');
+		background-position: center center;
+		background-size: cover;
+		border: 1px solid #867065;
+	}
+
+	.mapboxgl-ctrl-top-left{
+		padding-right: 100px;
+	}
+
+	.mapboxgl-ctrl-attrib {
+		display: none;
+	}
+
+	.mapboxgl-ctrl-geocoder{
+		padding-right: 70px;
+		max-width: none;
+		background-color: rgba(252, 250, 247, .9);
+		color: #867065;
+		border-radius: 0;
+		min-height: 45px;
+		line-height: 45px;
+
+		.mapboxgl-ctrl-geocoder--icon{
+			top: 12px;
+		}
+	}
+
+	.mapboxgl-ctrl-geocoder--button{
+		background: none;
+		line-height: 27px;
+	}
+
+	.filter-map-control{
+		background-color: rgba(252, 250, 247, .9);
+		min-height: 45px;
+		min-width: 45px;
+		line-height: 30px; 
+	}
+
+	.mapboxgl-ctrl-logo{
+		display: none;
+	}
+
+	.mapboxgl-ctrl-pitchtoggle-3d {
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCI+ICAgIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkeT0iLjM1ZW0iIHN0eWxlPSJmb250LXNpemU6IDE0cHg7IGZvbnQtZmFtaWx5OiAnSGVsdmV0aWNhIE5ldWUnLEFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmOyBmb250LXdlaWdodDogYm9sZDsgdGV4dC1hbmNob3I6IG1pZGRsZTsiPjNEPC90ZXh0Pjwvc3ZnPg==);
+	}
+
+	.filter-map-control {
+		background-size: 25px;
+		fill: #353535;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNiAxNmgtNnYtM2g2djN6bS0yLTV2LTEwaC0ydjEwaDJ6bS0yIDd2NWgydi01aC0yem0xMy03aC02di0zaDZ2M3ptLTItNXYtNWgtMnY1aDJ6bS0yIDd2MTBoMnYtMTBoLTJ6bTEzIDNoLTZ2LTNoNnYzem0tMi01di0xMGgtMnYxMGgyem0tMiA3djVoMnYtNWgtMnoiLz48L3N2Zz4=);
+	}
+
+	.mapboxgl-ctrl{
+		background-color: rgba(252, 250, 247, .9);
+		border-radius: 0;
+	}
+
+	.marker {
+		background-image: url('../../images/map_marker_icon.svg');
+		background-size: cover;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		filter: drop-shadow(0px 0px 6px rgba(0,0,0,.6));
+	}
+
+	.mapboxgl-popup-close-button{
+		display: none;
+	}
+
+	.suggestions-wrapper{
+		display: none;
+	}
+	  
+}
+
+#searchTravel{
+	margin: 15px auto;
+	width: calc(100vw - 30px);
+	position: absolute;
+	left: 70px;
+	top: 15px;
+}
