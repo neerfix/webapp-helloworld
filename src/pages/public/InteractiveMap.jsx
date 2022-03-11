@@ -1,11 +1,8 @@
-import { useState } from "react";
 import Map from '@/components/Map';
 
 import { getPopularTravels } from "@/api/_travelApi";
 
 const InteractiveMap = () => {
-
-	const [voyages, setVoyages] = useState([]);
 	
     const handleTravels = async (e) => {
         await getPopularTravels()
