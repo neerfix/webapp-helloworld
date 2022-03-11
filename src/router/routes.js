@@ -12,11 +12,11 @@ import ProfilePage from "@/pages/Profile/Profile";
 import NotFoundPage from "@/pages/public/NotFound";
 
 const globalRoutes = [
-	{ path: '*', element: <NotFoundPage /> },
-	{ path: '/', element: <HomePage /> },
-	{ path: '/map', element: <InteractiveMap /> },
-	{ path: '/feed', element: <FeedPage /> },
-	{ path: '/profile/:uuid', element: <ProfilePage /> },
+	{ path: '*', element: <NotFoundPage />, authRequired: false },
+	{ path: '/', element: <HomePage />, authRequired: false },
+	{ path: '/map', element: <InteractiveMap />, authRequired: false },
+	{ path: '/feed', element: <FeedPage />, authRequired: true },
+	{ path: '/profile/:uuid', element: <ProfilePage />, authRequired: false },
 ]
 
 const routes = globalRoutes.concat(

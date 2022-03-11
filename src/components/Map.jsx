@@ -47,7 +47,12 @@ const Map = (props) => {
             showCompass: false
         }), 'bottom-right');
 
-        var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
+        var geocoder = new MapboxGeocoder({ 
+            accessToken: mapboxgl.accessToken, 
+            markers: false,
+            placeholder: 'Recherchez un lieu, un monument, un pays...',
+            mapboxgl: mapboxgl
+        });
         map.addControl(geocoder, 'top-left');
 
         if(mapSearchQuery){
