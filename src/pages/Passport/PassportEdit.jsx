@@ -1,9 +1,12 @@
 
 import { useEffect, useState } from "react";
+import { DateTime } from "luxon/build/es6/luxon";
+import { getProfileInformation, updateProfile } from "@/api/_passportApi";
 
 const PassportEditPage = () => {
 	const [profile, setProfile] = useState({
-		pseudo: "",
+		uuid: "",
+		username: "",
 		birthdate: "",
 		email: "",
 		about: "",
@@ -19,8 +22,20 @@ const PassportEditPage = () => {
 	/*** React hooks ***/
 	
 	useEffect(() => {
-		// TODO: Call Api to get profile information
-	});
+		async function fetchProfileInformation() {
+			const { data } = await getProfileInformation()
+			console.log(data)
+			setProfile({
+				...profile,
+				uuid: data.uuid,
+				username: data.username,
+				birthdate: DateTime.fromISO(data.dateOfBirth).toFormat('y-MM-d'),
+				email: data.email
+			})
+		}
+		
+		fetchProfileInformation()
+	}, []);
 	
 	/*** Custom functions ***/
 	
@@ -31,17 +46,22 @@ const PassportEditPage = () => {
 		});
 	};
 	
-	const saveProfile = (event) => {
+	const saveProfile = async (event) => {
 		event.preventDefault();
 		
-		const payload = {
-			...profile,
-			visibility: visibility,
-			albumSpotlight: albumSpotlight,
+		const user = {
+			email: profile.email,
+			birthDate: profile.birthdate,
+			userName: profile.username
 		};
 		
-		// TODO: Call api to save profile modification
-		console.log(payload);
+		await updateProfile(profile.uuid, user)
+			.then((response) => {
+				console.log(response)
+			})
+			.catch((error) => {
+				console.log(error)
+			})
 	};
 	
 	return (
@@ -68,8 +88,8 @@ const PassportEditPage = () => {
 										<label>Pseudonyme</label>
 										<input
 											type={"text"}
-											name={"pseudo"}
-											value={profile.pseudo}
+											name={"username"}
+											value={profile.username}
 											required
 											className={"focus:border-dark-brown focus:ring-dark-brown"}
 											onChange={(e) => handleChange(e)}
@@ -100,7 +120,7 @@ const PassportEditPage = () => {
 									</div>
 								</div>
 								<div className={"divider"} />
-								<div className={"flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:space-x-10 mt-4"}>
+								{/*<div className={"flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:space-x-10 mt-4"}>
 									<div className={"form-field"}>
 										<label>Lien Facebook</label>
 										<input
@@ -144,7 +164,7 @@ const PassportEditPage = () => {
 										/>
 									</div>
 								</div>
-								<div className={"divider"} />
+								<div className={"divider"} />*/}
 								<div className={"flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:space-x-10 mt-6"}>
 									<div className={"form-field col-span-7 col-start-2"}>
 										<label>Visibilité du profil</label>
