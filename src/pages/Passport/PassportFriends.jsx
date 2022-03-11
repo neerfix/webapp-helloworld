@@ -15,6 +15,20 @@ function PassportFriends() {
     const [research, setResearch] = useState('');
     const [researchResult, setResearchResult] = useState([]);
 
+    const handleFriendDeleted = (user) => {
+        console.log("deleted friend");
+        user.isFriend = false;
+    }
+    const handleFriendRequestDeclined = (user) => {
+        console.log("declined friend request");
+        user.isAsking = false;
+    }
+    const handleFriendRequestAccepted = (user) => {
+        console.log("accepted friend request");
+        user.isAsking = false;
+        user.isFriend = true;
+    }
+
     const handleChange = e => {
         setResearch(e.target.value);
         if (research !== '') {
@@ -42,17 +56,17 @@ function PassportFriends() {
             <div className={"friend-item-action col-span-1 pr-4"}>
                 {user.isFriend &&
                     <div className={"friend-btn"}>
-                        <button className={"btn btn-icon btn-outline"}>
+                        <button onClick={() => handleFriendDeleted(user)} className={"btn btn-icon btn-outline"}>
                             <FiTrash2/>
                         </button>
                     </div>
                 }
                 {!user.isFriend && user.isAsking &&
                     <div className={"friend-btn"}>
-                        <button className={"btn btn-icon btn-outline mr-2"}>
+                        <button onClick={() => handleFriendRequestAccepted(user)} className={"btn btn-icon btn-outline mr-2"}>
                             <FiCheck/>
                         </button>
-                        <button className={"btn btn-icon btn-outline"}>
+                        <button onClick={() => handleFriendRequestDeclined(user)} className={"btn btn-icon btn-outline"}>
                             <FiX/>
                         </button>
                     </div>
