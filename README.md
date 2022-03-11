@@ -150,10 +150,10 @@ Mot de passe : azerty
 - Map interactive
 - Edition du passport 
 - Création d'un voyage
+- Récuparation d'un voyage
 
 Il manque (par ordre d'importance):
-- récuparation d'un voyage (erreur back)
-- édition d'un voyage (erreur back)
+- édition d'un voyage
 - envoi des images (blocage en cascade sur les fonctionnalités ci-dessus)
 - ajout d'étapes
 - modification d'étapes
