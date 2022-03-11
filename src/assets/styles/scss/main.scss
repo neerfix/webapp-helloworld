@@ -11,6 +11,7 @@
 @import url('_login.scss');
 @import url('_interactive-map.scss');
 @import url('_map.scss');
+@import url('_notification.scss');
 
 // ANCHOR Scrollbar
 
@@ -19,6 +20,10 @@
 	/* IE and Edge */
 	scrollbar-width: thin;
 	scrollbar-color: #867065 white;
+}
+
+.page-content{
+	min-height: 100vh;
 }
 
 body{
@@ -53,22 +58,20 @@ p {
 	display: flex;
 	margin: 25px 0;
 	position: relative;
+	align-items: center;
 
 	@apply text-brown;
 	
-	&:before{
-		content: "";
-		position: absolute;
-		left: 0;
-		width: 100px;
-		height: 1.5px;
-		top: 16px;
-			
-		@media (max-width: 600px) {
-			width: 40px;
-		}
+	@media (min-width: 600px) {
+		&:before{
+			content: "";
+			position: absolute;
+			left: 0;
+			width: 100px;
+			height: 1.5px;
 
-		@apply bg-brown;
+			@apply bg-brown;
+		}
 	}
 	
 	h2, h1{
@@ -87,27 +90,29 @@ p {
 			line-height: 35px;
 
 			@media (max-width: 600px) {
-				font-size: 36px;
+				font-size: 30px;
 				line-height: 32px;
 			}
 		}
 			
 		@media (max-width: 600px) {
-			margin-left: 55px;
+			margin-left: 10px;
 		}
 	
-		&:before{
-			content: "◆";
-			position: absolute;
-			left: 90px;
-			font-size: 15px;
-			top: 0;
-			height: 100%;
-
-			@apply text-brown;
+		@media (min-width: 600px) {
+			&:before{
+				content: "◆";
+				position: absolute;
+				left: 90px;
+				font-size: 15px;
+				top: 0;
+				height: 100%;
 	
-			@media (max-width: 600px) {
-				left: 35px;
+				@apply text-brown;
+		
+				@media (max-width: 600px) {
+					left: 35px;
+				}
 			}
 		}
 	}
@@ -137,12 +142,17 @@ p {
 	align-items: center;
 	padding: 15px 25px 15px 0;
 	white-space: nowrap;
+	transition: all .15s;
+
+	@apply text-brown bg-beige;
+
+	&:hover{
+		@apply bg-dark-beige;
+	}
 
 	@media (max-width: 600px) {
 		padding: 10px 20px 10px 0;
 	}
-
-	@apply text-brown bg-beige;
 	
 	&:not(.btn-icon):before{
 		content: "";
@@ -150,6 +160,7 @@ p {
 		left: 0;
 		width: 5vw;
 		height: 1.5px;
+		top: 26px;
 			
 		@media (max-width: 600px) {
 			width: 20px;
@@ -197,6 +208,13 @@ p {
 
 	&.btn-dark{
 		@apply text-beige bg-brown;
+		border-width: 2px;
+		@apply border-brown;
+		transition: all .15s;
+
+		&:hover{
+			@apply bg-dark-brown;
+		}
 	
 		&:before{
 			@apply bg-beige;
@@ -214,6 +232,20 @@ p {
 		border: 2px solid #7B6253;
 
 		@apply border-brown;
+
+		&:hover{
+			@apply text-beige bg-brown;
+
+			&:before{
+				@apply bg-beige;
+			}
+
+			.btn-text{
+				&:before{
+					@apply text-beige;
+				}
+			}
+		}
 	}
 
 	&.btn-icon {
@@ -243,6 +275,30 @@ p {
 	}
 }
 
+.btn-loading {
+	position: relative;
+	max-width: max-content;
+
+	.btn-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100%;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		background-color: rgba(0, 0, 0, 0.9);
+
+		svg {
+			@apply text-white text-xl;
+		}
+	}
+}
+
 // ANCHOR DestinationCard
 
 .destination-card, .feed-card{
@@ -269,6 +325,33 @@ p {
 		p{
 			@apply text-brown;
 		}
+	}
+}
+
+.voyage-tile-card{
+	position: relative;
+	width: 333px;
+	height: 333px;
+	max-width: 333px;
+	max-height: 333px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+
+	.card-img-bg{
+		position: absolute;
+		width: 333px;
+		height: 333px;
+		object-fit: cover;
+		top: 0;
+		left: 0;
+	}
+
+	.card-text{
+		background-color: rgba(255, 255, 255, .8);
+		z-index: 5;
+		width: 100%;
+		position: relative;
 	}
 }
 
@@ -306,4 +389,9 @@ form {
 	margin: 35px auto 25px;
 
 	@apply bg-brown;
+}
+
+input:read-only{
+	pointer-events: none;
+	opacity: .4;
 }

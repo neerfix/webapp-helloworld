@@ -1,112 +1,126 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { checkEmailExist, register, login } from "@/api/_authenticationApi";
+import {useNotification} from "@/notifications/NotificationProvider";
+
+import { VscRefresh } from 'react-icons/vsc'
+
 const Login = () => {
-    // fixme : get real users and check real emails in database
-    const usersToCheck = [
-        { pseudo: "", email: "john.doe@example.xyz", phoneNumber: "", password: "12345678" },
-        { pseudo: "", email: "jane.doe@example.xyz", phoneNumber: "06 31 25 65 28", password: "12345678" }
-    ];
 
     const [email, setEmail] = useState('');
     const [emailIsKnown, setEmailIsKnown] = useState(null);
+    const [emailLoading, setEmailLoading] = useState(false)
 
-    const [pseudo, setPseudo] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [username, setUsername] = useState('');
+    const [birthdate, setBirthdate] = useState('');
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
-    const handleFacebook = (e) => {
+    // Notification
+	const dispatch = useNotification();
+
+	const handleNotification = (type, message, title) => {
+		dispatch({
+		  type: type,
+		  message: message,
+		  title: title
+		})
+	}
+
+    // Validation du mail
+    const handleMailValidation = async (e) => {
         e.preventDefault();
-        alert("Facebook authentication");
+        setEmailLoading(true)
+        await checkEmailExist(email)
+            .then(() => {
+                setEmailIsKnown(false);
+            }).catch(() => {
+                setEmailIsKnown(true);
+            })
+        setEmailLoading(false)
     }
 
-    const handleMailValidation = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        const user = usersToCheck.find(u => u.email === email);
-        console.log(user);
-        if (user) {
-            setEmailIsKnown(true);
-        } else {
-            setEmailIsKnown(false);
-        }
+        await login(email, password)
+            .then((response) => {
+                handleNotification("success", "Vous êtes désormais connecté !",  "Connexion");
+                localStorage.setItem('authentication', JSON.stringify(response.data.data))
+                // history.push('/passport')
+            })
+            .catch((error) => {
+                handleNotification("error", "Identifiants incorrects",  "Connexion");
+                console.log(error)
+            })
     }
 
-    const handleLogin = (e) => {
+    const handleRegistration = async (e) => {
         e.preventDefault();
-        
-        const userPwd = usersToCheck.find(u => u.password === password)
-        if (userPwd) {
-            alert("logged");
-        } else {
-            alert("wrong password");
-        }
-    }
-
-    const handleRegistration = (e) => {
-        e.preventDefault();
-
-        if (usersToCheck.find(u => u.email === email || u.phoneNumber === phoneNumber || u.pseudo === pseudo)) {
-            alert("already exists");
-            return;
-        }
-
-        const user = {
-            pseudo: pseudo,
-            email: email,
-            phoneNumber: phoneNumber,
-            password: newPassword
-        }
-
-        usersToCheck.push(user);
-        alert("registered")
+        await register(email, newPassword, username, birthdate)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     return (
-        <div id={"login"} className={"mx-auto hx-auto"}>
-            <div className="compass"></div>
-            <main className="w-full bg-beige">
-                <div id="bloc-mail" className="my-10 py-10">
-                    <div className="title-container">
-                        <h2>Bienvenue à bord</h2>
-                    </div>
-                    <form onSubmit={(e) => handleFacebook(e)}>
-                        <button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
-                            <span className={"btn-text"}>S'identifier avec facebook</span>
-                        </button>
-                    </form>
-
-                    <form onSubmit={(e) => handleMailValidation(e)}>
-                        <div className={"mb-4 grid grid-cols-9 gap-4"}>
-                            <div className={"form-field col-span-7 col-start-2"}>
-                                <label id={"email"}>Adresse mail</label>
-                                <input
-                                    type={"email"}
-                                    name={"email"}
-                                    value={email}
-                                    required
-                                    className={"focus:border-dark-brown focus:ring-dark-brown"}
-                                    onChange={e => setEmail(e.target.value)}
-                                />
-                            </div>
-                        </div>
-
-                        <button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
-                            <span className={"btn-text"}>S'identifier avec un mail</span>
-                        </button>
-                    </form>
+        <div className={"page-content bg-beige"}>
+            <div id="bloc-mail" className="pt-5 pb-3">
+                <div className="title-container">
+                    <h1 className='h1'>Bienvenue à bord</h1>
                 </div>
-
-                {emailIsKnown === null &&
-                    <h1>empty</h1>
+            </div>
+            <main className="w-full bg-beige account-sign-container mx-auto">
+                {!emailIsKnown && emailIsKnown !== false &&
+                    <div className="mb-10 mx-auto container">
+                        <form onSubmit={(e) => handleMailValidation(e)}>
+                            <div className={"mb-4 grid grid-cols-9 gap-4"}>
+                                <div className={"form-field col-span-7 col-start-2"}>
+                                    <label id={"email"}>Adresse mail</label>
+                                    <input
+                                        type={"email"}
+                                        name={"email"}
+                                        value={email}
+                                        required
+                                        className={"focus:border-dark-brown focus:ring-dark-brown"}
+                                        onChange={e => setEmail(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            <div className={"btn-loading mx-auto"}>
+                                <button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
+                                    <span className={"btn-text"}>S'identifier avec un mail</span>
+                                </button>
+                                {emailLoading &&
+                                    <div className={"btn-overlay"}>
+                                        <VscRefresh className={"animate-spin"} />
+                                    </div>
+                                }
+                            </div>
+                        </form>
+                    </div>
                 }
 
                 {emailIsKnown === true &&
-                    <div id="bloc-login" className="my-10 py-10">
-                        <div className="title-container">
-                            <h2>Connectez-vous</h2>
-                        </div>
+                    <div id="bloc-login" className="mb-10">
                         <form onSubmit={(e) => handleLogin(e)}>
+                            <div className={"mb-4 grid grid-cols-9 gap-4"}>
+                                <div className={"form-field col-span-7 col-start-2"}>
+                                    <label>Adresse mail</label>
+                                    <input
+                                        type={"email"}
+                                        name={"email"}
+                                        value={email}
+                                        required
+                                        className={"focus:border-dark-brown focus:ring-dark-brown"}
+                                        readOnly="readonly"
+                                        onChange={e => setEmail(e.target.value)}
+                                    />
+                                </div>
+                            </div>
                             <div className={"grid grid-cols-9 gap-4"}>
                                 <div className={"form-field col-span-7 col-start-2"}>
                                     <label>Mot de passe</label>
@@ -118,10 +132,10 @@ const Login = () => {
                                         onChange={e => setPassword(e.target.value)}
                                     />
                                 </div>
+                                <Link to={"/"} className="text-right nav-link col-span-7 col-start-2">
+                                    <p className={"forgot-password-link"}>J'ai oublié mon mot de passe</p>
+                                </Link>
                             </div>
-                            <Link to={"/"}>
-                                <p className={"forgot-password-link"}>Mot de passe oublié</p>
-                            </Link>
                             <button type={"submit"} className="btn btn-dark mx-auto my-5">
                                 <span className="btn-text">Se connecter</span>
                             </button>
@@ -130,32 +144,43 @@ const Login = () => {
                 }
 
                 {emailIsKnown === false &&
-                    <div id="bloc-registration" className="my-10 py-10">
-                        <div className="title-container">
-                            <h2>Inscrivez-vous</h2>
-                        </div>
+                    <div id="bloc-registration" className="mb-10">
                         <form onSubmit={(e) => handleRegistration(e)}>
                             <div className={"mb-4 grid grid-cols-9 gap-4"}>
                                 <div className={"form-field col-span-7 col-start-2"}>
-                                    <label>Pseudonyme</label>
+                                    <label>Adresse mail</label>
                                     <input
-                                        type={"text"}
-                                        name={"pseudo"}
-                                        value={pseudo}
+                                        type={"email"}
+                                        name={"email"}
+                                        value={email}
+                                        required
                                         className={"focus:border-dark-brown focus:ring-dark-brown"}
-                                        onChange={e => setPseudo(e.target.value)}
+                                        readOnly="readonly"
+                                        onChange={e => setEmail(e.target.value)}
                                     />
                                 </div>
                             </div>
                             <div className={"mb-4 grid grid-cols-9 gap-4"}>
                                 <div className={"form-field col-span-7 col-start-2"}>
-                                    <label>Numéro de téléphone</label>
+                                    <label>Pseudonyme</label>
                                     <input
                                         type={"text"}
-                                        name={"phone"}
-                                        value={phoneNumber}
+                                        name={"username"}
+                                        value={username}
                                         className={"focus:border-dark-brown focus:ring-dark-brown"}
-                                        onChange={e => setPhoneNumber(e.target.value)}
+                                        onChange={e => setUsername(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            <div className={"mb-4 grid grid-cols-9 gap-4"}>
+                                <div className={"form-field col-span-7 col-start-2"}>
+                                    <label>Date de naissance</label>
+                                    <input
+                                        type={"date"}
+                                        name={"birthdate"}
+                                        value={birthdate}
+                                        className={"focus:border-dark-brown focus:ring-dark-brown"}
+                                        onChange={e => setBirthdate(e.target.value)}
                                     />
                                 </div>
                             </div>

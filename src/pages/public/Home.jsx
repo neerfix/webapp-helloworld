@@ -21,13 +21,65 @@ const HomePage = () => {
 
 	return (
 		<div className='bg-beige'>
-			<div id="homepage" className="mx-auto">
+			<style
+				dangerouslySetInnerHTML={{
+					__html: `
+					#header-container{
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						color: #f4e9dd;
+					}
+
+					#header-container .logo{
+						fill: #f4e9dd;
+					}
+
+					#header-container .nav-link{
+						color: #f4e9dd;
+						font-weight: normal;
+					}
+
+					#header-container .nav-btn{
+						color: #f4e9dd;
+						font-weight: normal;
+					}
+
+					#header-container .nav-btn:hover{
+						background: #f4e9dd;
+						color: black;
+						border-color: #f4e9dd;
+					}
+
+					#header-container .nav-link::after{
+						background-color: #f4e9dd;
+					}
+
+					.separator{
+						color: #f4e9dd;
+					}
+
+					#header{
+						border-color: #e5d8cd;
+					}
+				`
+				}}
+			/>
+
+			<div id="hero-video-container">
+				<video autoPlay muted loop id="hero-video"
+					src="/videos/video-hero-full.mp4">
+				</video>
+			</div>
+			
+			<div id="homepage">
 				<div className="mb-20" id="hero-banner">
 					<div className="px-10 lg:px-20">
-						<h1 id="main-title" className="text-7xl lg:text-9xl mt-20">
-							Hello
-							<br/>
-							World
+						<h1 id="main-title" className="mt-20">
+							<span className="text-8xl lg:text-9xl first-title">Hello</span>
+							<br />
+							<span className="sub-title">World</span>
 						</h1>
 					</div>
 					<div className="diamond-decoration flex justify-center items-center mt-20 mb-10">

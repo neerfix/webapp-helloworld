@@ -8,11 +8,12 @@ const Map = (props) => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+
     let mapSearchQuery = urlParams.get('search')
     if(mapSearchQuery) mapSearchQuery = mapSearchQuery.replace('-', ' ');
     let mapUserQuery = urlParams.get('user');
 
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
     useEffect(() => {
         let mapCenter = [0, 20];
@@ -20,14 +21,15 @@ const Map = (props) => {
         let mapZoom = 2;
 
         if(props && props.steps) {
-            let minLon = Math.min(...props.steps.map(item => item.longitude)) - .2;
-            let minLat = Math.min(...props.steps.map(item => item.latitude)) - .2;
-            let maxLon = Math.max(...props.steps.map(item => item.longitude)) + .2;
-            let maxLat = Math.max(...props.steps.map(item => item.latitude)) + .2;
+
+            let minLon = Math.min(...props.steps.map(item => item.longitude)) - 5.5;
+            let minLat = Math.min(...props.steps.map(item => item.latitude)) - 5.5;
+            let maxLon = Math.max(...props.steps.map(item => item.longitude)) + 5.5;
+            let maxLat = Math.max(...props.steps.map(item => item.latitude)) + 5.5;
 
             mapBounds = [ [maxLon, minLat], [minLon, maxLat] ];
             mapCenter = [ (minLon + maxLon) / 2, (minLat + maxLat) / 2 ];
-            mapZoom= 10;
+            mapZoom= 4;
         }
 
         const map = new mapboxgl.Map({
@@ -169,13 +171,13 @@ const Map = (props) => {
                 .setPopup(
                     new mapboxgl.Popup({ offset: 25 }) // add popups
                     .setHTML(
-                        `<h3>${step.place}</h3><p>${step.description}</p>`
+                        `<h3>${step.place}</h3><p>${step.description}</p><a href="/voyage/${step.id}">Découvrir</a>`
                     )
                 )
                 .addTo(map);
             });
         }
-    }, [props]);
+    }, [props, mapSearchQuery, mapUserQuery]);
 
     return (
         <div id="mapContainer" className="map">

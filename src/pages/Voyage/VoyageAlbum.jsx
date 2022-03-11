@@ -61,14 +61,6 @@ const VoyageAlbumPage = () => {
 		// TODO: Call Api to get voyage information
 	});
 	
-	/*** Custom functions ***/
-	
-	const handleChange = (event) => {
-		setImages({
-			...images,
-		});
-	};
-	
 	const saveImages = (event) => {
 		event.preventDefault();
 		
@@ -125,9 +117,9 @@ const VoyageAlbumPage = () => {
 
                     <Dropzone onDrop={onDrop} accept={"image/*"} />
                     {images && images.length > 0 && (
-                        <div class="flex align-items-center justify-between mx-10 flex-wrap">
+                        <div className="flex align-items-center justify-between mx-10 flex-wrap">
                             <p>Déplacez les images pour les réorganiser</p>
-                            <p class="italic">{images.length} image{images.length > 1 && "s"}</p>
+                            <p className="italic">{images.length} image{images.length > 1 && "s"}</p>
                         </div>
                     )}
                     <DndProvider backend={backendForDND}>

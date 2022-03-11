@@ -107,25 +107,25 @@ class VoyagePage extends React.Component {
     }
 
     componentDidMount() {
-        fetch("https://api.example.com/items")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        voyage: result.voyage
-                    });
-                },
-                // Remarque : il est important de traiter les erreurs ici
-                // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
-                // des exceptions provenant de réels bugs du composant.
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
+        // fetch("https://api.example.com/items")
+        //     .then(res => res.json())
+        //     .then(
+        //         (result) => {
+        //             this.setState({
+        //                 isLoaded: true,
+        //                 voyage: result.voyage
+        //             });
+        //         },
+        //         // Remarque : il est important de traiter les erreurs ici
+        //         // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
+        //         // des exceptions provenant de réels bugs du composant.
+        //         (error) => {
+        //             this.setState({
+        //                 isLoaded: true,
+        //                 error
+        //             });
+        //         }
+        //     )
     }
 
     render() {
@@ -161,13 +161,15 @@ class VoyagePage extends React.Component {
                                             <span className="btn-text">Suivre</span>
                                         </button>
 
-                                        <button className="btn btn-outline m-3">
-                                            <span className="btn-text">
-                                                <span className="hidden sm:inline-block">Ajouter à la&nbsp;</span>
-                                                <span className="inline-block sm:hidden">+&nbsp;</span>
-                                                liste de souhait
-                                            </span>
-                                        </button>
+                                        <NavLink to={"/voyage/wishlist/"}>
+                                            <button className="btn btn-outline m-3">
+                                                <span className="btn-text">
+                                                    <span className="hidden sm:inline-block">Ajouter à la&nbsp;</span>
+                                                    <span className="inline-block sm:hidden">+&nbsp;</span>
+                                                    liste de souhait
+                                                </span>
+                                            </button>
+                                        </NavLink>
                                     </div>
 
                                     <div className="grid grid-cols-12 lg:px-5">
