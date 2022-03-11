@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
-import {FiCheck, FiTrash2, FiX} from "react-icons/fi";
-import banner from "@/assets/images/homepage/hero-banner.jpg";
+import React, {useState} from "react";
+import {FiCheck, FiEdit3, FiTrash2, FiX} from "react-icons/fi";
+import {NavLink} from "react-router-dom";
 
 function PassportFriends() {
     const usersBank = [
@@ -23,6 +23,20 @@ function PassportFriends() {
         }
     }
 
+    const handleFriendDeleted = (user) => {
+        console.log("deleted friend");
+        user.isFriend = false;
+    }
+    const handleFriendRequestDeclined = (user) => {
+        console.log("declined friend request");
+        user.isAsking = false;
+    }
+    const handleFriendRequestAccepted = (user) => {
+        console.log("accepted friend request");
+        user.isAsking = false;
+        user.isFriend = true;
+    }
+
     useEffect(() => {
         if (research !== '') {
             const results = usersBank.filter(user => user.name.toLowerCase().includes(research.toLowerCase()));
@@ -42,17 +56,17 @@ function PassportFriends() {
             <div className={"friend-item-action col-span-1 pr-4"}>
                 {user.isFriend &&
                     <div className={"friend-btn"}>
-                        <button className={"btn btn-icon btn-outline"}>
+                        <button onClick={() => handleFriendDeleted(user)} className={"btn btn-icon btn-outline"}>
                             <FiTrash2/>
                         </button>
                     </div>
                 }
                 {!user.isFriend && user.isAsking &&
                     <div className={"friend-btn"}>
-                        <button className={"btn btn-icon btn-outline mr-2"}>
+                        <button onClick={() => handleFriendRequestAccepted(user)} className={"btn btn-icon btn-outline mr-2"}>
                             <FiCheck/>
                         </button>
-                        <button className={"btn btn-icon btn-outline"}>
+                        <button onClick={() => handleFriendRequestDeclined(user)} className={"btn btn-icon btn-outline"}>
                             <FiX/>
                         </button>
                     </div>
