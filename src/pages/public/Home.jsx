@@ -121,6 +121,16 @@ const HomePage = () => {
 							<img src={PlanetEarthImg} alt="" />
 						</div>
 					</div>
+
+					<div className="col-start-2 col-span-10 mb-5">
+						<p className="text-center">
+							HelloWorld est une application de carnet de voyage en ligne. 
+							<b>Complètement gratuit</b>, tu peux personnaliser ton passeport et partager ton carnet de voyage aux autres aventuriers.
+							Le concept de HelloWorld est de permettre à tout voyageur de <b>raconter un voyage ou une aventure</b>, que ce soit un road trip, un voyage de noces, des vacances, un trek, une balade, une randonnée…
+							<br /><br />
+							<b>Le carnet de voyage en ligne permet de garder des souvenirs durables de ses voyages.</b>
+						</p>
+					</div>
 					
 					<button className="col-start-2 col-span-10 btn btn-dark mx-auto my-5">
 						<span className="btn-text">Mon passeport</span>
