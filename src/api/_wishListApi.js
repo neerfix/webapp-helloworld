@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiUrl, requestOptions } from "@/config/_api";
+import { apiUrl, headers } from "@/config/_api";
 
 /*** WishList ***/
 

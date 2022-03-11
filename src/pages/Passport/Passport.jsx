@@ -9,7 +9,6 @@ import PassportInformation from "@/pages/Passport/components/PassportInformation
 import { getProfileInformation } from "@/api/_passportApi";
 
 const PassportPage = () => {
-	const [loading, setLoading] = useState(true)
 	const [profile, setProfile] = useState({
 		username: "Tariflette98",
 		album: [
@@ -30,13 +29,14 @@ const PassportPage = () => {
 	useEffect(() => {
 		async function fetchProfileInformation() {
 			const { data } = await getProfileInformation()
-			console.log(data, loading)
-			setLoading(false)
-			setProfile(profile)
+			setProfile({
+				...profile,
+				username: data.username
+			})
 		}
 
 		fetchProfileInformation()
-	}, [loading, profile])
+	}, [])
 
 	return (
 		<div>
@@ -49,7 +49,7 @@ const PassportPage = () => {
 				<div className="compass" />
 
 				<div className="container mx-auto">
-					<div className="passport-card relative rounded-xl bg-white mx-5 py-5 mb-10">
+					<div className="passport-card relative rounded-xl shadow bg-white mx-5 py-5 mb-10">
 
 						<div className={"w-full"}>
 							<h2 className="text-xl tracking-widest text-brown text-center">◆&nbsp;PASSEPORT&nbsp;◆</h2>
@@ -78,7 +78,7 @@ const PassportPage = () => {
 											<span className={"btn-text"}>Ma liste de souhait</span>
 										</button>
 									</NavLink>
-									<NavLink to={"/voyage/list"}>
+									<NavLink to={"/passport/friends"}>
 										<button className={"btn btn-outline my-5"}>
 											<span className={"btn-text"}>Mes compagnons d'aventure</span>
 										</button>

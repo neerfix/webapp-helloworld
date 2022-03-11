@@ -64,7 +64,7 @@ const Notification = props => {
                 }
                 <span>{props.message}</span>
             </p>
-            <div class="bar-container">
+            <div className="bar-container">
                 <div className={"bar"} style={{ width: `${width}%` }} />
             </div>
         </div>
