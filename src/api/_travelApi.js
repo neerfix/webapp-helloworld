@@ -33,8 +33,14 @@ const getTravelDetails = (travelId) => {
 		.catch((error) => handleError(error))
 }
 
-const createTravel = () => {
-
+const createTravel = (travel) => {
+	return axios.post(`${apiUrl}/travels`, { travel }, {
+		headers: headers
+	})
+		.then((response) => {
+			return response
+		})
+		.catch((error) => handleError(error))
 }
 
 const updateTravel = () => {
