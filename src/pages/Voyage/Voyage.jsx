@@ -8,7 +8,7 @@ import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { BiTimeFive } from 'react-icons/bi';
 import { FiEdit3 } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 // Component
 import AlbumPreview from "@/components/AlbumPreview";
@@ -28,7 +28,7 @@ class VoyagePage extends React.Component {
                 id: 2345,
                 title: "Roadtrip en Afrique",
                 user: {
-                    id: 12345,
+                    id: '4d257253-1991-42a8-8187-0660fef87614',
                     name: "JohnDoe",
                     avatar: "https://avatars.githubusercontent.com/u/827205?v=4",
                 },
@@ -110,30 +110,11 @@ class VoyagePage extends React.Component {
     }
 
     async componentDidMount() {
-        // fetch("https://api.example.com/items")
-        //     .then(res => res.json())
-        //     .then(
-        //         (result) => {
-        //             this.setState({
-        //                 isLoaded: true,
-        //                 voyage: result.voyage
-        //             });
-        //         },
-        //         // Remarque : il est important de traiter les erreurs ici
-        //         // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
-        //         // des exceptions provenant de réels bugs du composant.
-        //         (error) => {
-        //             this.setState({
-        //                 isLoaded: true,
-        //                 error
-        //             });
-        //         }
-        //     )
+        const voyageId = this.props.params.voyageId;
 
-        await getTravelDetails("196fc3ea-a212-4835-8efb-49fc69fd497e")
+        await getTravelDetails(voyageId)
         .then(async (response) => {
             console.log(response);
-            // Redirect
         })
         .catch((error) => {
             console.log(error)
@@ -259,4 +240,9 @@ class VoyagePage extends React.Component {
     }
 }
 
-export default VoyagePage;
+export default (props) => (
+    <VoyagePage
+        {...props}
+        params={useParams()}
+    />
+);
