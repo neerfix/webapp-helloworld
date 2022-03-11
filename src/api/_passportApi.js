@@ -74,7 +74,7 @@ const getFriends = () => {
  * @returns {Promise<AxiosResponse<any>|void>}
  */
 const removeFriend = (userId) => {
-	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	// const authentication = JSON.parse(localStorage.getItem('authentication'))
 	return axios.delete(`${apiUrl}/followers/${userId}`)
 		.then((response) => response)
 		.catch((error) => handleError(error))
