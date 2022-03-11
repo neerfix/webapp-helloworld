@@ -269,9 +269,11 @@ class VoyagePage extends React.Component {
     }
 }
 
-export default (props) => (
-    <VoyagePage
-        {...props}
-        params={useParams()}
-    />
+const VoyagePageExport = (props) => (
+        <VoyagePage
+            {...props}
+            params={useParams()}
+        />
 );
+
+export default VoyagePageExport
