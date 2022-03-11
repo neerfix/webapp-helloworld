@@ -15,6 +15,9 @@ import AlbumPreview from "@/components/AlbumPreview";
 import VoyageStepCard from "@/components/VoyageStep";
 import Map from '@/components/Map'
 
+// Routes
+import { getTravelDetails } from "@/api/_travelApi";
+
 class VoyagePage extends React.Component {
     constructor(props) {
         super(props);
@@ -106,7 +109,7 @@ class VoyagePage extends React.Component {
         };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         // fetch("https://api.example.com/items")
         //     .then(res => res.json())
         //     .then(
@@ -126,6 +129,15 @@ class VoyagePage extends React.Component {
         //             });
         //         }
         //     )
+
+        await getTravelDetails("196fc3ea-a212-4835-8efb-49fc69fd497e")
+        .then(async (response) => {
+            console.log(response);
+            // Redirect
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     }
 
     render() {

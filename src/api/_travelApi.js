@@ -29,7 +29,9 @@ const getTravelDetails = (travelId) => {
 			'Authorization': `Bearer ${authentication.accessToken}`
 		}
 	})
-		.then((response) => response)
+		.then((response) => {
+			return response
+		})
 		.catch((error) => handleError(error))
 }
 
