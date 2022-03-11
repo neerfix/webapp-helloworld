@@ -6,6 +6,7 @@ import PassportFriends from "@/pages/Passport/PassportFriends";
 
 const routes = [
 	{ path: 'passport', element: <PassportPage /> },
+	{ path: 'passport/:userId', element: <PassportPage /> },
 	{ path: 'passport/edit', element: <PassportEditPage /> },
 	{ path: 'passport/friends', element: <PassportFriends /> }
 ];
