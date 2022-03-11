@@ -1,5 +1,5 @@
 
-#passport {
+#passport, #passport-friends {
 	font-family: 'DM Serif Display', serif;
 	background-image: url('/assets/images/grid-lines.png');
 
@@ -44,6 +44,32 @@
 
 		span {
 			font-family: 'Raleway', sans-serif;
+		}
+	}
+}
+
+.friend-list {
+	display: flex;
+	flex-direction: column;
+
+	.friend-item-name {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
+		margin-bottom: 7px;
+	}
+
+	.friend-item-action {
+		display: flex;
+		flex-direction: row;
+		justify-content: end;
+		align-items: center;
+		margin-bottom: 7px;
+
+		.friend-btn {
+			display: flex;
+			flex-direction: row;
 		}
 	}
 }
