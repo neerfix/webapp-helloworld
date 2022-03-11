@@ -34,11 +34,24 @@ const getTravelDetails = (travelId) => {
 }
 
 const createTravel = (travel) => {
-	return axios.post(`${apiUrl}/travels`, { travel }, {
-		headers: headers
+	const authentication = JSON.parse(localStorage.getItem('authentication'));
+
+	// Convertir isSharable en boolean 
+	if(travel.isSharable == "true") {
+		travel.isSharable = true;
+	} else {
+		travel.isSharable = false;
+	}
+
+	return axios.post(`${apiUrl}/travels`, travel, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
 	})
 		.then((response) => {
-			return response
+			console.log(response.data.uuid);
+			return response.data.uuid;
 		})
 		.catch((error) => handleError(error))
 }

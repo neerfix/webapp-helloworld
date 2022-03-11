@@ -11,9 +11,15 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
+// Routes
+import { createTravel } from "@/api/_travelApi";
+
 const VoyageEditPage = () => {
 
     let { voyageId } = useParams();
+	let isGeocoderLoaded = false;
+	
+	const [isSharable, setIsSharable] = useState(false);
 
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -27,30 +33,29 @@ const VoyageEditPage = () => {
         endedAt: "", // fin du voyage Y-m-d
         description: "", // date de description
 		place: {
-			address: "",
-			city: "",
-			zipcode: "",
-			country: "",
 			name: "", // required
 			latitude: "", // required
 			longitude: "" // required
-		},
-        steps: [], // liste des étapes
+		}
     });
 
 	useEffect(() => {
-		var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
-		geocoder.addTo('#geocoder-container');
+		if(!isGeocoderLoaded && !geocoder) {
+			var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
+			geocoder.addTo('#geocoder-container');
+	
+			geocoder.on('result', function(results) {
+				let result = results.result
+				voyage.place.name = result.place_name_fr;
+				voyage.place.longitude = result.center[0];
+				voyage.place.latitude = result.center[1];
+				voyage.location = result.place_name_fr;
+				console.log(voyage.place);
+			})
 
-		geocoder.on('result', function(results) {
-			let result = results.result
-			voyage.place.name = result.place_name_fr;
-			voyage.place.longitude = result.center[0];
-			voyage.place.latitude = result.center[1];
-			voyage.location = result.place_name_fr;
-			console.log(voyage.place);
-		})
-	}, [voyage]);
+			isGeocoderLoaded = true;
+		}
+	}, []);
 
     if( voyageId ) {
 		voyage.voyageId = parseInt(voyageId);
@@ -89,15 +94,7 @@ const VoyageEditPage = () => {
             }
         ];
 	}
-	
-	const [isSharable, setIsSharable] = useState(0);
-	
-	/*** React hooks ***/
-	
-	useEffect(() => {
-		// TODO: Call Api to get voyage information
-	});
-	
+
 	/*** Custom functions ***/
 	
 	const handleChange = (event) => {
@@ -107,7 +104,7 @@ const VoyageEditPage = () => {
 		});
 	};
 	
-	const saveVoyage = (event) => {
+	const saveVoyage = async (event) => {
 		event.preventDefault();
 
 		console.log(voyage);
@@ -119,6 +116,15 @@ const VoyageEditPage = () => {
 		
 		// TODO: Call api to save voyage modification
 		console.log(payload);
+
+		await createTravel(payload)
+            .then(async (response) => {
+                console.log(response);
+				// Redirect
+            })
+            .catch((error) => {
+                console.log(error)
+            })
 	};
 	
 	return (
@@ -154,7 +160,7 @@ const VoyageEditPage = () => {
 					</div>
 					<div className={"mb-4 grid grid-cols-9 gap-4"}>
 						<div className={"form-field col-span-7 col-start-2"}>
-							<label>Description</label>
+							<label>Description (au moins 5 mots)</label>
 							<input
 								type={"text"}
 								name={"description"}
@@ -223,8 +229,8 @@ const VoyageEditPage = () => {
 								value={isSharable}
 								onChange={(e) => setIsSharable(e.target.value)}
 							>
-								<option value={0}>Privé</option>
-								<option value={1}>Public</option>
+								<option value="true">Public</option>
+								<option value="false">Privé</option>
 							</select>
 						</div>
 					</div>
