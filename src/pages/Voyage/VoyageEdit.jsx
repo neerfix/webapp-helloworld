@@ -15,27 +15,28 @@ const VoyageEditPage = () => {
 
     let { voyageId } = useParams();
 
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+
 	const [voyage, setVoyage] = useState({
-		voyageId: "",
-        title: "",
-        budget: "",
-        location: "",
-        dateStart: "",
-        dateEnd: "",
-        description: "",
-        steps: [],
+		voyageId: null,
+        name: "", // titre du voyage
+        status: "active", // statut active
+        isSharable: true, // voyage public ou privé 
+        budget: "", // budget du voyage
+        startedAt: "", // début du voyage Y-m-d
+        endedAt: "", // fin du voyage Y-m-d
+        description: "", // date de description
 		place: {
 			address: "",
 			city: "",
 			zipcode: "",
 			country: "",
-			name: "",
-			latitude: "",
-			longitude: ""
-		}
+			name: "", // required
+			latitude: "", // required
+			longitude: "" // required
+		},
+        steps: [], // liste des étapes
     });
-
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 	useEffect(() => {
 		var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
@@ -53,12 +54,18 @@ const VoyageEditPage = () => {
 
     if( voyageId ) {
 		voyage.voyageId = parseInt(voyageId);
-		voyage.title = "Roadtrip en Afrique";
+		voyage.name = "Roadtrip en Afrique";
+		voyage.status = "active";
+		voyage.isSharable = true;
 		voyage.budget = "2000 €";
-		voyage.location = "Afrique du Sud";
-		voyage.dateStart = "2022-03-15";
-		voyage.dateEnd = "2022-08-20";
+		voyage.startedAt = "2022-03-15";
+		voyage.endedAt = "2022-08-20";
 		voyage.description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum tristique erat et laoreet. Vivamus posuere feugiat rhoncus. ";
+		voyage.place = {
+			name: "Afrique du Sud",
+			latitude: -30.559482,
+			longitude: 	22.937506
+		}
 		voyage.steps = [
             {
                 idStep: 1,
@@ -83,7 +90,7 @@ const VoyageEditPage = () => {
         ];
 	}
 	
-	const [visibility, setVisibility] = useState(0);
+	const [isSharable, setIsSharable] = useState(0);
 	
 	/*** React hooks ***/
 	
@@ -107,7 +114,7 @@ const VoyageEditPage = () => {
 		
 		const payload = {
 			...voyage,
-			visibility: visibility,
+			isSharable: isSharable,
 		};
 		
 		// TODO: Call api to save voyage modification
@@ -137,8 +144,8 @@ const VoyageEditPage = () => {
 							<label>Titre du voyage</label>
 							<input
 								type={"text"}
-								name={"title"}
-								value={voyage.title}
+								name={"name"}
+								value={voyage.name}
 								required
 								className={"focus:border-dark-brown focus:ring-dark-brown"}
 								onChange={(e) => handleChange(e)}
@@ -177,8 +184,8 @@ const VoyageEditPage = () => {
 								id="place"
 								className="place"
 								type={"text"}
-								name={"location"}
-								value={voyage.location}
+								name={"place_name"}
+								value={voyage.place.name}
 								onChange={(e) => handleChange(e)}
 							/>
 							<div id='geocoder-container' className="w-full"></div>
@@ -190,8 +197,8 @@ const VoyageEditPage = () => {
 							<label>Date de début</label>
 							<input
 								type={"date"}
-								name={"dateStart"}
-								value={voyage.dateStart}
+								name={"startedAt"}
+								value={voyage.startedAt}
 								onChange={(e) => handleChange(e)}
 							/>
 						</div>
@@ -201,8 +208,8 @@ const VoyageEditPage = () => {
 							<label>Date de fin</label>
 							<input
 								type={"date"}
-								name={"dateEnd"}
-								value={voyage.dateEnd}
+								name={"endedAt"}
+								value={voyage.endedAt}
 								onChange={(e) => handleChange(e)}
 							/>
 						</div>
@@ -213,12 +220,11 @@ const VoyageEditPage = () => {
 						<div className={"form-field col-span-7 col-start-2"}>
 							<label>Visibilité du voyage</label>
 							<select
-								value={visibility}
-								onChange={(e) => setVisibility(e.target.value)}
+								value={isSharable}
+								onChange={(e) => setIsSharable(e.target.value)}
 							>
 								<option value={0}>Privé</option>
-								<option value={1}>Amis seulement</option>
-								<option value={2}>Public</option>
+								<option value={1}>Public</option>
 							</select>
 						</div>
 					</div>
