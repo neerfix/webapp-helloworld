@@ -4,7 +4,7 @@ import { BiErrorCircle } from 'react-icons/bi';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const Notification = props => {
-    const [exit, setExit] = useState(false);
+    // const [exit, setExit] = useState(false);
     const [width, setWidth] = useState(0);
     const [intervalID, setIntervalID] = useState(null);
 
@@ -29,7 +29,7 @@ const Notification = props => {
 
     const handleCloseNotification = () => {
         handlePauseTimer();
-        setExit(true);
+        // setExit(true);
         setTimeout(() => {
             props.dispatch({
                 type: "REMOVE_NOTIFICATION",
@@ -64,7 +64,7 @@ const Notification = props => {
                 }
                 <span>{props.message}</span>
             </p>
-            <div class="bar-container">
+            <div className="bar-container">
                 <div className={"bar"} style={{ width: `${width}%` }} />
             </div>
         </div>

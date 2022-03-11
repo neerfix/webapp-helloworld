@@ -8,7 +8,7 @@ import { ReactComponent as Logo } from "@/assets/images/logo.svg";
 class Footer extends React.Component {
 	render() {
 		return (
-			<div className={"footer border-t-2 border-dark-brown bg-beige pt-4 pb-2"}>
+			<div className={"footer border-t-2 border-beige bg-white pt-4 pb-2"}>
 				<div className={"footer-content mb-2 flex flex-col lg:flex-row items-center"}>
 					<div className={"flex w-full lg:w-1/3 justify-center"}>
 						<div className={"flex items-center space-x-2"}>

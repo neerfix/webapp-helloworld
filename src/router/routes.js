@@ -9,8 +9,10 @@ import HomePage from "../pages/public/Home";
 import InteractiveMap from "../pages/public/InteractiveMap";
 import FeedPage from "../pages/Feed/Feed";
 import ProfilePage from "@/pages/Profile/Profile";
+import NotFoundPage from "@/pages/public/NotFound";
 
 const globalRoutes = [
+	{ path: '*', element: <NotFoundPage /> },
 	{ path: '/', element: <HomePage /> },
 	{ path: '/map', element: <InteractiveMap /> },
 	{ path: '/feed', element: <FeedPage /> },

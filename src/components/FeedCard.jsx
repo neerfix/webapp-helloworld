@@ -12,7 +12,7 @@ class FeedCard extends React.Component {
                     </div>
                     <div className="card-text flex flex-col align-center justify-center">
                         <p className="text-xl md:text-2xl">{this.props.step}</p>
-                        <a className="card-user flex items-center my-2" href={"/passport/" + this.props.userId}>
+                        <a className="card-user flex items-center my-2" href={"/profile/" + this.props.userId}>
                             <img className="rounded-md mr-2" src={this.props.user_img} width="50" height="50" alt="" />
                             <span>
                                 {this.props.user}

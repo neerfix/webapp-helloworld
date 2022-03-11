@@ -105,7 +105,7 @@ Lancer le serveur
 
 **Ce qu'il faut commencer à faire :**
 - Aimee : la gestion des voyages (création et édition)
-- Louise : 
+- Louise : la liste des compagnons d'aventure
 - Gregg : mettre en place la communication entre la webapp et l'api
 
 **Ce qu'il faut continuer à faire**
@@ -114,7 +114,7 @@ Lancer le serveur
 - Gregg : la gestion des tâches et du sprint, la communication entre les 2 équipes
 
 **Ce qu'il faut arrêter de faire**
-- Aimee :
-- Louise :
-- Gregg :
+- Aimee : RAS
+- Louise : RAS
+- Gregg : RAS
 

@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import {FiCheck, FiEdit3, FiTrash2, FiX} from "react-icons/fi";
-import {NavLink} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {FiCheck, FiTrash2, FiX} from "react-icons/fi";
+import banner from "@/assets/images/homepage/hero-banner.jpg";
 
 function PassportFriends() {
     const usersBank = [
@@ -15,14 +15,6 @@ function PassportFriends() {
     const [research, setResearch] = useState('');
     const [researchResult, setResearchResult] = useState([]);
 
-    const handleChange = e => {
-        setResearch(e.target.value);
-        if (research !== '') {
-            const matchingUsers = usersBank.filter(u => u.name.indexOf(research) !== -1);
-            setResearchResult(matchingUsers);
-        }
-    }
-
     const handleFriendDeleted = (user) => {
         console.log("deleted friend");
         user.isFriend = false;
@@ -35,6 +27,14 @@ function PassportFriends() {
         console.log("accepted friend request");
         user.isAsking = false;
         user.isFriend = true;
+    }
+
+    const handleChange = e => {
+        setResearch(e.target.value);
+        if (research !== '') {
+            const matchingUsers = usersBank.filter(u => u.name.indexOf(research) !== -1);
+            setResearchResult(matchingUsers);
+        }
     }
 
     useEffect(() => {
@@ -76,7 +76,7 @@ function PassportFriends() {
     }
 
     return (
-        <div id={"passport-friends"} className={"mx-auto bg-beige"}>
+        <div id={"passport-friends"} className={"bg-beige"}>
             <div className={"compass"}></div>
             <div className={"w-full "}>
                 <div id="bloc-search" className="my-10 py-10">
@@ -138,6 +138,8 @@ function PassportFriends() {
                                             <UserItem user={user}/>
                                         </div>
                                     );
+                                } else {
+                                    return "";
                                 }
                             })}
                         </div>
