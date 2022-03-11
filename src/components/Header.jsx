@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
-import { VscSignOut } from 'react-icons/vsc'
 
-import { logout } from '@/api/_authenticationApi'
+import { logout } from '@/api/_authenticationApi';
+import { useNotification } from "@/notifications/NotificationProvider";
 
+// Logo
 import { ReactComponent as Logo } from "@/assets/images/logo.svg";
+import { VscSignOut } from 'react-icons/vsc'
 
 const Header = () => {
 	const navigate = useNavigate();
@@ -15,9 +17,21 @@ const Header = () => {
 	useEffect(() => {
 		setIsLogged(!!authentication)
 	}, [authentication])
+
+    // Notification
+	const dispatch = useNotification();
+
+	const handleNotification = (type, message, title) => {
+		dispatch({
+		  type: type,
+		  message: message,
+		  title: title
+		})
+	}
 	
 	const disconnection = async () => {
-		await logout()
+		await logout();
+		handleNotification("success", "Vous êtes désormais déconnecté",  "Déconnexion");
 		navigate('/')
 	}
 	
