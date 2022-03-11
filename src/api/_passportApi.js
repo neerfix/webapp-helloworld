@@ -1,11 +1,17 @@
 import axios from "axios";
-import { apiUrl, requestOptions } from "@/config/_api";
+import { apiUrl, headers } from "@/config/_api";
 import { handleError } from "@/api/_handleApi";
 
 /*** Profile ***/
 
 const getProfileInformation = () => {
-	return axios.get(`${apiUrl}/users/me`, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.get(`${apiUrl}/users/me`, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response.data)
 		.catch((error) => handleError(error))
 }
@@ -15,7 +21,13 @@ const getProfileInformation = () => {
  * @param profile
  */
 const updateProfile = (profile) => {
-	return axios.put(`${apiUrl}/profile`, { profile }, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.put(`${apiUrl}/profile`, { profile }, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -29,7 +41,13 @@ const updateProfile = (profile) => {
  * @returns {Promise<AxiosResponse<any>>}
  */
 const searchFriend = (search) => {
-	return axios.post(`${apiUrl}/users/search`, { search }, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.post(`${apiUrl}/users/search`, { search }, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response.data)
 		.catch((error) => handleError(error))
 }
@@ -38,7 +56,13 @@ const searchFriend = (search) => {
  * Get all friends
  */
 const getFriends = () => {
-	return axios.get(`${apiUrl}/followers`, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.get(`${apiUrl}/followers`, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -50,6 +74,7 @@ const getFriends = () => {
  * @returns {Promise<AxiosResponse<any>|void>}
  */
 const removeFriend = (userId) => {
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
 	return axios.delete(`${apiUrl}/followers/${userId}`)
 		.then((response) => response)
 		.catch((error) => handleError(error))
@@ -62,7 +87,13 @@ const removeFriend = (userId) => {
  * @returns {Promise<AxiosResponse<any>|void>}
  */
 const requestFriend = (userId) => {
-	return axios.post(`${apiUrl}/followers`, {}, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.post(`${apiUrl}/followers`, {}, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }
@@ -74,7 +105,13 @@ const requestFriend = (userId) => {
  * @param response
  */
 const responseToFriendRequest = (userId, response) => {
-	return axios.put(`${apiUrl}/followers/${userId}`, { response }, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.put(`${apiUrl}/followers/${userId}`, { response }, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response)
 		.catch((error) => handleError(error))
 }

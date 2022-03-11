@@ -16,6 +16,9 @@ const Login = () => {
     const [birthdate, setBirthdate] = useState('');
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
+    
+    const [loginLoading, setLoginLoading] = useState(false)
+    const [registerLoading, setRegisterLoading] = useState(false)
 
     // Notification
 	const dispatch = useNotification();
@@ -45,33 +48,35 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setLoginLoading(true)
         await login(email, password)
             .then((response) => {
                 handleNotification("success", "Vous êtes désormais connecté !",  "Connexion");
-                localStorage.setItem('authentication', JSON.stringify(response.data.data))
                 navigate('/passport');
             })
             .catch((error) => {
                 handleNotification("error", "Identifiants incorrects",  "Connexion");
                 console.log(error)
             })
+        setLoginLoading(false)
     }
 
     const handleRegistration = async (e) => {
         e.preventDefault();
+        setRegisterLoading(true)
         await register(email, newPassword, username, birthdate)
             .then(async (response) => {
                 console.log(response)
                 await login(email, newPassword)
                     .then((response) => {
                         handleNotification("success", "Vous êtes désormais connecté !",  "Connexion");
-                        localStorage.setItem('authentication', JSON.stringify(response.data.data))
                         navigate('/passport');
                     })
             })
             .catch((error) => {
                 console.log(error)
             })
+        setRegisterLoading(false)
     }
 
     return (
@@ -146,9 +151,16 @@ const Login = () => {
                                     <p className={"forgot-password-link"}>J'ai oublié mon mot de passe</p>
                                 </Link>
                             </div>
-                            <button type={"submit"} className="btn btn-dark mx-auto my-5">
-                                <span className="btn-text">Se connecter</span>
-                            </button>
+                            <div className={"btn-loading mx-auto"}>
+                                <button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
+                                    <span className={"btn-text"}>Se connecter</span>
+                                </button>
+                                {loginLoading &&
+                                    <div className={"btn-overlay"}>
+                                        <VscRefresh className={"animate-spin"} />
+                                    </div>
+                                }
+                            </div>
                         </form>
                     </div>
                 }
@@ -208,10 +220,16 @@ const Login = () => {
                                     />
                                 </div>
                             </div>
-
-                            <button type={"submit"} className="btn btn-dark mx-auto my-5">
-                                <span className="btn-text">S'inscrire</span>
-                            </button>
+                            <div className={"btn-loading mx-auto"}>
+                                <button className={"btn btn-dark mx-auto my-5"} type={"submit"}>
+                                    <span className={"btn-text"}>S'inscrire</span>
+                                </button>
+                                {registerLoading &&
+                                    <div className={"btn-overlay"}>
+                                        <VscRefresh className={"animate-spin"} />
+                                    </div>
+                                }
+                            </div>
                         </form>
                     </div>
                 }

@@ -1,9 +1,15 @@
 import axios from "axios";
-import { apiUrl, requestOptions } from "@/config/_api";
+import { apiUrl, headers } from "@/config/_api";
 import { handleError } from "@/api/_handleApi";
 
 const getProfileInformation = (uuid) => {
-	return axios.get(`${apiUrl}/users/${uuid}`, requestOptions)
+	const authentication = JSON.parse(localStorage.getItem('authentication'))
+	return axios.get(`${apiUrl}/users/${uuid}`, {
+		headers: {
+			...headers,
+			'Authorization': `Bearer ${authentication.accessToken}`
+		}
+	})
 		.then((response) => response.data)
 		.catch((error) => handleError(error))
 }
