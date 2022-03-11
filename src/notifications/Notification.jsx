@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import { BiErrorCircle } from 'react-icons/bi';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
@@ -23,11 +23,11 @@ const Notification = props => {
         setIntervalID(id);
     };
 
-    const handlePauseTimer = () => {
+    const handlePauseTimer = useCallback(() => {
         clearInterval(intervalID);
-    };
+    }, [intervalID])
 
-    const handleCloseNotification = () => {
+    const handleCloseNotification = useCallback(() => {
         handlePauseTimer();
         // setExit(true);
         setTimeout(() => {
@@ -36,16 +36,16 @@ const Notification = props => {
                 id: props.id
             })
         }, 400)
-    };
+    }, [handlePauseTimer, props]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (width === 100) {
             // Close notification
             handleCloseNotification()
         }
-    }, [width])
+    }, [width, handleCloseNotification])
 
-    React.useEffect(() => {
+    useEffect(() => {
         handleStartTimer();
     }, []);
 

@@ -32,12 +32,14 @@ const PassportEditPage = () => {
 		async function fetchProfileInformation() {
 			const { data } = await getProfileInformation()
 			console.log(data)
-			setProfile({
-				...profile,
-				uuid: data.uuid,
-				username: data.username,
-				birthdate: DateTime.fromISO(data.dateOfBirth).toFormat('y-MM-d'),
-				email: data.email
+			setProfile(profile => {
+				return {
+					...profile,
+					uuid: data.uuid,
+					username: data.username,
+					birthdate: DateTime.fromISO(data.dateOfBirth).toFormat('y-MM-d'),
+					email: data.email
+				}
 			})
 		}
 		
