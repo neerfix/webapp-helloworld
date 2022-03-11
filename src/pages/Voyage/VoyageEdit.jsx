@@ -43,8 +43,8 @@ const VoyageEditPage = () => {
 		}
     });
 
-	useEffect(() => {
-		if(!isGeocoderLoaded && !geocoder) {
+	useEffect((isGeocoderLoaded) => {
+		if(!isGeocoderLoaded) {
 			var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
 			geocoder.addTo('#geocoder-container');
 	
@@ -58,7 +58,8 @@ const VoyageEditPage = () => {
 
 			isGeocoderLoaded = true;
 		}
-	}, []);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isGeocoderLoaded]);
 
     if( voyageId ) {
 		voyage.voyageId = parseInt(voyageId);
