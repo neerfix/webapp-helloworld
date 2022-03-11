@@ -2,18 +2,22 @@
     @apply bg-white;
 }
 
-#passportpage{
+#passportpage {
+	.passport-img img {
+		min-height: 500px;
+		object-fit: cover;
+	}
 
-    .passport-img img{
-        min-height: 500px;
-        object-fit: cover;
-    }
+	.passport-card {
+		margin-top: 50vw;
+		background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 20%,
+				#fcfaf7), url('/assets/images/topo-lines.svg');
+	}
+}
 
-    .passport-card{
-        margin-top: 50vw;
-        background-image: linear-gradient(to bottom, rgba(255,255,255,0) 20%,
-        #fcfaf7), url('/assets/images/topo-lines.svg');
-    }
+#passport, #passport-friends {
+	font-family: 'DM Serif Display', serif;
+	background-image: url('/assets/images/grid-lines.png');
 
     #feed-list{
         .feed-card:nth-child(odd){
@@ -43,7 +47,7 @@
     .info-text{
         width: 220px;
     }
-	
+
 	.compass {
 		width: 90vw;
 		height: 90vw;
@@ -101,4 +105,28 @@
 	}
 }
 
+.friend-list {
+	display: flex;
+	flex-direction: column;
 
+	.friend-item-name {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
+		margin-bottom: 7px;
+	}
+
+	.friend-item-action {
+		display: flex;
+		flex-direction: row;
+		justify-content: end;
+		align-items: center;
+		margin-bottom: 7px;
+
+		.friend-btn {
+			display: flex;
+			flex-direction: row;
+		}
+	}
+}
