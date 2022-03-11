@@ -136,6 +136,8 @@ const Login = () => {
                                         type={"password"}
                                         name={"password"}
                                         value={password}
+                                        min={8}
+                                        required
                                         className={"focus:border-dark-brown focus:ring-dark-brown"}
                                         onChange={e => setPassword(e.target.value)}
                                     />
@@ -199,6 +201,8 @@ const Login = () => {
                                         type={"password"}
                                         name={"password"}
                                         value={newPassword}
+                                        min={8}
+                                        required
                                         className={"focus:border-dark-brown focus:ring-dark-brown"}
                                         onChange={e => setNewPassword(e.target.value)}
                                     />
