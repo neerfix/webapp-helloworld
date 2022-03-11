@@ -52,8 +52,7 @@ const createTravel = (travel) => {
 		}
 	})
 		.then((response) => {
-			console.log(response.data.uuid);
-			return response.data.uuid;
+			return response.data.data.uuid;
 		})
 		.catch((error) => handleError(error))
 }

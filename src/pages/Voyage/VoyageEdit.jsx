@@ -1,7 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
+// Icones
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiEdit3 } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
@@ -11,16 +12,19 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
-// Routes
+// Imports
 import { createTravel } from "@/api/_travelApi";
+import { useNotification } from "@/notifications/NotificationProvider";
 
 const VoyageEditPage = () => {
 
     let { voyageId } = useParams();
-	let isGeocoderLoaded = false;
-	
+	const navigate = useNavigate();
+	const dispatch = useNotification();
 	const [isSharable, setIsSharable] = useState(false);
 
+	let isGeocoderLoaded = false;
+	
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 	const [voyage, setVoyage] = useState({
@@ -50,7 +54,6 @@ const VoyageEditPage = () => {
 				voyage.place.longitude = result.center[0];
 				voyage.place.latitude = result.center[1];
 				voyage.location = result.place_name_fr;
-				console.log(voyage.place);
 			})
 
 			isGeocoderLoaded = true;
@@ -103,12 +106,18 @@ const VoyageEditPage = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
+
+	const handleNotification = (type, message, title) => {
+		dispatch({
+		  type: type,
+		  message: message,
+		  title: title
+		})
+	}
 	
 	const saveVoyage = async (event) => {
 		event.preventDefault();
 
-		console.log(voyage);
-		
 		const payload = {
 			...voyage,
 			isSharable: isSharable,
@@ -118,9 +127,14 @@ const VoyageEditPage = () => {
 		console.log(payload);
 
 		await createTravel(payload)
-            .then(async (response) => {
-                console.log(response);
-				// Redirect
+            .then(async (voyageId) => {
+				if(voyage.voyageId) {
+					handleNotification("success", "Votre voyage est modifié !",  "Modification");
+					navigate('/voyage/' + voyage.voyageId);
+				} else {
+					handleNotification("success", "Votre voyage est créé !",  "Création");
+					navigate('/voyage/' + voyageId);
+				}
             })
             .catch((error) => {
                 console.log(error)
