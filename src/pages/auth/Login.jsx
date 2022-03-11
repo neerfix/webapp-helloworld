@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { checkEmailExist, register, login } from "@/api/_authenticationApi";
-import {useNotification} from "@/notifications/NotificationProvider";
+import { useNotification } from "@/notifications/NotificationProvider";
 
 import { VscRefresh } from 'react-icons/vsc'
 
@@ -19,6 +19,8 @@ const Login = () => {
 
     // Notification
 	const dispatch = useNotification();
+    
+    const navigate = useNavigate();
 
 	const handleNotification = (type, message, title) => {
 		dispatch({
@@ -47,7 +49,7 @@ const Login = () => {
             .then((response) => {
                 handleNotification("success", "Vous êtes désormais connecté !",  "Connexion");
                 localStorage.setItem('authentication', JSON.stringify(response.data.data))
-                // history.push('/passport')
+                navigate('/passport');
             })
             .catch((error) => {
                 handleNotification("error", "Identifiants incorrects",  "Connexion");

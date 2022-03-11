@@ -50,9 +50,7 @@ const resetPassword = () => {
 }
 
 const logout = () => {
-	return axios.put(`${apiUrl}/auth/logout`, {}, requestOptions)
-		.then((response) => response)
-		.catch((error) => handleError(error))
+	return localStorage.removeItem('authentication')
 }
 
 export {

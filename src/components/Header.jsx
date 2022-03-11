@@ -1,7 +1,10 @@
 import React from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
+import { VscSignOut } from 'react-icons/vsc'
+
+import { logout } from '@/api/_authenticationApi'
 
 import { ReactComponent as Logo } from "@/assets/images/logo.svg";
-import { NavLink } from "react-router-dom";
 
 class Header extends React.Component {
 	constructor(props) {
@@ -9,6 +12,12 @@ class Header extends React.Component {
 		this.state = {
 			isLogged: !!localStorage.getItem('authentication')
 		}
+	}
+	
+	
+	async disconnection() {
+		const navigate = useNavigate
+		navigate('/')
 	}
 	
 	render() {
@@ -35,6 +44,10 @@ class Header extends React.Component {
 									<NavLink to={"passport"} className={"nav-link"}>
 										Passeport
 									</NavLink>
+									<span className="separator">◆</span>
+									<button className={"nav-btn"} onClick={() => this.disconnection()}>
+										<VscSignOut className={"text-xl"} />
+									</button>
 								</>
 							}
 							{!this.state.isLogged &&
