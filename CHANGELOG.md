@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.2.0](https://github.com/helloworld-ynovlyon/webapp/compare/v1.1.0...v1.2.0) (2022-03-11)
+
+
+### Features
+
+* get travels from api for interactive map ([e0ceff5](https://github.com/helloworld-ynovlyon/webapp/commit/e0ceff5043fde710280f1d99c7ee1d83eebd5422))
+
+
+### Bug Fixes
+
+* env example ([0a05176](https://github.com/helloworld-ynovlyon/webapp/commit/0a05176e5ac7f5f7e74d295df55e77e34983c3ee))
+* get voyage info by id (route broken tho) ([03f0bba](https://github.com/helloworld-ynovlyon/webapp/commit/03f0bbab2de206ceaaf0a5e542d76e8c3305f242))
+* load travel info and interactive map lat & lng ([433b7b6](https://github.com/helloworld-ynovlyon/webapp/commit/433b7b64238b78eb29dff487bb6b5e98e5f1d16e))
+* readme & remove some console logs ([7456f3c](https://github.com/helloworld-ynovlyon/webapp/commit/7456f3c45a675342c21e9eb6af63f3a9cd9a0810))
+* readme checklist ([99c7edf](https://github.com/helloworld-ynovlyon/webapp/commit/99c7edfa41fed75120b4e3f6429ec32cfe9b7509))
+* redirect and notify when travel created ([23b2e48](https://github.com/helloworld-ynovlyon/webapp/commit/23b2e48c60b6766b95d3a0636a8f5779b2228343))
+* remove console logs ([d649de9](https://github.com/helloworld-ynovlyon/webapp/commit/d649de951fda302a2bee8437958043b82f4070e6))
+* style for some pages width ([04567ad](https://github.com/helloworld-ynovlyon/webapp/commit/04567ade447fe0285686c3683684e140db98f039))
+* warning /exhaustive-deps ([7226bb9](https://github.com/helloworld-ynovlyon/webapp/commit/7226bb9a59c2cc895635a86f9cfc4d2b88d3fe44))
+* warning export default ([f5f4ffb](https://github.com/helloworld-ynovlyon/webapp/commit/f5f4ffb64c8a045d69c6cc7a0deeee2bac389837))
+
 ## [1.1.0](https://github.com/helloworld-ynovlyon/webapp/compare/v1.0.1...v1.1.0) (2022-03-11)
 
 
