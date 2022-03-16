@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/helloworld-ynovlyon/webapp/compare/v1.2.0...v1.3.0) (2022-03-16)
+
+
+### Features
+
+* add firebase function ([330826b](https://github.com/helloworld-ynovlyon/webapp/commit/330826bf15d57ea9197be2ca0d42a1de19a58aa5))
+
 ## [1.2.0](https://github.com/helloworld-ynovlyon/webapp/compare/v1.1.0...v1.2.0) (2022-03-11)
 
 
